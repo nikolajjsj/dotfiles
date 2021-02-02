@@ -17,11 +17,14 @@ cd dev
 git clone https://github.com/nikolajjsj/.dotfiles.git
 cd .dotfiles
 
+# create directory needed for config.fish (symlink)
+mkdir ~/.config/fish/
+
 # symlinking
-ln -s .gitconfig ~/.gitconfig
-ln -s .vimrc ~/.vimrc
-ln -s config.fish ~/.config/fish/config.fish
-ln -s alacritty.yml ~/.config/alacritty.yml
+ln -sf ~/dev/.dotfiles/.gitconfig ~/.gitconfig
+ln -sf ~/dev/.dotfiles/.vimrc ~/.vimrc
+ln -sf ~/dev/.dotfiles/config.fish ~/.config/fish/config.fish
+ln -sf ~/dev/.dotfiles/alacritty.yml ~/.config/alacritty.yml
 
 # brew.sh - installs brews
 echo 'Do you want to install the default brews?'
