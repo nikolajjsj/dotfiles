@@ -7,9 +7,9 @@ cd ~ #Moving to home directory at the beginning of the process
 #<----------------Installing MacOS Apps, via Homebrew, Caks, & The App Store-------------------->
 brew=(
 	cowsay
-	cmatrix
     fortune
     git
+	fish
     htop
     node
 	vim
@@ -17,18 +17,21 @@ brew=(
 )
 cask=(
     alfred
-	visual-studio-code
-	alfred
-	google-chrome-beta
+	alt-tab
 	android-file-transfer
 	android-platform-tools
 	android-studio
 	appcleaner
-	discord
-	google-backup-and-sync
+	firefox-developer-edition
+	google-chrome-beta
+	google-drive
 	iina
+	insomnia
+	istat-menu
+	iterm2
 	spotify
 	transmission
+	visual-studio-code
 ) #GUI apps that install with cask
 
 brew update
