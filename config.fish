@@ -86,7 +86,7 @@ set -g fish_pager_color_description $comment
 
 ### fish greeting ###
 function fish_greeting
-	fortune | cowsay -f rick-and-morty
+	fortune -s | cowsay -f tux
 end
 
 
