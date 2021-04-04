@@ -10,8 +10,6 @@ defaults write com.apple.finder ShowPathbar -bool true #Adds the path bar to the
 defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool false #Stop the automatic save to iCloud thing
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv" #Changes Default Finder View to List
 defaults write com.apple.finder _FXSortFoldersFirst -bool true #Moves Folders to top When Sorting Alphabetically in Finder
-#defaults write com.apple.finder FXDefaultSearchScope -string "SCcf" #Changes Default Finder Search to Current Folder Only
-defaults write com.apple.finder FXICloudDriveDesktop -bool NO #Doesn't Sync Desktop to iCloud
 defaults write com.apple.finder SidebarShowingiCloudDesktop -bool NO #Removes iCloud Desktop from Finder Sidebar
 defaults write com.apple.NSGlobalDomain AppleShowAllExtensions -bool YES #Shows All File Extensions Always
 
