@@ -14,7 +14,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ### Finder
 defaults write com.apple.finder ShowPathbar -bool true #Adds the path bar to the bottom of the finder
 defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool false #Stop the automatic save to iCloud thing
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv" #Changes Default Finder View to List
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv" #Changes Default Finder View to List
 defaults write com.apple.finder _FXSortFoldersFirst -bool true #Moves Folders to top When Sorting Alphabetically in Finder
 defaults write com.apple.finder SidebarShowingiCloudDesktop -bool NO #Removes iCloud Desktop from Finder Sidebar
 defaults write com.apple.NSGlobalDomain AppleShowAllExtensions -bool YES #Shows All File Extensions Always
