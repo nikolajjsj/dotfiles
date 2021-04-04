@@ -17,13 +17,11 @@ brew=(
 )
 cask=(
     alfred
-	alt-tab
 	android-file-transfer
 	android-platform-tools
 	android-studio
 	appcleaner
-	firefox-developer-edition
-	google-chrome-beta
+	google-chrome
 	google-drive
 	iina
 	insomnia
