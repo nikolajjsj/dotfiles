@@ -10,6 +10,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     cd ~
 
     # create directory needed for config.fish (symlink)
+		mkdir ~/.config
     mkdir ~/.config/fish/
 
     # symlinking
@@ -18,3 +19,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     ln -sf ~/dev/.dotfiles/config.fish ~/.config/fish/config.fish
     ln -sf ~/dev/.dotfiles/alacritty.yml ~/.config/alacritty.yml
 fi;
+
+# Change the default shell to fish
+# echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+# chsh -s /usr/local/bin/fish
