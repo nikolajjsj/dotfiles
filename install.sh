@@ -6,10 +6,6 @@ echo 'xcode-select -install'
 
 read answer
 
-echo ' ' 
-echo 'What is your username on this system?'
-read uname
-
 # cloning github repo
 cd ~
 mkdir dev
