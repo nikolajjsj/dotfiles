@@ -2,38 +2,34 @@
 
 cd ~ #Moving to home directory at the beginning of the process
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-#<----------------Installing MacOS Apps, via Homebrew, Caks, & The App Store-------------------->
-brew=(
-	cowsay
-    fortune
-    git
-	fish
-    htop
-    node
-	vim
-    starship
-)
-cask=(
-    alfred
-	android-file-transfer
-	android-platform-tools
-	android-studio
-	appcleaner
-	google-chrome
-	google-drive
-	iina
-	insomnia
-	istat-menu
-	iterm2
-	spotify
-	transmission
-	visual-studio-code
-) #GUI apps that install with cask
-
 brew update
 brew upgrade
 
-brew install ${brew[@]} #Homebrew App Installer
-brew cask install ${cask[@]} #Casks Installer
+#<----------------Installing MacOS Apps, via Homebrew, Caks, & The App Store-------------------->
+## formulas
+brew install --formula vim --with-override-system-vi
+brew install --formula cowsay
+brew install --formula fortune
+brew install --formula git
+brew install --formula fish
+brew install --formula htop
+brew install --formula node
+brew install --formula starship
+
+## casks
+brew install --cask alfred
+brew install --cask alfred
+brew install --cask android-file-transfer
+brew install --cask android-platform-tools
+brew install --cask android-studio
+brew install --cask appcleaner
+brew install --cask flutter
+brew install --cask google-chrome
+brew install --cask google-drive
+brew install --cask iina
+brew install --cask insomnia
+brew install --cask istat-menu
+brew install --cask iterm2
+brew install --cask spotify
+brew install --cask transmission
+brew install --cask visual-studio-code
