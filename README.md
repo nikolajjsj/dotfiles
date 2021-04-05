@@ -28,9 +28,11 @@ cd .dotfiles
   "terminal.integrated.shell.osx": "/usr/local/bin/fish",
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
+  "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
   "workbench.startupEditor": "newUntitledFile",
   "git.enableSmartCommit": true,
+  "debug.openDebug": "openOnDebugBreak",
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
