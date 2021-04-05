@@ -6,15 +6,17 @@ Repository to keep track of my .dotfiles
 
 ## Preparations
 
-### Git (XCode)
+### Commandline utilities & HomeBrew
 
 Install it on the command line first, it will ask for permission.
 
-```
+```bash
 xcode-select --install
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### installation
+## installation
 
 ```
 git clone https://github.com/nikolajjsj/.dotfiles.git
@@ -24,7 +26,7 @@ sh brew.sh
 sh macos.sh
 ```
 
-### VSCode config
+## VSCode config
 
 ```json
 {
