@@ -19,11 +19,16 @@ xcode-select --install
 ## installation
 
 ```
+cd && mkdir dev
 git clone https://github.com/nikolajjsj/.dotfiles.git
 cd .dotfiles
 sh install.sh
-sh brew.sh
+```
+
+Optionally you could run each script seperately:
+```
 sh macos.sh
+sh brew.sh
 ```
 
 ## VSCode config
