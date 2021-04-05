@@ -19,6 +19,9 @@ xcode-select --install
 ```
 git clone https://github.com/nikolajjsj/.dotfiles.git
 cd .dotfiles
+sh install.sh
+sh brew.sh
+sh macos.sh
 ```
 
 ### VSCode config
