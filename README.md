@@ -14,7 +14,7 @@ Install it on the command line first, it will ask for permission.
 xcode-select --install
 ```
 
-### Dot files
+### installation
 
 ```
 git clone https://github.com/nikolajjsj/.dotfiles.git
