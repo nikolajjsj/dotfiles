@@ -21,13 +21,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     ln -sf ~/dev/.dotfiles/.vimrc ~/.vimrc
     ln -sf ~/dev/.dotfiles/.zshrc ~/.zshrc
 
-    # install oh my zsh
-    read -p "Install oh my zsh + plugins? (y/n) " -n 1;
-    echo "";
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-      sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    fi;
-
     # Prompt user if they want to set MacOS preferences
     read -p "Set MacOS settings? (y/n) " -n 1;
     echo "";
