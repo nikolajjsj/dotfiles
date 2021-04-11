@@ -4,7 +4,7 @@ echo 'Are the Xcode command line tools installed?'
 echo 'And have you installed HomeBrew?'
 echo ""
 echo 'If not exit using CMD+C, and install with:'
-echo 'xcode-select -install'
+echo 'xcode-select --install'
 echo 'and/or:'
 echo '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
 echo ""
