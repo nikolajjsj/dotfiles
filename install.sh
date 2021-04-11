@@ -13,9 +13,6 @@ echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     cd ~
 
-    # create directory needed for config.fish (symlink)
-		mkdir ~/.config
-
     # symlinking
     ln -sf ~/dev/.dotfiles/.gitconfig ~/.gitconfig
     ln -sf ~/dev/.dotfiles/.vimrc ~/.vimrc
