@@ -14,10 +14,14 @@ alias pumpitup='osascript -e "set volume output volume 100"'
 alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
 alias cleanup='find . -type f -name "*.DS_Store" -ls -delete' # Recursively delete `.DS_Store` files
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+alias myip='curl http://ipecho.net/plain; echo' # echoes current ip
+alias reload='source ~/.zshrc' # reloads current sessions
+
+alias dev='cd ~/dev/'
 
 # zsh syntax highlighting & auto suggestions
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # start up starship
-eval "$(starship init zsh)"
+eval '$(starship init zsh)'
