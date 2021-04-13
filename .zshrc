@@ -24,4 +24,4 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # start up starship
-eval '$(starship init zsh)'
+eval "$(starship init zsh)"
