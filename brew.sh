@@ -32,3 +32,6 @@ brew install --cask iterm2
 brew install --cask spotify
 brew install --cask transmission
 brew install --cask visual-studio-code
+
+# Cleans up
+brew cleanup
