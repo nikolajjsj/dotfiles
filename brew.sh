@@ -7,7 +7,7 @@ brew upgrade
 
 #<----------------Installing MacOS Apps, via Homebrew, Caks, & The App Store-------------------->
 ## formulas
-brew install --formula vim --with-override-system-vi
+brew install --formula vim
 brew install --formula cowsay
 brew install --formula fortune
 brew install --formula git
