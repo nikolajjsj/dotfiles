@@ -18,7 +18,6 @@ brew install --formula starship
 
 ## casks
 brew install --cask alfred
-brew install --cask alfred
 brew install --cask android-file-transfer
 brew install --cask android-platform-tools
 brew install --cask android-studio
