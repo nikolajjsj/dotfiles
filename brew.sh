@@ -23,13 +23,9 @@ brew install --cask android-studio
 brew install --cask appcleaner
 brew install --cask flutter
 brew install --cask google-chrome
-brew install --cask google-drive
-brew install --cask iina
 brew install --cask insomnia
-brew install --cask istat-menu
 brew install --cask iterm2
 brew install --cask spotify
-brew install --cask transmission
 brew install --cask visual-studio-code
 
 # Cleans up
