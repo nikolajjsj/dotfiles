@@ -4,7 +4,7 @@ echo 'Are the Xcode command line tools installed?'
 echo 'And have you installed HomeBrew?'
 echo ""
 echo 'If not exit using CMD+C, and install with:'
-echo 'xcode-select -install'
+echo 'xcode-select --install'
 echo 'and/or:'
 echo '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
 echo ""
@@ -13,15 +13,10 @@ echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     cd ~
 
-    # create directory needed for config.fish (symlink)
-		mkdir ~/.config
-    mkdir ~/.config/fish/
-
     # symlinking
     ln -sf ~/dev/.dotfiles/.gitconfig ~/.gitconfig
     ln -sf ~/dev/.dotfiles/.vimrc ~/.vimrc
-    ln -sf ~/dev/.dotfiles/config.fish ~/.config/fish/config.fish
-    ln -sf ~/dev/.dotfiles/alacritty.yml ~/.config/alacritty.yml
+    ln -sf ~/dev/.dotfiles/.zshrc ~/.zshrc
 
     # Prompt user if they want to set MacOS preferences
     read -p "Set MacOS settings? (y/n) " -n 1;
@@ -35,15 +30,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "";
     if [[ $REPLY =~ ^[Yy]$ ]]; then
       sh ./brew.sh
-    fi;
-
-    # Prompt user if they want to set fish as the default shell
-    read -p "Set fish as default shell? (y/n) " -n 1;
-    echo "";
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-      # Change the default shell to fish
-      echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
-      chsh -s /usr/local/bin/fish
     fi;
 fi;
 

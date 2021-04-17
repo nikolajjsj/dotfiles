@@ -7,7 +7,7 @@ brew upgrade
 
 #<----------------Installing MacOS Apps, via Homebrew, Caks, & The App Store-------------------->
 ## formulas
-brew install --formula vim --with-override-system-vi
+brew install --formula vim
 brew install --formula cowsay
 brew install --formula fortune
 brew install --formula git
@@ -16,7 +16,6 @@ brew install --formula node
 brew install --formula starship
 
 ## casks
-brew install --cask alfred
 brew install --cask alfred
 brew install --cask android-file-transfer
 brew install --cask android-platform-tools
@@ -32,3 +31,6 @@ brew install --cask iterm2
 brew install --cask spotify
 brew install --cask transmission
 brew install --cask visual-studio-code
+
+# Cleans up
+brew cleanup

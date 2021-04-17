@@ -20,6 +20,7 @@ xcode-select --install
 
 ```
 cd && mkdir dev
+cd dev
 git clone https://github.com/nikolajjsj/.dotfiles.git
 cd .dotfiles
 sh install.sh
