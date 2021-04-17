@@ -14,6 +14,8 @@ brew install --formula git
 brew install --formula htop
 brew install --formula node
 brew install --formula starship
+brew install --formula zsh-syntax-highlighting
+brew install --formula zsh-autosuggestions
 
 ## casks
 brew install --cask alfred
