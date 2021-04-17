@@ -11,7 +11,6 @@ brew install --formula vim --with-override-system-vi
 brew install --formula cowsay
 brew install --formula fortune
 brew install --formula git
-brew install --formula fish
 brew install --formula htop
 brew install --formula node
 brew install --formula starship
