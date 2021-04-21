@@ -2,7 +2,7 @@
 
 Repository to keep track of my .dotfiles
 
-# Macbook Pro dotfiles and setup
+# MacOS dotfiles and setup
 
 ## Preparations
 
