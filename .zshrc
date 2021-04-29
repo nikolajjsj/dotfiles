@@ -19,6 +19,7 @@ alias myip='curl http://ipecho.net/plain; echo' # echoes current ip
 alias reload='source ~/.zshrc' # reloads current sessions
 
 alias dev='cd ~/dev/'
+alias work='cd ~/novicell/'
 
 # zsh syntax highlighting & auto suggestions
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
