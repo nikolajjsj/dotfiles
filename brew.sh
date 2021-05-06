@@ -28,6 +28,7 @@ brew install --cask google-chrome
 brew install --cask insomnia
 brew install --cask iterm2
 brew install --cask spotify
+brew install --cask rectangle
 brew install --cask visual-studio-code
 
 # Cleans up
