@@ -18,7 +18,7 @@
     },
     "dart.allowAnalytics": false,
     "dart.previewLsp": true,
-  
+
     "[javascript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.tabSize": 2

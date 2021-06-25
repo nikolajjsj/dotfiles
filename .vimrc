@@ -1,101 +1,154 @@
-" set dark background
+" Theme
 set background=dark
 
-" Make Vim more useful
-set nocompatible
+" utf encoding
+set encoding=UTF-8
 
-" Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed
-
-" Enhance command-line completion
-set wildmenu
-
-" Allow cursor keys in insert mode
-set esckeys
-
-" Allow backspace in insert mode
-set backspace=indent,eol,start
-
-" Optimize for fast terminal connections
-set ttyfast
-
-" Add the g flag to search/replace by default
-set gdefault
-
-" Use UTF-8 without BOM
-set encoding=utf-8 nobomb
-
-" Don’t create backups when editing files in certain directories
-set backupskip=/tmp/*,/private/tmp/*
-
-" Respect modeline in files
-set modeline
-set modelines=4
-
-" Enable line numbers
-set number
-
-" Enable syntax highlighting
+" Settings {{{
+" Switch syntax highlighting on, when the terminal has colors
 syntax on
 
-" Highlight current line
-set cursorline
+" Use vim, not vi api
+set nocompatible
 
-" Make tabs as wide as two spaces
-set tabstop=2
+" No backup files
+set nobackup
 
-" Highlight searches
-set hlsearch
+" No write backup
+set nowritebackup
 
-" Ignore case of searches
-set ignorecase
+" No swap file
+set noswapfile
 
-" Highlight dynamically as pattern is typed
-set incsearch
+" Command history
+set history=100
 
-" Always show status line
-set laststatus=2
-
-" Enable mouse in all modes
-set mouse=a
-
-" Disable error bells
-set noerrorbells
-
-" Don’t reset cursor to start of line when moving around.
-set nostartofline
-
-" Show the cursor position
+" Always show cursor
 set ruler
 
-" Don’t show the intro message when starting Vim
-set shortmess=atI
-
-" Show the current mode
-set showmode
-
-" Show the filename in the window titlebar
-set title
-
-" Show the (partial) command as it’s being typed
+" Show incomplete commands
 set showcmd
 
-" Use relative line numbers
-if exists("&relativenumber")
-	set relativenumber
-	au BufReadPost * set relativenumber
+" Incremental searching (search as you type)
+set incsearch
+
+" Highlight search matches
+set hlsearch
+
+" Ignore case in search
+set smartcase
+
+" Make sure any searches /searchPhrase doesn't need the \c escape character
+set ignorecase
+
+" A buffer is marked as ‘hidden’ if it has unsaved changes, and it is not currently loaded in a window
+" if you try and quit Vim while there are hidden buffers, you will raise an error:
+" E162: No write since last change for buffer “a.txt”
+set hidden
+
+" Turn word wrap off
+set nowrap
+
+" Allow backspace to delete end of line, indent and start of line characters
+set backspace=indent,eol,start
+
+" Convert tabs to spaces
+set expandtab
+
+" Set tab size in spaces (this is for manual indenting)
+set tabstop=2
+
+" The number of spaces inserted for a tab (used for auto indenting)
+set shiftwidth=2
+
+" Turn on line numbers
+set number
+
+" Highlight tailing whitespace
+" See issue: https://github.com/Integralist/ProVim/issues/4
+set list listchars=tab:\ \ ,trail:·
+
+" Always show status bar
+set laststatus=2
+
+" Set the status line to something useful
+set statusline=%f\ %=L:%l/%L\ %c\ (%p%%)
+
+" Better splits (new windows appear below and to the right)
+set splitbelow
+set splitright
+
+" Highlight the current line
+set cursorline
+
+" Ensure Vim doesn't beep at you every time you make a mistype
+set visualbell
+
+" Visual autocomplete for command menu (e.g. :e ~/path/to/file)
+set wildmenu
+
+" redraw only when we need to (i.e. don't redraw when executing a macro)
+set lazyredraw
+
+" highlight a matching [{()}] when cursor is placed on start/end character
+set showmatch
+
+" Set built-in file system explorer to use layout similar to the NERDTree plugin
+let g:netrw_liststyle=3
+
+" Always highlight column 80 so it's easier to see where
+" cutoff appears on longer screens
+autocmd BufWinEnter * highlight ColorColumn ctermbg=darkred
+set colorcolumn=80
+" }}}
+
+" Plugins:
+call plug#begin()
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/git-messenger.vim'      " Reveal the last commit message under the cursor      | https://github.com/rhysd/git-messenger.vim
+
+Plug 'mattn/emmet-vim'              " emmet for vim                                        | https://github.com/mattn/emmet-vim
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'dense-analysis/ale'
+Plug 'frazrepo/vim-rainbow'
+Plug 'itchyny/lightline.vim'
+Plug 'eslint/eslint'
+
+" Colorschemes
+Plug 'icymind/NeoSolarized'             " Solarized colorscheme with better truecolor support   | https://github.com/icymind/NeoSolarized
+Plug 'haishanh/night-owl.vim'           " Vim colorscheme based on sdras/night-owl-vscode-theme | https://github.com/haishanh/night-owl.vim
+Plug 'kaicataldo/material.vim'          " A port of the Material color scheme for Vim/Neovim    | https://github.com/kaicataldo/material.vim
+Plug 'rakr/vim-one'                     " Adaptation of Atom One colorscheme for Vim            | https://github.com/rakr/vim-one
+Plug 'bluz71/vim-nightfly-guicolors'    " Another dark color scheme for Vim                     | https://github.com/bluz71/vim-nightfly-guicolors
+Plug 'sonph/onehalf', {'rtp': 'vim/'}   " A colorscheme for (Neo)Vim, iTerm, and more.          | https://github.com/sonph/onehalf
+Plug 'arcticicestudio/nord-vim'         " Vim colorscheme based on the Nord color palette       | https://github.com/arcticicestudio/nord-vim
+Plug 'jacoborus/tender.vim'             " A 24bit colorscheme for Vim, Airline and Lightline    | https://github.com/jacoborus/tender.vim
+Plug 'morhetz/gruvbox'                  " Retro groove color scheme for Vim                     | https://github.com/morhetz/gruvbox
+Plug 'joshukraine/vim-monokai-tasty',   " My fork of patstockwell/vim-monokai-tasty             | https://github.com/joshukraine/vim-monokai-tasty
+call plug#end()
+
+""""" enable 24bit true color
+
+" If you have vim >=8.0 or Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
 endif
 
-" Start scrolling three lines before the horizontal window border
-set scrolloff=3
+" For Neovim 0.1.3 and 0.1.4
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" Try to prevent bad habits like using the arrow keys for movement. This is
-" not the only possible bad habit. For example, holding down the h/j/k/l keys
-" for movement, rather than using more efficient movement commands, is also a
-" bad habit. The former is enforceable through a .vimrc, while we don't know
-" how to prevent the latter.
-" Do this in normal mode...
-nnoremap <Left>  :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up>    :echoe "Use k"<CR>
-nnoremap <Down>  :echoe "Use j"<CR>
+""""" enable the theme
+
+syntax enable
+colorscheme night-owl
+
+" To enable the lightline theme
+let g:lightline = { 'colorscheme': 'nightowl' }
+
+" NERDTree settings
+let NERDTreeShowHidden=1
+
