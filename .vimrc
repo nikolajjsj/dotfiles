@@ -1,106 +1,40 @@
-" Theme
-set background=dark
+set encoding=UTF-8 " utf encoding
+syntax on " Switch syntax highlighting on, when the terminal has colors
+set nocompatible " Use vim, not vi api
+set nobackup " No backup files
+set nowritebackup " No write backup
+set noswapfile " No swap file
+set history=100 " Command history
+set ruler " Always show cursor
+set showcmd " Show incomplete commands
+set incsearch " Incremental searching (search as you type)
+set hlsearch " Highlight search matches
+set smartcase " Ignore case in search
+set ignorecase " Make sure any searches /searchPhrase doesn't need the \c escape character
+set nowrap " Turn word wrap off
+set backspace=indent,eol,start " Allow backspace to delete end of line, indent and start of line characters
+set expandtab " Convert tabs to spaces
+set tabstop=2 " Set tab size in spaces (this is for manual indenting)
+set shiftwidth=2 " The number of spaces inserted for a tab (used for auto indenting)
+set number " Turn on line numbers
+set list listchars=tab:\ \ ,trail:· " Highlight tailing whitespace
+set laststatus=2 " Always show status bar
+set statusline=%f\ %=L:%l/%L\ %c\ (%p%%) " Set the status line to something useful
+set splitbelow " Better splits (new windows appear below and to the right)
+set splitright " Better splits (new windows appear below and to the right)
+set cursorline " Highlight the current line
+set visualbell " Ensure Vim doesn't beep at you every time you make a mistype
+set wildmenu " Visual autocomplete for command menu (e.g. :e ~/path/to/file)
+set lazyredraw " redraw only when we need to (i.e. don't redraw when executing a macro)
+set showmatch " highlight a matching [{()}] when cursor is placed on start/end character
 
-" utf encoding
-set encoding=UTF-8
-
-" Settings {{{
-" Switch syntax highlighting on, when the terminal has colors
-syntax on
-
-" Use vim, not vi api
-set nocompatible
-
-" No backup files
-set nobackup
-
-" No write backup
-set nowritebackup
-
-" No swap file
-set noswapfile
-
-" Command history
-set history=100
-
-" Always show cursor
-set ruler
-
-" Show incomplete commands
-set showcmd
-
-" Incremental searching (search as you type)
-set incsearch
-
-" Highlight search matches
-set hlsearch
-
-" Ignore case in search
-set smartcase
-
-" Make sure any searches /searchPhrase doesn't need the \c escape character
-set ignorecase
-
-" A buffer is marked as ‘hidden’ if it has unsaved changes, and it is not currently loaded in a window
-" if you try and quit Vim while there are hidden buffers, you will raise an error:
-" E162: No write since last change for buffer “a.txt”
-set hidden
-
-" Turn word wrap off
-set nowrap
-
-" Allow backspace to delete end of line, indent and start of line characters
-set backspace=indent,eol,start
-
-" Convert tabs to spaces
-set expandtab
-
-" Set tab size in spaces (this is for manual indenting)
-set tabstop=2
-
-" The number of spaces inserted for a tab (used for auto indenting)
-set shiftwidth=2
-
-" Turn on line numbers
-set number
-
-" Highlight tailing whitespace
-" See issue: https://github.com/Integralist/ProVim/issues/4
-set list listchars=tab:\ \ ,trail:·
-
-" Always show status bar
-set laststatus=2
-
-" Set the status line to something useful
-set statusline=%f\ %=L:%l/%L\ %c\ (%p%%)
-
-" Better splits (new windows appear below and to the right)
-set splitbelow
-set splitright
-
-" Highlight the current line
-set cursorline
-
-" Ensure Vim doesn't beep at you every time you make a mistype
-set visualbell
-
-" Visual autocomplete for command menu (e.g. :e ~/path/to/file)
-set wildmenu
-
-" redraw only when we need to (i.e. don't redraw when executing a macro)
-set lazyredraw
-
-" highlight a matching [{()}] when cursor is placed on start/end character
-set showmatch
-
-" Set built-in file system explorer to use layout similar to the NERDTree plugin
-let g:netrw_liststyle=3
-
-" Always highlight column 80 so it's easier to see where
-" cutoff appears on longer screens
-autocmd BufWinEnter * highlight ColorColumn ctermbg=darkred
-set colorcolumn=80
-" }}}
+" remaps
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
 
 " Plugins:
 call plug#begin()
@@ -113,10 +47,12 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'dense-analysis/ale'
 Plug 'frazrepo/vim-rainbow'
 Plug 'itchyny/lightline.vim'
 Plug 'eslint/eslint'
+
+" COC plugin
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -136,17 +72,14 @@ Plug 'joshukraine/vim-monokai-tasty',   " My fork of patstockwell/vim-monokai-ta
 call plug#end()
 
 """"" enable 24bit true color
-
 " If you have vim >=8.0 or Neovim >= 0.1.5
 if (has("termguicolors"))
  set termguicolors
 endif
-
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-""""" enable the theme
-
+" Enable the night owl theme and syntax
 syntax enable
 colorscheme night-owl
 
@@ -156,3 +89,13 @@ let g:lightline = { 'colorscheme': 'nightowl' }
 " NERDTree settings
 let NERDTreeShowHidden=1
 
+" coc config
+let g:coc_global_extensions = [
+  \	'coc-snippets',
+  \	'coc-pairs',
+  \	'coc-tsserver',
+  \	'coc-eslint',
+  \	'coc-prettier',
+  \	'coc-json',
+\ ]
+set hidden
