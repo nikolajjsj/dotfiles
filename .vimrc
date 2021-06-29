@@ -1,9 +1,10 @@
 set nocompatible " Use vim, not vi api
+set linebreak           " Have lines wrap instead of continue off-screen
+set scrolloff=12        " Keep cursor in approximately the middle of the screen
 set noswapfile " No swap file
 set history=100 " Command history
 set ruler " Always show cursor
 set showcmd " Show incomplete commands
-set hlsearch " Highlight search matches
 set smartcase " Ignore case in search
 set ignorecase " Make sure any searches /searchPhrase doesn't need the \c escape character
 set nowrap " Turn word wrap off
@@ -22,8 +23,20 @@ set visualbell " Ensure Vim doesn't beep at you every time you make a mistype
 set wildmenu " Visual autocomplete for command menu (e.g. :e ~/path/to/file)
 set lazyredraw " redraw only when we need to (i.e. don't redraw when executing a macro)
 set showmatch " highlight a matching [{()}] when cursor is placed on start/end character
-set mouse=a
+set relativenumber " show relative line numbers
+set mouse+=a
+set noshowmode
 filetype on
+" Jump to start and end of line using the home row keys
+map H ^
+map L $
+" (Shift)Tab (de)indents code
+vnoremap <Tab> >
+vnoremap <S-Tab> <
+" Capital JK move code lines/blocks up & down
+" TODO improve functionality
+nnoremap K :move-2<CR>==
+nnoremap J :move+<CR>==
 
 " Keep VisualMode after indent with > or <
 vmap < <gv
@@ -42,38 +55,36 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
-" Git
-Plug 'airblade/vim-gitgutter'
-Plug 'rhysd/git-messenger.vim'      " Reveal the last commit message under the cursor      | https://github.com/rhysd/git-messenger.vim
-
-Plug 'mattn/emmet-vim'              " emmet for vim                                        | https://github.com/mattn/emmet-vim
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'frazrepo/vim-rainbow'
-Plug 'itchyny/lightline.vim'
-Plug 'preservim/nerdcommenter'
-
-" Syntax highlighting
-Plug 'sheerun/vim-polyglot'
-
-" Flutter plugins
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'thosakwe/vim-flutter'
-
-" COC plugin
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" FZF
+"Search
+Plug 'romainl/vim-cool'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
+" Text manipulation
+Plug 'tpope/vim-sensible'             " Some better defaults
+Plug 'preservim/nerdcommenter'
+" GUI enchancements
+Plug 'itchyny/lightline.vim'          " Better Status Bar
+Plug 'mhinz/vim-startify'             " Better start screen
+Plug 'preservim/nerdtree'             " File explorer
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'itchyny/lightline.vim'
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/git-messenger.vim'        " Reveal the last commit message under the cursor
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" Miscelaneous
+Plug 'mattn/emmet-vim'                " emmet for vim
+Plug 'sheerun/vim-polyglot'           " syntax highligting
+" Language support
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ap/vim-css-color'                " CSS colors
+Plug 'frazrepo/vim-rainbow'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 " Colorschemes
-Plug 'icymind/NeoSolarized'             " Solarized colorscheme with better truecolor support   | https://github.com/icymind/NeoSolarized
-Plug 'haishanh/night-owl.vim'           " Vim colorscheme based on sdras/night-owl-vscode-theme | https://github.com/haishanh/night-owl.vim
-Plug 'kaicataldo/material.vim'          " A port of the Material color scheme for Vim/Neovim    | https://github.com/kaicataldo/material.vim
-Plug 'morhetz/gruvbox'                  " Retro groove color scheme for Vim                     | https://github.com/morhetz/gruvbox
+Plug 'icymind/NeoSolarized'
+Plug 'altercation/solarized'
+Plug 'haishanh/night-owl.vim'
 call plug#end()
 """ End of PLUGINS \""""
 
@@ -81,20 +92,21 @@ call plug#end()
 map <C-n><C-n> :NERDTreeToggle<cr>
 " Use Ctrl-P to open the fuzzy file opener
 nnoremap <C-p> :Files<cr>
+" Show hidden files in NERDTree
+let NERDTreeShowHidden=1
 
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
-" Enable the night owl theme and syntax
 if (has("termguicolors"))
- set termguicolors
+  set termguicolors
+  colorscheme night-owl 
 endif
 
 syntax enable
-colorscheme night-owl
 
 " To enable the lightline theme
-let g:lightline = { 'colorscheme': 'nightowl' }
+let g:lightline = { 'colorscheme': 'night-owl' }
 
 " coc config
 let g:coc_global_extensions = [
@@ -109,6 +121,8 @@ let g:coc_global_extensions = [
   \	'coc-eslint',
   \	'coc-snippets',
   \	'coc-pairs',
+  \'coc-git',
+  \'coc-highlight',
 \ ]
 
 set hidden
