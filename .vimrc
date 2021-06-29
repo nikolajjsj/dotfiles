@@ -77,7 +77,7 @@ call plug#end()
 """ End of PLUGINS \""""
 
 " Use Ctrl-k Ctrl-k to open a sidebar with the list of files
-map <C-k><C-k> :NERDTreeToggle<cr>
+map <C-n><C-n> :NERDTreeToggle<cr>
 " Use Ctrl-P to open the fuzzy file opener
 nnoremap <C-p> :Files<cr>
 
