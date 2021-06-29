@@ -1,13 +1,8 @@
-set encoding=UTF-8 " utf encoding
-syntax on " Switch syntax highlighting on, when the terminal has colors
 set nocompatible " Use vim, not vi api
-set nobackup " No backup files
-set nowritebackup " No write backup
 set noswapfile " No swap file
 set history=100 " Command history
 set ruler " Always show cursor
 set showcmd " Show incomplete commands
-set incsearch " Incremental searching (search as you type)
 set hlsearch " Highlight search matches
 set smartcase " Ignore case in search
 set ignorecase " Make sure any searches /searchPhrase doesn't need the \c escape character
@@ -19,7 +14,7 @@ set shiftwidth=2 " The number of spaces inserted for a tab (used for auto indent
 set number " Turn on line numbers
 set list listchars=tab:\ \ ,trail:· " Highlight tailing whitespace
 set laststatus=2 " Always show status bar
-set statusline=%f\ %=L:%l/%L\ %c\ (%p%%) " Set the status line to something useful
+" set statusline=%f\ %=L:%l/%L\ %c\ (%p%%) " Set the status line to something useful
 set splitbelow " Better splits (new windows appear below and to the right)
 set splitright " Better splits (new windows appear below and to the right)
 set cursorline " Highlight the current line
@@ -27,16 +22,25 @@ set visualbell " Ensure Vim doesn't beep at you every time you make a mistype
 set wildmenu " Visual autocomplete for command menu (e.g. :e ~/path/to/file)
 set lazyredraw " redraw only when we need to (i.e. don't redraw when executing a macro)
 set showmatch " highlight a matching [{()}] when cursor is placed on start/end character
+set mouse=a
+filetype on
 
-" remaps
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
+" Keep VisualMode after indent with > or <
+vmap < <gv
+vmap > >gv
+"
+" Move Visual blocks with J an K
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
-" Plugins:
+""" PLUGINS: """
+" Automatic install of vim-plug if not found
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin()
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -49,7 +53,13 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'frazrepo/vim-rainbow'
 Plug 'itchyny/lightline.vim'
-Plug 'eslint/eslint'
+
+" Syntax highlighting
+Plug 'sheerun/vim-polyglot'
+
+" Flutter plugins
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 
 " COC plugin
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -62,40 +72,39 @@ Plug 'junegunn/fzf.vim'
 Plug 'icymind/NeoSolarized'             " Solarized colorscheme with better truecolor support   | https://github.com/icymind/NeoSolarized
 Plug 'haishanh/night-owl.vim'           " Vim colorscheme based on sdras/night-owl-vscode-theme | https://github.com/haishanh/night-owl.vim
 Plug 'kaicataldo/material.vim'          " A port of the Material color scheme for Vim/Neovim    | https://github.com/kaicataldo/material.vim
-Plug 'rakr/vim-one'                     " Adaptation of Atom One colorscheme for Vim            | https://github.com/rakr/vim-one
-Plug 'bluz71/vim-nightfly-guicolors'    " Another dark color scheme for Vim                     | https://github.com/bluz71/vim-nightfly-guicolors
-Plug 'sonph/onehalf', {'rtp': 'vim/'}   " A colorscheme for (Neo)Vim, iTerm, and more.          | https://github.com/sonph/onehalf
-Plug 'arcticicestudio/nord-vim'         " Vim colorscheme based on the Nord color palette       | https://github.com/arcticicestudio/nord-vim
-Plug 'jacoborus/tender.vim'             " A 24bit colorscheme for Vim, Airline and Lightline    | https://github.com/jacoborus/tender.vim
 Plug 'morhetz/gruvbox'                  " Retro groove color scheme for Vim                     | https://github.com/morhetz/gruvbox
-Plug 'joshukraine/vim-monokai-tasty',   " My fork of patstockwell/vim-monokai-tasty             | https://github.com/joshukraine/vim-monokai-tasty
 call plug#end()
+""" End of PLUGINS \""""
 
-""""" enable 24bit true color
-" If you have vim >=8.0 or Neovim >= 0.1.5
+" Use Ctrl-k Ctrl-k to open a sidebar with the list of files
+map <C-k><C-k> :NERDTreeToggle<cr>
+" Use Ctrl-P to open the fuzzy file opener
+nnoremap <C-p> :Files<cr>
+
+" Enable the night owl theme and syntax
 if (has("termguicolors"))
  set termguicolors
 endif
-" For Neovim 0.1.3 and 0.1.4
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" Enable the night owl theme and syntax
 syntax enable
 colorscheme night-owl
 
 " To enable the lightline theme
 let g:lightline = { 'colorscheme': 'nightowl' }
 
-" NERDTree settings
-let NERDTreeShowHidden=1
-
 " coc config
 let g:coc_global_extensions = [
+  \ 'coc-flutter',
+  \	'coc-tsserver',
+  \	'coc-json',
+  \ 'coc-python',
+  \ 'coc-html',
+  \ 'coc-css',
+	\ 'coc-diagnostic',
+  \	'coc-prettier',
+  \	'coc-eslint',
   \	'coc-snippets',
   \	'coc-pairs',
-  \	'coc-tsserver',
-  \	'coc-eslint',
-  \	'coc-prettier',
-  \	'coc-json',
 \ ]
+
 set hidden
