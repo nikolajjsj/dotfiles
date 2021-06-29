@@ -53,6 +53,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'frazrepo/vim-rainbow'
 Plug 'itchyny/lightline.vim'
+Plug 'preservim/nerdcommenter'
 
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
@@ -80,6 +81,9 @@ call plug#end()
 map <C-n><C-n> :NERDTreeToggle<cr>
 " Use Ctrl-P to open the fuzzy file opener
 nnoremap <C-p> :Files<cr>
+
+vmap ++ <plug>NERDCommenterToggle
+nmap ++ <plug>NERDCommenterToggle
 
 " Enable the night owl theme and syntax
 if (has("termguicolors"))
