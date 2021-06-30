@@ -1,4 +1,5 @@
 set nocompatible " Use vim, not vi api
+set guioptions-=T " Remove toolbar
 set linebreak           " Have lines wrap instead of continue off-screen
 set scrolloff=12        " Keep cursor in approximately the middle of the screen
 set noswapfile " No swap file
@@ -67,7 +68,6 @@ Plug 'itchyny/lightline.vim'          " Better Status Bar
 Plug 'mhinz/vim-startify'             " Better start screen
 Plug 'preservim/nerdtree'             " File explorer
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'itchyny/lightline.vim'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'        " Reveal the last commit message under the cursor
@@ -82,8 +82,8 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
 " Colorschemes
-Plug 'icymind/NeoSolarized'
 Plug 'altercation/solarized'
+Plug 'arcticicestudio/nord-vim'
 Plug 'haishanh/night-owl.vim'
 call plug#end()
 """ End of PLUGINS \""""
@@ -98,15 +98,27 @@ let NERDTreeShowHidden=1
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
+""" CoC
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 if (has("termguicolors"))
   set termguicolors
-  colorscheme night-owl 
 endif
 
-syntax enable
+syntax on
+colorscheme nord
+set background=dark
+set nu
 
 " To enable the lightline theme
-let g:lightline = { 'colorscheme': 'night-owl' }
+let g:lightline = { 'colorscheme': 'nord' }
 
 " coc config
 let g:coc_global_extensions = [
@@ -121,8 +133,8 @@ let g:coc_global_extensions = [
   \	'coc-eslint',
   \	'coc-snippets',
   \	'coc-pairs',
-  \'coc-git',
-  \'coc-highlight',
+  \ 'coc-git',
+  \ 'coc-highlight',
 \ ]
 
 set hidden

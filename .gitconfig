@@ -1,3 +1,14 @@
 [user]
 	name = nikolajjsj
 	email = 10490273+nikolajjsj@users.noreply.github.com
+[ui "color"]
+	ui = always
+[color]
+	ui = true
+[pull]
+	ff = only
+[push]
+	ff = only
+	default = simple
+[github]
+	user = nikolajjsj
