@@ -113,12 +113,12 @@ if (has("termguicolors"))
 endif
 
 syntax on
-colorscheme nord
+colorscheme night-owl
 set background=dark
 set nu
 
 " To enable the lightline theme
-let g:lightline = { 'colorscheme': 'nord' }
+"let g:lightline = { 'colorscheme': 'night-owl' }
 
 " coc config
 let g:coc_global_extensions = [
