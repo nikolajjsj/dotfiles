@@ -9,6 +9,7 @@ export CLICOLOR=1
 ### Aliases ###
 ###############
 alias reload!='. ~/.zshrc'
+alias v='nvim'
 alias cls='clear' # Good 'ol Clear Screen command
 alias gs='git status' # Abbreviation for git status
 alias ll='ls -al' # shorter list command for: "ls -al"
