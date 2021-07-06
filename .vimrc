@@ -21,8 +21,8 @@ Plug 'thosakwe/vim-flutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'ap/vim-css-color'
 " Colorschemes
-Plug 'morhetz/gruvbox'
 Plug 'haishanh/night-owl.vim'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 """ End of PLUGINS \""""
 
@@ -30,7 +30,7 @@ set nocompatible " Use vim, not vi api
 set shiftwidth=2 autoindent smartindent tabstop=2 softtabstop=2 expandtab
 set encoding=UTF-8 nobackup nowritebackup cursorline noswapfile ruler smartcase ignorecase
 set visualbell showmatch noshowmode relativenumber linebreak lazyredraw wildmode=longest,list,full
-set splitbelow splitright scrolloff=20 backspace=indent,eol,start
+set splitbelow splitright scrolloff=20 backspace=indent,eol,start signcolumn=yes
 
 filetype on
 
@@ -48,7 +48,7 @@ vnoremap <S-Tab> <
 vmap < <gv
 vmap > >gv
 
-colorscheme gruvbox
+colorscheme onedark
 set background=dark
 set termguicolors
 
@@ -66,7 +66,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " To enable the lightline theme
-let g:lightline = { 'colorscheme': 'gruvbox' }
+let g:lightline = { 'colorscheme': 'onedark' }
 
 " coc config
 let g:coc_global_extensions = [
