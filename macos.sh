@@ -11,6 +11,7 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 #<----------------Changing MacOS Specific Preferences-------------------->
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 ### Finder
 defaults write com.apple.finder ShowPathbar -bool true #Adds the path bar to the bottom of the finder
 defaults write com.apple.finder FXEnableRemoveFromICloudDriveWarning -bool false #Stop the automatic save to iCloud thing
