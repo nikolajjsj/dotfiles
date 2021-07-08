@@ -29,9 +29,9 @@ call plug#end()
 set nocompatible " Use vim, not vi api
 set encoding=UTF-8 nobackup nowritebackup cursorline noswapfile ruler smartcase ignorecase
 set shiftwidth=2 autoindent smartindent tabstop=2 softtabstop=2 expandtab
-set visualbell showmatch noshowmode relativenumber linebreak lazyredraw wildmode=longest,list,full
+set visualbell showmatch noshowmode relativenumber linebreak lazyredraw
 set splitbelow splitright scrolloff=20 backspace=indent,eol,start signcolumn=yes
-set updatetime=300 hidden
+set updatetime=300 hidden wildmenu wildmode=longest:full,full
 let mapleader = ","
 
 filetype on
