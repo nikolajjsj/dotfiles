@@ -10,12 +10,17 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" VIM enhancements
+Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
+" GUI enhancements
 Plug 'itchyny/lightline.vim'
+" GIT
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" Languages plugins
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
 Plug 'sheerun/vim-polyglot'
