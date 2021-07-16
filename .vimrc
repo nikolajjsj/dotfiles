@@ -13,14 +13,22 @@ Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
+" GIT integration
 Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" Language syntax
+Plug 'sheerun/vim-polyglot'
+Plug 'yuezk/vim-js'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
-Plug 'sheerun/vim-polyglot'
+Plug 'mattn/emmet-vim'
 Plug 'ap/vim-css-color'
+" Themes and color schemes
 Plug 'haishanh/night-owl.vim'
 Plug 'joshdick/onedark.vim'
 call plug#end()
@@ -36,10 +44,15 @@ let mapleader = " "
 
 filetype on
 
+" Navigation between windows
 map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
+" open terminal
+nnoremap <leader>t :below 10sp term://$SHELL<cr>i
+" hit <Escape> key to exit from terminal mode
+:tnoremap <Esc> <C-\><C-n>
 nnoremap <C-f> :CtrlP<CR>
 nnoremap Q <nop>
 nnoremap <Up> :resize +2<CR>
@@ -73,7 +86,8 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 
-let g:coc_global_extensions = ['coc-tsserver', 'coc-html', 'coc-css', 'coc-json', 'coc-flutter', 'coc-prettier', 'coc-emmet', 'coc-git', 'coc-html-css-support', 'coc-vetur' ]
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-vetur']
+
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
