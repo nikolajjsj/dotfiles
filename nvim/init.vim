@@ -15,7 +15,6 @@ set termguicolors
 hi! Normal ctermbg=NONE guibg=NONE
 hi! Nontext ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
 
-
 let mapleader = " "
 let NERDTreeShowHidden=1
 let g:lightline = { 'colorscheme': 'onedark' } " To enable the lightline theme

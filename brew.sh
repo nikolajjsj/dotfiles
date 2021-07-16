@@ -13,6 +13,7 @@ brew install --formula fortune
 brew install --formula git
 brew install --formula htop
 brew install --formula node
+brew install --formula exa
 brew install --formula starship
 
 ## casks
