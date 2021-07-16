@@ -50,6 +50,12 @@ defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 # Disable Google Chromes all too sensitive backswipe on trackpads
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 
+### VIM for VSCode
+# Enable key repeating
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false         # For VS Code
+#defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false # For VS Code Insider
+#defaults write com.visualstudio.code.oss ApplePressAndHoldEnabled -bool false    # For VS Codium
+#defaults delete -g ApplePressAndHoldEnabled                                      # If necessary, reset global
 
 # Kill affected applications
 for app in "Activity Monitor" \
