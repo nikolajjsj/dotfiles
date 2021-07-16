@@ -11,21 +11,16 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" VIM enhancements
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
-" GUI enhancements
 Plug 'itchyny/lightline.vim'
-" GIT
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" Languages plugins
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'ap/vim-css-color'
-" Colorschemes
 Plug 'haishanh/night-owl.vim'
 Plug 'joshdick/onedark.vim'
 call plug#end()
@@ -37,10 +32,14 @@ set shiftwidth=2 autoindent smartindent tabstop=2 softtabstop=2 expandtab
 set visualbell showmatch noshowmode relativenumber linebreak lazyredraw
 set splitbelow splitright scrolloff=20 backspace=indent,eol,start signcolumn=yes
 set updatetime=300 hidden wildmenu wildmode=longest:full,full
-let mapleader = ","
+let mapleader = " "
 
 filetype on
 
+map <leader>h :wincmd h<CR>
+map <leader>j :wincmd j<CR>
+map <leader>k :wincmd k<CR>
+map <leader>l :wincmd l<CR>
 nnoremap <C-f> :CtrlP<CR>
 nnoremap Q <nop>
 nnoremap <Up> :resize +2<CR>
