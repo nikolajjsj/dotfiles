@@ -7,35 +7,34 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-" LSP
-Plug 'neovim/nvim-lspconfig'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'glepnir/lspsaga.nvim'
-Plug 'hrsh7th/nvim-compe'
-" Autocompletion
-Plug 'nvim-lua/completion-nvim'
-" Files finder CTRLP and file explorer (NERDTree)
+
+Plug 'tpope/vim-fugitive'
+Plug 'cohama/lexima.vim'
+Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-" VIM Enchancements
-Plug 'glepnir/galaxyline.nvim', { 'branch': 'main' }
-Plug 'ryanoasis/vim-devicons'
-Plug 'tpope/vim-surround'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'preservim/nerdcommenter'
-" GIT integration
-Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" Language syntax
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-" Themes and color schemes
 Plug 'haishanh/night-owl.vim'
 Plug 'joshdick/onedark.vim'
+
+if has("nvim")
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'kabouzeid/nvim-lspinstall'
+  Plug 'glepnir/lspsaga.nvim'
+  Plug 'hrsh7th/nvim-compe'
+  Plug 'nvim-lua/completion-nvim'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'hoob3rt/lualine.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+endif
+
 call plug#end()
 """ End of PLUGINS \""""
