@@ -4,11 +4,11 @@ env:
 
 window:
   dimensions:
-    columns: 100
-    lines: 35
+    columns: 125
+    lines: 40
   padding:
-    x: 6
-    y: 6
+    x: 8
+    y: 2
 
   # Window decorations
   #
@@ -17,7 +17,7 @@ window:
   # - none: neither borders nor title bar
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
-  decorations: transparent
+  decorations: buttonless
 
   # Startup Mode (changes require restart)
   #
@@ -48,62 +48,39 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Dracula)
 colors:
   # Default colors
   primary:
-    background: '0x282a36'
-    foreground: '0xf8f8f2'
-
-  # Cursor colors
-  cursor:
-    text: '0x44475a'
-    cursor: '0xf8f8f2'
-
-  # Selection colors
-  selection:
-    text: '0xf8f8f2'
-    background: '0x44475a'
+    background: '0x24283b'
+    foreground: '0xa9b1d6'
 
   # Normal colors
   normal:
-    black:   '0x000000'
-    red:     '0xff5555'
-    green:   '0x50fa7b'
-    yellow:  '0xf1fa8c'
-    blue:    '0xbd93f9'
-    magenta: '0xff79c6'
-    cyan:    '0x8be9fd'
-    white:   '0xbfbfbf'
+    black:   '0x32344a'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xad8ee6'
+    cyan:    '0x449dab'
+    white:   '0x9699a8'
 
   # Bright colors
   bright:
-    black:   '0x4d4d4d'
-    red:     '0xff6e67'
-    green:   '0x5af78e'
-    yellow:  '0xf4f99d'
-    blue:    '0xcaa9fa'
-    magenta: '0xff92d0'
-    cyan:    '0x9aedfe'
-    white:   '0xe6e6e6'
-
-  # Dim colors
-  dim:
-    black:   '0x14151b'
-    red:     '0xff2222'
-    green:   '0x1ef956'
-    yellow:  '0xebf85b'
-    blue:    '0x4d5b86'
-    magenta: '0xff46b0'
-    cyan:    '0x59dffc'
-    white:   '0xe6e6d1'
+    black:   '0x444b6a'
+    red:     '0xff7a93'
+    green:   '0xb9f27c'
+    yellow:  '0xff9e64'
+    blue:    '0x7da6ff'
+    magenta: '0xbb9af7'
+    cyan:    '0x0db9d7'
+    white:   '0xacb0d0'
 
 # Background opacity
 background_opacity: .95
 
 mouse:
   # Click settings
-  #
   # The `double_click` and `triple_click` settings control the time
   # alacritty should wait for accepting multiple clicks as one double
   # or triple click.
@@ -112,7 +89,6 @@ mouse:
 
 cursor:
   # Cursor style
-  #
   # Values for 'style':
   #   - ▇ Block
   #   - _ Underline
@@ -124,7 +100,6 @@ debug:
   persistent_logging: false
 
   # Log level
-  #
   # Values for `log_level`:
   #   - None
   #   - Error

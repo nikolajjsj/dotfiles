@@ -11,7 +11,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'kyazdani42/nvim-web-devicons'
