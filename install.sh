@@ -16,7 +16,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     # symlinking
     ln -sf ~/code/.dotfiles/.gitconfig ~/.gitconfig
     ln -sf ~/code/.dotfiles/.zshrc ~/.zshrc
-    ln -sf ~/code/.dotfiles/nvim/* ~/.config/nvim
+    ln -s ~/code/.dotfiles/nvim ~/.config/nvim
 
     # Prompt user if they want to set MacOS preferences
     read -p "Set MacOS settings? (y/n) " -n 1;

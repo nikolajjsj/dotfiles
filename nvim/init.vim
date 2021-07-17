@@ -1,3 +1,4 @@
+" Sourcing plugins and mappin
 source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/maps.vim
 
@@ -15,83 +16,13 @@ set termguicolors
 hi! Normal ctermbg=NONE guibg=NONE
 hi! Nontext ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
 
-let mapleader = " "
+let mapleader=" "
 let NERDTreeShowHidden=1
 let g:lightline = { 'colorscheme': 'onedark' } " To enable the lightline theme
 
-" Completion-nvim setup
-autocmd BufEnter * lua require'completion'.on_attach()
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-" Avoid showing message extra message when using completion
-set shortmess+=c
-
-""" LSP configuration
 lua << EOF
-require'lspinstall'.setup() -- important
-local servers = require'lspinstall'.installed_servers()
-for _, server in pairs(servers) do
-  require'lspconfig'[server].setup{}
-end
-
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{}
-  end
-end
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
-
--- Treesitter setup
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained"
-  indent = {
-    enable = true
-  },
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    additional_vim_regex_highlighting = false,
-  },
-}
-
--- Lualine setup
-require'lualine'.setup {
-  options = {
-    icons_enabled = true,
-    theme = 'onedark',
-    component_separators = {'', ''},
-    section_separators = {'', ''},
-    disabled_filetypes = {}
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {}
-}
+require('lsp')
+require('treesitter')
+require('completion')
+require('statusbar')
 EOF
-

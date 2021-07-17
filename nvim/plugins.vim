@@ -10,9 +10,8 @@ call plug#begin('~/.config/nvim/plugged')
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
-" Lualine
-Plug 'ryanoasis/vim-devicons'
-Plug 'hoob3rt/lualine.nvim'
+Plug 'glepnir/lspsaga.nvim'
+Plug 'hrsh7th/nvim-compe'
 " Autocompletion
 Plug 'nvim-lua/completion-nvim'
 " Files finder CTRLP and file explorer (NERDTree)
@@ -23,6 +22,8 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 " VIM Enchancements
+Plug 'glepnir/galaxyline.nvim', { 'branch': 'main' }
+Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
 " GIT integration
@@ -31,7 +32,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Language syntax
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 " Themes and color schemes
 Plug 'haishanh/night-owl.vim'
 Plug 'joshdick/onedark.vim'
