@@ -1,6 +1,10 @@
 " Setting leader key to space
 let mapleader=" "
 
+" Sourcing plugins and mappin
+source ~/.config/nvim/plugins.vim
+source ~/.config/nvim/maps.vim
+
 set nocompatible " Use vim, not vi api
 set encoding=UTF-8 nobackup nowritebackup cursorline noswapfile ruler smartcase ignorecase
 set shiftwidth=2 autoindent smartindent tabstop=2 softtabstop=2 expandtab
@@ -16,11 +20,6 @@ set termguicolors
 hi! Normal ctermbg=NONE guibg=NONE
 hi! Nontext ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
 
-" Sourcing plugins and mappin
-source ~/.config/nvim/plugins.vim
-source ~/.config/nvim/maps.vim
-
-let g:lightline = { 'colorscheme': 'onedark' } " To enable the lightline theme
 let NERDTreeShowHidden=1
 
 lua << EOF
