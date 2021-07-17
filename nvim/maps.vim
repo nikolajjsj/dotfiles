@@ -5,6 +5,11 @@ map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
+" Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
+
+
 nnoremap <leader>t :below 10sp term://$SHELL<cr>i
 :tnoremap <Esc> <C-\><C-n> # <Escape> to exit terminal
 nnoremap <C-f> :CtrlP<CR>
