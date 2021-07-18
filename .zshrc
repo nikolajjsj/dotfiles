@@ -20,6 +20,10 @@ alias envim='nvim ~/code/.dotfiles/nvim/init.vim'
 alias ealacritty='nvim ~/code/.dotfiles/alacritty.yml'
 alias etmux='nvim ~/code/.dotfiles/.tmux.conf'
 
+#############
+## Scripts ##
+#############
+alias ide='sh ~/code/.dotfiles/scripts/ide.sh'
 
 ###############
 ### Sources ###
