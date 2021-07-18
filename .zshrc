@@ -19,9 +19,10 @@ alias reload='source ~/.zshrc' # reloads current sessions
 alias dev='cd ~/dev/'
 alias work='cd ~/novicell/'
 
-# Alias for editing init.vim, .zshrc:
+# Alias for editing init.vim, .zshrc, alacritty.yml:
 alias eshell='nvim ~/code/.dotfiles/.zshrc'
 alias envim='nvim ~/code/.dotfiles/nvim/init.vim'
+alias ealacritty='nvim ~/code/.dotfiles/alacritty.yml'
 
 # zsh syntax highlighting & auto suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
