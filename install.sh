@@ -17,6 +17,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     ln -sf ~/code/.dotfiles/.gitconfig ~/.gitconfig
     ln -sf ~/code/.dotfiles/.zshrc ~/.zshrc
     ln -s ~/code/.dotfiles/nvim ~/.config/nvim
+    ln -sf ~/code/.dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
+    ln -sf ~/code/.dotfiles/.tmux.conf ~/.tmux.conf
 
     # Prompt user if they want to set MacOS preferences
     read -p "Set MacOS settings? (y/n) " -n 1;
