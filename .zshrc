@@ -16,9 +16,12 @@ alias cleanup='find . -type f -name "*.DS_Store" -ls -delete' # Recursively dele
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 alias myip='curl http://ipecho.net/plain; echo' # echoes current ip
 alias reload='source ~/.zshrc' # reloads current sessions
-
 alias dev='cd ~/dev/'
 alias work='cd ~/novicell/'
+
+# Alias for editing init.vim, .zshrc:
+alias eshell='nvim ~/code/.dotfiles/.zshrc'
+alias envim='nvim ~/code/.dotfiles/nvim/init.vim'
 
 # zsh syntax highlighting & auto suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
