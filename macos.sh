@@ -27,6 +27,7 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 ### Dock behaviour
 defaults write com.apple.dock autohide-time-modifier -int 0 #Sets Dock Autohide Time to O Seconds
+defaults write com.apple.Dock autohide-delay -float 0
 defaults write com.apple.dock orientation -string  left #Moving the Dock to the left Side of the Screen
 
 ### Transmission
