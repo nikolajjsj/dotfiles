@@ -21,8 +21,6 @@ set termguicolors
 hi! Normal ctermbg=NONE guibg=NONE
 hi! Nontext ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
 
-let NERDTreeShowHidden=1
-
 lua << EOF
 require('lsp')
 require('treesitter')
