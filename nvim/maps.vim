@@ -28,7 +28,3 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" NERDTree configs
-map <C-n><C-n> :NERDTreeToggle<cr>
-nmap ++ <plug>NERDCommenterToggle
-
