@@ -16,7 +16,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     # symlinking
     ln -sf ~/code/.dotfiles/.gitconfig ~/.gitconfig
     ln -sf ~/code/.dotfiles/.zshrc ~/.zshrc
-    ln -s ~/code/.dotfiles/nvim ~/.config/nvim
+    ln -s ~/code/.dotfiles/nvim ~/.config/
     ln -sf ~/code/.dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
     ln -sf ~/code/.dotfiles/.tmux.conf ~/.tmux.conf
 
