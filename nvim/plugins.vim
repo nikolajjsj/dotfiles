@@ -8,18 +8,15 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'tpope/vim-fugitive'
+Plug 'joshdick/onedark.vim'
+Plug 'kyazdani42/nvim-web-devicons'
+
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround'
-Plug 'preservim/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'haishanh/night-owl.vim'
-Plug 'joshdick/onedark.vim'
 
 if has("nvim")
   Plug 'neovim/nvim-lspconfig'
