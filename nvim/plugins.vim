@@ -33,6 +33,7 @@ if has("nvim")
   Plug 'hoob3rt/lualine.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+  Plug 'norcalli/nvim-colorizer.lua'
 endif
 
 call plug#end()
