@@ -26,5 +26,8 @@ require('lsp')
 require('treesitter')
 require('completion')
 require('statusbar')
+require('gitsign')
+require('commenter')
+require('autopair')
 EOF
 
