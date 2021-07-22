@@ -11,7 +11,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'joshdick/onedark.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 
-" Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
@@ -24,11 +23,13 @@ if has("nvim")
   Plug 'kabouzeid/nvim-lspinstall'
   Plug 'glepnir/lspsaga.nvim'
   Plug 'hrsh7th/nvim-compe'
+  Plug 'kyazdani42/nvim-tree.lua'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'lewis6991/gitsigns.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'lewis6991/gitsigns.nvim'
   Plug 'hoob3rt/lualine.nvim'
+  Plug 'romgrk/barbar.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'norcalli/nvim-colorizer.lua'
