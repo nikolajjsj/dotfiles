@@ -29,5 +29,7 @@ require('statusbar')
 require('gitsign')
 require('commenter')
 require('autopair')
+require('telescopes')
+require('buffer')
 EOF
 
