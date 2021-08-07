@@ -29,12 +29,5 @@ alias rm='rm -i'
 #############
 alias ide='sh ~/code/.dotfiles/scripts/ide.sh'
 
-###############
-### Sources ###
-###############
-# zsh syntax highlighting & auto suggestions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # start up starship
 eval "$(starship init zsh)"
