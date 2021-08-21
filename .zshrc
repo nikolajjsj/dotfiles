@@ -7,13 +7,11 @@ export CLICOLOR=1
 alias v='nvim'
 alias cls='clear' # Good 'ol Clear Screen command
 alias gs='git status' # Abbreviation for git status
-alias ll='exa --long --header --git --all'
+alias ll='exa -l -g --icons --git'
+alias lla='ll -a'
 alias cleanup='find . -type f -name "*.DS_Store" -ls -delete' # Recursively delete `.DS_Store` files
 alias myip='curl http://ipecho.net/plain; echo' # echoes current ip
 alias reload='source ~/.zshrc' # reloads current sessions
-# Folders
-alias dev='cd ~/dev/'
-alias work='cd ~/novicell/'
 # Alias for editing init.vim, .zshrc, alacritty.yml, .tmux.conf:
 alias eshell='nvim ~/code/.dotfiles/.zshrc'
 alias envim='nvim ~/code/.dotfiles/nvim/init.vim'
