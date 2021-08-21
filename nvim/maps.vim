@@ -22,14 +22,6 @@ vnoremap <S-Tab> <
 vmap < <gv
 vmap > >gv
 
-if exists('g:loaded_telescope')
-  " Telescope
-  nnoremap <leader>ff <cmd>Telescope find_files<cr>
-  nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-  nnoremap <leader>fb <cmd>Telescope buffers<cr>
-  nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-endif
-
 if exists('g:loaded_lspsaga')
   nnoremap <silent> <C-j> <Cmd>Lspsaga diagnostic_jump_next<CR>
   nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
