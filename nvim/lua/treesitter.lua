@@ -1,25 +1,31 @@
 require'nvim-treesitter.configs'.setup {
     -- ensure_installed can be "all" or a list of languages { "python", "javascript" }
-    ensure_installed = {"python", "bash", "javascript", "typescript", "dart", "html", "css", "lua", "vue"},
-
-    highlight = { -- enable highlighting for all file types
-      enable = true, -- you can also use a table with list of langs here (e.g. { "python", "javascript" })
+    ensure_installed = {
+      "dart",
+      "python",
+      "bash",
+      "javascript",
+      "typescript",
+      "tsx",
+      "html",
+      "css",
+      "scss",
+      "lua",
+      "vue",
+      "json"
     },
-    textobjects = {
-      -- These are provided by 
-      select = {
-        enable = true,  -- you can also use a table with list of langs here (e.g. { "python", "javascript" })
-        keymaps = {
-          -- You can use the capture groups defined here:
-	  -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects/blob/master/queries/c/textobjects.scm
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ab"] = "@block.outer",
-          ["ib"] = "@block.inner",
-          ["as"] = "@statement.outer",
-          ["is"] = "@statement.inner",
-        },
-      },
+
+    highlight = {
+      enable = true, -- you can also use a table with list of langs here (e.g. { "python", "javascript" })
+      disable = {},
+    },
+
+    indent = {
+      enable = false,
+      disable = {},
     },
 }
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
 

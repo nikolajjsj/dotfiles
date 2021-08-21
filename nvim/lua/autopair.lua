@@ -1,16 +1,10 @@
-local npairs = require("nvim-autopairs")
+local status, autopairs = pcall(require, "nvim-autopairs")
+if (not status) then return end
 
-npairs.setup({
-    check_ts = true,
-    ts_config = {
-        lua = {'string'},-- it will not add pair on that treesitter node
-        javascript = {'template_string'},
-    }
+autopairs.setup({
+  disable_filetype = { "TelescopePrompt", "vim" }
 })
 
-require('nvim-treesitter.configs').setup {
-    autopairs = {enable = true}
-}
 require('nvim-autopairs.completion.compe').setup({
   map_cr = true, --  map <CR> on insert mode
   map_complete = true -- it will auto insert `(` after select function or method item
