@@ -22,11 +22,17 @@ vnoremap <S-Tab> <
 vmap < <gv
 vmap > >gv
 
-" Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+if exists('g:loaded_telescope')
+  " Telescope
+  nnoremap <leader>ff <cmd>Telescope find_files<cr>
+  nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+  nnoremap <leader>fb <cmd>Telescope buffers<cr>
+  nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+endif
 
-" NvimTree
-nnoremap <C-n> :NvimTreeToggle<CR>
+if exists('g:loaded_lspsaga')
+  nnoremap <silent> <C-j> <Cmd>Lspsaga diagnostic_jump_next<CR>
+  nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
+  inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
+  nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
+endif
