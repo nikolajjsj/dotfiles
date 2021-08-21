@@ -8,35 +8,28 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'joshdick/onedark.vim'
-Plug 'kyazdani42/nvim-web-devicons'
-
-Plug 'tpope/vim-surround'
-Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-fugitive'
-Plug 'rhysd/git-messenger.vim'
+Plug 'tpope/vim-rhubarb'
+
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
 
 if has("nvim")
+  Plug 'hoob3rt/lualine.nvim'
   Plug 'neovim/nvim-lspconfig'
-  Plug 'kabouzeid/nvim-lspinstall'
   Plug 'glepnir/lspsaga.nvim'
+  Plug 'folke/lsp-colors.nvim'
   Plug 'hrsh7th/nvim-compe'
-  Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+  Plug 'kyazdani42/nvim-web-devicons'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
-  Plug 'lewis6991/gitsigns.nvim'
-  Plug 'hoob3rt/lualine.nvim'
-  Plug 'romgrk/barbar.nvim'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-  Plug 'norcalli/nvim-colorizer.lua'
-  Plug 'folke/which-key.nvim'
-  Plug 'terrortylor/nvim-comment'
   Plug 'windwp/nvim-autopairs'
+
+  Plug 'kabouzeid/nvim-lspinstall'
+  Plug 'terrortylor/nvim-comment'
 endif
 
 call plug#end()
-""" End of PLUGINS \""""
