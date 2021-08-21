@@ -44,13 +44,6 @@ set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
 
 filetype plugin indent on
 
-" Setting leader key to space
-let mapleader=" "
-
-" Sourcing plugins and mappin
-source ~/.config/nvim/plugins.vim
-source ~/.config/nvim/maps.vim
-
 """" Theming """"
 if exists("&termguicolors") && exists("&winblend")
   syntax enable
@@ -70,6 +63,13 @@ if has("unix")
   endif
 endif
 
+" Setting leader key to space
+let mapleader=" "
+
+" Sourcing plugins and mappin
+source ~/.config/nvim/maps.vim
+source ~/.config/nvim/plugins.vim
+
 lua << EOF
 require('lsp')
 require('treesitter')
@@ -80,4 +80,5 @@ require('autopair')
 require('telescopes')
 require('buffer')
 require('lsp-color')
+require('saga')
 EOF
