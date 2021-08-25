@@ -36,5 +36,13 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     if [[ $REPLY =~ ^[Yy]$ ]]; then
       sh ./brew.sh
     fi;
-fi;
+
+    # Change shell to Fish
+    read -p "Set Fish as default shell? (y/n) " -n 1;
+    echo "";
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+      echo /usr/local/bin/fish | sudo tee -a /etc/shells
+      chsh -s /usr/local/bin/fish
+    fi;
+;
 
