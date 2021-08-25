@@ -12,7 +12,7 @@ set signcolumn=yes wildmenu wildmode=longest:full,full
 set completeopt=menu,menuone,noinsert,noselect
 set lazyredraw ignorecase smarttab
 set backupskip=/tmp/*,/private/tmp/*
-set shiftwidth=2 tabstop=2 nowrap backspace=start,eol,indent
+set shiftwidth=2 tabstop=2 backspace=start,eol,indent
 set ai si " auto indent, smart indent
 set path+=** " Finding files -Search down subfolders
 set wildignore+=*/node_modules/*
