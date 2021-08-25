@@ -11,9 +11,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
-Plug 'hrsh7th/vim-vsnip'
-Plug 'rafamadriz/friendly-snippets'
-
 if has("nvim")
   Plug 'hoob3rt/lualine.nvim'
   Plug 'neovim/nvim-lspconfig'
@@ -27,6 +24,7 @@ if has("nvim")
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'windwp/nvim-autopairs'
+  Plug 'ray-x/lsp_signature.nvim'
 
   Plug 'kabouzeid/nvim-lspinstall'
   Plug 'terrortylor/nvim-comment'
