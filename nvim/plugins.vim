@@ -9,25 +9,25 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-surround'
 
 if has("nvim")
-  Plug 'hoob3rt/lualine.nvim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'glepnir/lspsaga.nvim'
   Plug 'folke/lsp-colors.nvim'
+  Plug 'kabouzeid/nvim-lspinstall'
+  Plug 'ray-x/lsp_signature.nvim'
   Plug 'hrsh7th/nvim-compe'
+
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-  Plug 'kyazdani42/nvim-web-devicons'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
-  Plug 'windwp/nvim-autopairs'
-  Plug 'ray-x/lsp_signature.nvim'
-
-  Plug 'kabouzeid/nvim-lspinstall'
   Plug 'terrortylor/nvim-comment'
+  Plug 'windwp/nvim-autopairs'
+  Plug 'hoob3rt/lualine.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
 endif
 
 call plug#end()
