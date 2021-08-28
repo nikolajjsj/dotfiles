@@ -1,11 +1,9 @@
-" init autocmd
-autocmd!
 scriptencoding utf-8
 " stop loading config if it's on tiny or small
 if !1 | finish | endif
 
 syntax enable
-set nocompatible relativenumber encoding=utf-8 title
+set nocompatible relativenumber nu encoding=utf-8 title
 set nobackup hlsearch showcmd laststatus=2 cmdheight=1 expandtab
 set splitbelow splitright scrolloff=20
 set signcolumn=yes wildmenu wildmode=longest:full,full
@@ -30,11 +28,6 @@ augroup BgHighlight
   autocmd WinEnter * set cul
   autocmd WinLeave * set nocul
 augroup END
-
-if &term =~ "screen"
-  autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
-  autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
-endif
 
 """" File types """"
 au BufNewFile,BufRead *.es6 setf javascript " JavaScript
