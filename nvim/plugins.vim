@@ -19,7 +19,9 @@ if has("nvim")
   Plug 'folke/lsp-colors.nvim'
   Plug 'kabouzeid/nvim-lspinstall'
   Plug 'ray-x/lsp_signature.nvim'
-  Plug 'hrsh7th/nvim-compe'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/vim-vsnip'
+  Plug 'hrsh7th/cmp-buffer'
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-treesitter/nvim-treesitter-textobjects'
