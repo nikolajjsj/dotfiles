@@ -32,6 +32,7 @@ if has("nvim")
   Plug 'windwp/nvim-autopairs'
   Plug 'hoob3rt/lualine.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'lewis6991/gitsigns.nvim'
 endif
 
 call plug#end()

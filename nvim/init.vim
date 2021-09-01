@@ -51,4 +51,5 @@ require('telescopes')
 require('buffer')
 require('lsp-color')
 require('saga')
+require('gitsigns').setup()
 EOF
