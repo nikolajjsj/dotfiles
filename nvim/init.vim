@@ -1,18 +1,19 @@
 scriptencoding utf-8
 syntax enable
-set nocompatible relativenumber nu encoding=utf-8 title
-set nobackup hlsearch showcmd laststatus=2 cmdheight=1 expandtab
-set splitbelow splitright scrolloff=20 nowrap
-set signcolumn=yes wildmenu wildmode=longest:full,full
+set cmdheight=1 " Give more space for displaying messages
+set colorcolumn=80
+set signcolumn=yes
+set relativenumber nu
+set shiftwidth=2 tabstop=2 softtabstop=2
+set expandtab smartindent smarttab ai si
+set scrolloff=20 nowrap
+set wildmenu wildmode=longest:full,full
 set completeopt=menu,menuone,noinsert,noselect
-set lazyredraw ignorecase smarttab
-set backupskip=/tmp/*,/private/tmp/*
-set shiftwidth=2 tabstop=2 backspace=start,eol,indent
-set ai si " auto indent, smart indent
-set path+=** " Finding files -Search down subfolders
-set wildignore+=*/node_modules/*
+set lazyredraw ignorecase
+set backspace=start,eol,indent
 set formatoptions+=r 
 set cursorline mouse=a
+set noswapfile nobackup
 
 """" File types """"
 au BufNewFile,BufRead *.es6 setf javascript " JavaScript
