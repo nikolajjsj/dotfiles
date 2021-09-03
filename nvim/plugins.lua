@@ -1,33 +1,39 @@
-local Plug = vim.fn['plug#']
+local execute = vim.api.nvim_command
+local fn = vim.fn
 
-vim.call('plug#begin', '~/.config/nvim/plugged')
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
--- normal (alhtough tpope) plugins
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
+if fn.empty(fn.glob(install_path)) > 0 then
+  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+  execute('packadd packer.nvim')
+end
 
--- themes
-Plug 'gruvbox-community/gruvbox'
+return require('packer').startup(function()
+  -- Packer can manage itself as an optional usein
+  use {'wbthomason/packer.nvim', opt = true}
+  -- normal (alhtough tpope) useins
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-surround'
+  -- themes
+  use 'gruvbox-community/gruvbox'
+  -- neovim useins
+  use 'neovim/nvim-lspconfig'
+  use 'glepnir/lspsaga.nvim'
+  use 'folke/lsp-colors.nvim'
+  use 'kabouzeid/nvim-lspinstall'
+  use 'ray-x/lsp_signature.nvim'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/cmp-buffer'
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use 'nvim-lua/popup.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'nvim-telescope/telescope.nvim'
+  use 'terrortylor/nvim-comment'
+  use 'windwp/nvim-autopairs'
+  use 'hoob3rt/lualine.nvim'
+  use 'kyazdani42/nvim-web-devicons'
+  use 'lewis6991/gitsigns.nvim'
 
--- neovim plugins
-Plug 'neovim/nvim-lspconfig'
-Plug 'glepnir/lspsaga.nvim'
-Plug 'folke/lsp-colors.nvim'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/cmp-buffer'
-
-Plug('nvim-treesitter/nvim-treesitter', {['do'] = vim.fn[':TSUpdate']})
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'terrortylor/nvim-comment'
-Plug 'windwp/nvim-autopairs'
-Plug 'hoob3rt/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'lewis6991/gitsigns.nvim'
-
-vim.call('plug#end')
+end)

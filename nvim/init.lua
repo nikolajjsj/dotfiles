@@ -35,8 +35,8 @@ vim.opt.clipboard = vim.opt.clipboard + 'unnamedplus'
 vim.g.mapleader = " "
 
 -- Sourcing plugins and mappin
-require('maps') -- ~/.config/nvim/maps.vim
 require('plugins') -- ~/.config/nvim/plugins.vim
+require('maps') -- ~/.config/nvim/maps.vim
 require('theme') -- ~/.config/nvim/theme.vim
 
 -- Lua plugins configurations
