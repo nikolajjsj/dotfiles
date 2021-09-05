@@ -24,10 +24,6 @@ alias eshell='nvim ~/code/.dotfiles/.zshrc'
 alias envim='nvim ~/code/.dotfiles/nvim/init.vim'
 alias ealacritty='nvim ~/code/.dotfiles/alacritty.yml'
 alias etmux='nvim ~/code/.dotfiles/.tmux.conf'
-# confirm before overwriting something
-alias cp="cp -i"
-alias mv='mv -i'
-alias rm='rm -i'
 # VIM like alias'
 alias :q="exit"
 

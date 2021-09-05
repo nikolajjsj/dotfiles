@@ -11,12 +11,12 @@ end
 return require('packer').startup(function()
   -- Packer can manage itself as an optional usein
   use {'wbthomason/packer.nvim', opt = true}
-  -- normal (alhtough tpope) useins
+  -- normal (alhtough tpope)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
   -- themes
   use 'gruvbox-community/gruvbox'
-  -- neovim useins
+  -- neovim plugins
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
   use 'folke/lsp-colors.nvim'
@@ -35,5 +35,5 @@ return require('packer').startup(function()
   use 'hoob3rt/lualine.nvim'
   use 'kyazdani42/nvim-web-devicons'
   use 'lewis6991/gitsigns.nvim'
-
+  use 'lukas-reineke/indent-blankline.nvim'
 end)

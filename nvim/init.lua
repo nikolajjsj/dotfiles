@@ -24,31 +24,25 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.clipboard = vim.opt.clipboard + 'unnamedplus'
 
--- au BufNewFile,BufRead *.es6 setf javascript " JavaScript
--- au BufNewFile,BufRead *.tsx setf typescriptreact " TypeScript
--- au BufNewFile,BufRead *.md set filetype=markdown " Markdown
--- set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
--- 
--- filetype plugin indent on
-
 -- Setting leader key to space
 vim.g.mapleader = " "
 
 -- Sourcing plugins and mappin
 require('plugins') -- ~/.config/nvim/plugins.vim
-require('maps') -- ~/.config/nvim/maps.vim
+require('mappings') -- ~/.config/nvim/maps.vim
 require('theme') -- ~/.config/nvim/theme.vim
 
 -- Lua plugins configurations
-require('lsp')
-require('treesitter')
-require('completion')
-require('statusbar')
-require('commenter')
-require('autopair')
-require('telescopes')
-require('buffer')
-require('lsp-color')
-require('saga')
+require('plugins.lsp')
+require('plugins.treesitter')
+require('plugins.completion')
+require('plugins.statusbar')
+require('plugins.commenter')
+require('plugins.autopair')
+require('plugins.telescopes')
+require('plugins.buffer')
+require('plugins.lsp-color')
+-- Non config(-ed) plugins
 require('gitsigns').setup()
+require('indent_blankline').setup()
 
