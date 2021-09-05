@@ -28,6 +28,8 @@ alias etmux='nvim ~/code/.dotfiles/.tmux.conf'
 alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
+# VIM like alias'
+alias :q="exit"
 
 #############
 ## Scripts ##
