@@ -18,7 +18,6 @@ return require('packer').startup(function()
   use 'gruvbox-community/gruvbox'
   -- neovim plugins
   use 'neovim/nvim-lspconfig'
-  use 'glepnir/lspsaga.nvim'
   use 'folke/lsp-colors.nvim'
   use 'kabouzeid/nvim-lspinstall'
   use 'ray-x/lsp_signature.nvim'
