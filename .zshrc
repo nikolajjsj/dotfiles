@@ -12,7 +12,6 @@ export CLICOLOR=1
 ### Aliases ###
 ###############
 alias v='nvim'
-alias cls='clear' # Good 'ol Clear Screen command
 alias gs='git status' # Abbreviation for git status
 alias ll='exa -l -g --icons --git'
 alias lla='ll -a'
