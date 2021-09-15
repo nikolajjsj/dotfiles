@@ -23,6 +23,7 @@ vim.opt.mouse = 'a'
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.clipboard = vim.opt.clipboard + 'unnamedplus'
+vim.opt.wrap = false
 
 -- Setting leader key to space
 vim.g.mapleader = " "
