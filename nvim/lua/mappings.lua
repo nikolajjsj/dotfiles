@@ -1,5 +1,8 @@
 -- Quick switch between two last opened buffer
 vim.api.nvim_set_keymap('n', '<leader><leader>', '<c-^>', { noremap = true})
+-- Line navigation
+vim.api.nvim_set_keymap('n', 'H', '^', {})
+vim.api.nvim_set_keymap('n', 'L', '$', {})
 -- Navigation between windows
 vim.api.nvim_set_keymap('', '<leader>h', ':wincmd h<CR>', {})
 vim.api.nvim_set_keymap('', '<leader>j', ':wincmd j<CR>', {})

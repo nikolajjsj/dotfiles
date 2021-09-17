@@ -17,22 +17,30 @@ return require('packer').startup(function()
   -- themes
   use 'gruvbox-community/gruvbox'
   -- neovim plugins
+  -- lsp
   use 'neovim/nvim-lspconfig'
-  use 'folke/lsp-colors.nvim'
-  use 'kabouzeid/nvim-lspinstall'
   use 'ray-x/lsp_signature.nvim'
+  -- cmp + vsnip
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-vsnip'
+  -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
+  -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
+  -- Commenting plugin
   use 'terrortylor/nvim-comment'
+  -- Autopairs
   use 'windwp/nvim-autopairs'
+  -- Lualine
   use 'hoob3rt/lualine.nvim'
+  -- Icons
   use 'kyazdani42/nvim-web-devicons'
+  -- Gitsigns
   use 'lewis6991/gitsigns.nvim'
-  use 'lukas-reineke/indent-blankline.nvim'
 end)

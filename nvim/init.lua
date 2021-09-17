@@ -14,7 +14,6 @@ vim.opt.smartindent = true
 vim.opt.scrolloff = 20
 vim.opt.wildmenu = true
 vim.opt.wildmode = 'longest:full,full'
-vim.opt.lazyredraw = true
 vim.opt.ignorecase = true
 vim.opt.backspace='start,eol,indent'
 vim.opt.formatoptions = vim.opt.formatoptions + 'r'
@@ -22,8 +21,11 @@ vim.opt.cursorline = true
 vim.opt.mouse = 'a'
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.clipboard = vim.opt.clipboard + 'unnamedplus'
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.wrap = false
+vim.opt.updatetime = 300
+vim.opt.lazyredraw = true
+vim.o.completeopt = 'menuone,noselect'
 
 -- Setting leader key to space
 vim.g.mapleader = " "
@@ -41,9 +43,6 @@ require('plugins.statusbar')
 require('plugins.commenter')
 require('plugins.autopair')
 require('plugins.telescopes')
-require('plugins.buffer')
-require('plugins.lsp-color')
 -- Non config(-ed) plugins
 require('gitsigns').setup()
-require('indent_blankline').setup()
 
