@@ -73,6 +73,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/nikolaj/.local/share/nvim/site/pack/packer/start/cmp-buffer"
   },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/Users/nikolaj/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
+  },
+  ["cmp-vsnip"] = {
+    loaded = true,
+    path = "/Users/nikolaj/.local/share/nvim/site/pack/packer/start/cmp-vsnip"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/Users/nikolaj/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
@@ -81,21 +89,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/nikolaj/.local/share/nvim/site/pack/packer/start/gruvbox"
   },
-  ["indent-blankline.nvim"] = {
-    loaded = true,
-    path = "/Users/nikolaj/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
-  },
-  ["lsp-colors.nvim"] = {
-    loaded = true,
-    path = "/Users/nikolaj/.local/share/nvim/site/pack/packer/start/lsp-colors.nvim"
-  },
   ["lsp_signature.nvim"] = {
     loaded = true,
     path = "/Users/nikolaj/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
-  },
-  ["lspsaga.nvim"] = {
-    loaded = true,
-    path = "/Users/nikolaj/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -116,10 +112,6 @@ _G.packer_plugins = {
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/nikolaj/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
-  },
-  ["nvim-lspinstall"] = {
-    loaded = true,
-    path = "/Users/nikolaj/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-treesitter"] = {
     loaded = true,
