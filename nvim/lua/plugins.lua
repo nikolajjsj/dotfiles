@@ -14,6 +14,7 @@ return require('packer').startup(function()
   -- normal (alhtough tpope)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
+  use 'tpope/vim-commentary'
   -- themes
   use 'gruvbox-community/gruvbox'
   -- neovim plugins
@@ -24,8 +25,8 @@ return require('packer').startup(function()
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/cmp-vsnip'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
@@ -33,8 +34,6 @@ return require('packer').startup(function()
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
-  -- Commenting plugin
-  use 'terrortylor/nvim-comment'
   -- Autopairs
   use 'windwp/nvim-autopairs'
   -- Lualine
