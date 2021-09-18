@@ -39,7 +39,6 @@ require('plugins.lsp')
 require('plugins.treesitter')
 require('plugins.completion')
 require('plugins.statusbar')
-require('plugins.commenter')
 require('plugins.autopair')
 require('plugins.telescopes')
 -- Non config(-ed) plugins
