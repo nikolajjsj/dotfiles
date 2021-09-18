@@ -16,7 +16,6 @@ vim.opt.wildmenu = true
 vim.opt.wildmode = 'longest:full,full'
 vim.opt.ignorecase = true
 vim.opt.backspace='start,eol,indent'
-vim.opt.formatoptions = vim.opt.formatoptions + 'r'
 vim.opt.cursorline = true
 vim.opt.mouse = 'a'
 vim.opt.swapfile = false
