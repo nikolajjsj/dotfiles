@@ -11,13 +11,6 @@ end
 return require('packer').startup(function()
   -- Packer can manage itself as an optional usein
   use {'wbthomason/packer.nvim', opt = true}
-  -- normal (alhtough tpope)
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-commentary'
-  -- themes
-  use 'gruvbox-community/gruvbox'
-  -- neovim plugins
   -- lsp
   use 'neovim/nvim-lspconfig'
   use 'ray-x/lsp_signature.nvim'
@@ -28,6 +21,14 @@ return require('packer').startup(function()
   use 'hrsh7th/nvim-cmp'
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
+  -- Friendly snippets
+  use 'rafamadriz/friendly-snippets'
+  -- normal (alhtough tpope)
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-commentary'
+  -- themes
+  use 'gruvbox-community/gruvbox'
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
