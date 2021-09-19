@@ -31,6 +31,15 @@ vim.o.completeopt = 'menuone,noselect'
 -- Setting leader key to space
 vim.g.mapleader = " "
 
+vim.cmd [[syntax on]]
+vim.cmd [[filetype plugin indent on]]
+-- make comments and HTML attributes italic
+vim.cmd [[highlight Comment cterm=italic term=italic gui=italic]]
+vim.cmd [[highlight htmlArg cterm=italic term=italic gui=italic]]
+vim.cmd [[highlight xmlAttrib cterm=italic term=italic gui=italic]]
+-- highlight Type cterm=italic term=italic gui=italic
+vim.cmd [[highlight Normal ctermbg=none]]
+
 -- Sourcing plugins and mappin
 require('plugins') -- ~/.config/nvim/plugins.vim
 require('mappings') -- ~/.config/nvim/maps.vim
