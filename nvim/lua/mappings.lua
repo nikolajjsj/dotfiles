@@ -20,10 +20,10 @@ vim.api.nvim_set_keymap('n', '<Left>', ':vertical resize +2<CR>', { noremap = tr
 vim.api.nvim_set_keymap('n', '<Right>', ':vertical resize -2<CR>', { noremap = true })
 -- Move "visual" lines up and down
 vim.api.nvim_set_keymap("v", "J", ":m '>+1<CR>gv=gv", { noremap = true })
-vim.api.nvim_set_keymap("v", "K", ":m '<-1<CR>gv=gv", { noremap = true })
+vim.api.nvim_set_keymap("v", "K", ":m '<-2<CR>gv=gv", { noremap = true })
 -- Indent "visual" lines
-vim.api.nvim_set_keymap('v', '<Tab>', '>', { noremap = true })
-vim.api.nvim_set_keymap('v', '<S-Tab>', '<', { noremap = true })
+vim.api.nvim_set_keymap('v', '<Tab>', '>gv', { noremap = true })
+vim.api.nvim_set_keymap('v', '<S-Tab>', '<gv', { noremap = true })
 vim.api.nvim_set_keymap('v', '<', '<gv', {})
 vim.api.nvim_set_keymap('v', '>', '>gv', {})
 -- Vim fugitive key mappings
