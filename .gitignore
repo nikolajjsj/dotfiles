@@ -17,3 +17,7 @@ Thumbs.db
 
 # Ignore Plugged directory (installed plugins
 nvim/plugged
+
+# Ignore packer compiled File
+nvim/plugin/packer_compiled.lua
+
