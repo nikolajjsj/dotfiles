@@ -1,3 +1,4 @@
+vim.opt.hidden = true
 vim.opt.cmdheight = 1
 vim.opt.colorcolumn = '80'
 vim.opt.signcolumn = 'yes'
@@ -12,6 +13,7 @@ vim.opt.smarttab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.scrolloff = 20
+vim.opt.sidescrolloff = 8
 vim.opt.wildmenu = true
 vim.opt.wildmode = 'longest:full,full'
 vim.opt.ignorecase = true
