@@ -1,4 +1,5 @@
 local nvim_lsp = require('lspconfig')
+local protocol = require'vim.lsp.protocol'
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -22,7 +23,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<Leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap("n", "<Leader>fc", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[ augroup Format ]]
@@ -64,30 +65,37 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-nvim_lsp.vuels.setup {
-  on_attach = on_attach,
-  filetypes = {
-    "vue",
-  },
-}
-
-
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "typescript",
-    "typescriptreact",
-    "typescript.tsx",
-  },
+local linters = {
+  eslint = {
+    sourceName = "eslint",
+    command = "eslint_d",
+    rootPatterns = {".eslintrc.js", "package.json"},
+    debounce = 100,
+    args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
+    parseJson = {
+      errorsRoot = "[0].messages",
+      line = "line",
+      column = "column",
+      endLine = "endLine",
+      endColumn = "endColumn",
+      message = "${message} [${ruleId}]",
+      security = "severity"
+    },
+    securities = {[2] = "error", [1] = "warning"}
+  }
 }
 
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
-  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'html' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'css', 'less', 'scss', 'markdown', 'html', 'vue' },
   init_options = {
+    filetypes = {
+      javascript = 'eslint',
+      javascriptreact = 'eslint',
+      typescript = 'eslint',
+      typescriptreact = 'eslint',
+      vue = 'eslint',
+    },
     linters = {
       eslint = {
         command = 'eslint_d',
@@ -110,13 +118,6 @@ nvim_lsp.diagnosticls.setup {
         }
       },
     },
-    filetypes = {
-      javascript = 'eslint',
-      javascriptreact = 'eslint',
-      typescript = 'eslint',
-      typescriptreact = 'eslint',
-      vue = 'eslint',
-    },
     formatters = {
       eslint_d = {
         command = 'eslint_d',
@@ -129,19 +130,38 @@ nvim_lsp.diagnosticls.setup {
       }
     },
     formatFiletypes = {
-      css = 'prettier',
       javascript = 'eslint_d',
       javascriptreact = 'eslint_d',
+      typescript = 'eslint_d',
+      typescriptreact = 'eslint_d',
+      vue = 'eslint_d',
+      vue = 'eslint_d',
+      css = 'prettier',
       json = 'prettier',
       scss = 'prettier',
       less = 'prettier',
-      typescript = 'eslint_d',
-      typescriptreact = 'eslint_d',
       json = 'prettier',
       markdown = 'prettier',
       html = 'prettier',
     }
   }
+}
+
+nvim_lsp.vuels.setup {
+  on_attach = on_attach,
+  filetypes = {
+    "vue",
+  },
+}
+
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach,
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+  },
 }
 
 local servers = { 'pyright', 'angularls', 'dartls' }
@@ -153,4 +173,16 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+-- icon
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    -- This sets the spacing and the prefix, obviously.
+    virtual_text = {
+      spacing = 4,
+      prefix = ''
+    }
+  }
+)
 

@@ -21,6 +21,7 @@ return require('packer').startup(function()
   -- lsp
   use 'neovim/nvim-lspconfig'
   use 'ray-x/lsp_signature.nvim'
+  use 'glepnir/lspsaga.nvim'
   -- cmp + vsnip
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'

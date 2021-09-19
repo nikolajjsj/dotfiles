@@ -7,7 +7,13 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['K'] = cmp.mapping.scroll_docs(-4),
+    ['J'] = cmp.mapping.scroll_docs(4),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    }),
     ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
   },
@@ -20,7 +26,6 @@ cmp.setup({
     nvim_lua = {kind = "  "},
     spell = {kind = "   (Spell)"},
     tags = false,
-    vim_dadbod_completion = true,
     treesitter = {kind = "  "},
     emoji = {kind = " ﲃ  (Emoji)", filetypes={"markdown", "text"}}
   },
