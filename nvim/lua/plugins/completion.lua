@@ -14,20 +14,28 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
+    ['<C-Space>'] = cmp.mapping.complete(),
     ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
   },
-  source = {
-    path = {kind = "   (Path)"},
-    buffer = {kind = "   (Buffer)"},
-    calc = {kind = "   (Calc)"},
-    vsnip = {kind = "   (Snippet)"},
-    nvim_lsp = {kind = "   (LSP)"},
-    nvim_lua = {kind = "  "},
-    spell = {kind = "   (Spell)"},
-    tags = false,
-    treesitter = {kind = "  "},
-    emoji = {kind = " ﲃ  (Emoji)", filetypes={"markdown", "text"}}
+  formatting = {
+    format = function(entry, vim_item)
+      -- fancy icons and a name of kind
+      vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
+
+      -- set a name for each source
+      vim_item.menu = ({
+        path = "   (Path)",
+        buffer = "   (Buffer)",
+        nvim_lsp = "   (LSP)",
+        nvim_lua = "  (Lua)",
+        luasnip = "  (Luasnip)",
+        spell = "   (Spell)",
+        emoji = " ﲃ  (Emoji)",
+        treesitter = "  ",
+      })[entry.source.name]
+      return vim_item
+    end,
   },
   sources = {
     { name = 'nvim_lsp'},
