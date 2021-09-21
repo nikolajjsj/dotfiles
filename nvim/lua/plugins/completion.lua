@@ -1,4 +1,5 @@
 local cmp = require'cmp'
+local lspkind = require('lspkind')
 
 cmp.setup({
   snippet = {
@@ -18,6 +19,11 @@ cmp.setup({
     ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),
   },
+  sources = {
+    { name = 'nvim_lsp'},
+    { name = 'luasnip' },
+    { name = 'buffer' },
+  },
   formatting = {
     format = function(entry, vim_item)
       -- fancy icons and a name of kind
@@ -25,22 +31,15 @@ cmp.setup({
 
       -- set a name for each source
       vim_item.menu = ({
-        path = "   (Path)",
-        buffer = "   (Buffer)",
-        nvim_lsp = "   (LSP)",
-        nvim_lua = "  (Lua)",
-        luasnip = "  (Luasnip)",
-        spell = "   (Spell)",
-        emoji = " ﲃ  (Emoji)",
-        treesitter = "  ",
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[Latex]",
+        treesitter = "[Treesitter]",
       })[entry.source.name]
       return vim_item
-    end,
+    end
   },
-  sources = {
-    { name = 'nvim_lsp'},
-    { name = 'luasnip' },
-    { name = 'buffer' },
-  }
 })
 

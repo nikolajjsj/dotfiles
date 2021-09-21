@@ -16,6 +16,7 @@ return require('packer').startup(function()
   use 'ray-x/lsp_signature.nvim'
   use 'glepnir/lspsaga.nvim'
   use 'folke/lsp-colors.nvim'
+  use 'onsails/lspkind-nvim'
   -- cmp + vsnip
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
