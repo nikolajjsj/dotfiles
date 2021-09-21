@@ -10,7 +10,6 @@ vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.smarttab = true
-vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.scrolloff = 20
 vim.opt.sidescrolloff = 8
@@ -22,17 +21,18 @@ vim.opt.cursorline = true
 vim.opt.mouse = 'a'
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.writebackup = false
 vim.opt.wrap = false
 vim.opt.updatetime = 300
 vim.opt.lazyredraw = true
-vim.o.completeopt = 'menuone,noselect'
+vim.opt.clipboard = 'unnamedplus'
 
 -- Setting leader key to space
 vim.g.mapleader = " "
 
-vim.cmd [[syntax on]]
-vim.cmd [[filetype plugin indent on]]
+vim.cmd('filetype plugin indent on') --- " Enables plugin & indent
+vim.cmd('set formatoptions-=c')      --- " Stop newline continuation of comments
+vim.cmd('set completeopt=menuone,noselect')
 
 -- Sourcing plugins and mappin
 require('plugins') -- ~/.config/nvim/plugins.vim
@@ -46,6 +46,6 @@ require('plugins.completion')
 require('plugins.statusbar')
 require('plugins.autopair')
 require('plugins.telescopes')
+require('plugins.flutter_lsp')
 -- Non config(-ed) plugins
 require('gitsigns').setup()
-

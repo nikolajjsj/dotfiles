@@ -31,59 +31,11 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command [[ autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync() ]]
     vim.api.nvim_command [[ augroup END ]]
   end
-
-  protocol.CompletionItemKind = {
-    '', -- Text
-    '', -- Method
-    '', -- Function
-    '', -- Constructor
-    '', -- Field
-    '', -- Variable
-    '', -- Class
-    'ﰮ', -- Interface
-    '', -- Module
-    '', -- Property
-    '', -- Unit
-    '', -- Value
-    '', -- Enum
-    '', -- Keyword
-    '﬌', -- Snippet
-    '', -- Color
-    '', -- File
-    '', -- Reference
-    '', -- Folder
-    '', -- EnumMember
-    '', -- Constant
-    '', -- Struct
-    '', -- Event
-    'ﬦ', -- Operator
-    '', -- TypeParameter
-  }
 end
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-local linters = {
-  eslint = {
-    sourceName = "eslint",
-    command = "eslint_d",
-    rootPatterns = {".eslintrc.js", "package.json"},
-    debounce = 100,
-    args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
-    parseJson = {
-      errorsRoot = "[0].messages",
-      line = "line",
-      column = "column",
-      endLine = "endLine",
-      endColumn = "endColumn",
-      message = "${message} [${ruleId}]",
-      security = "severity"
-    },
-    securities = {[2] = "error", [1] = "warning"}
-  }
-}
 
 nvim_lsp.diagnosticls.setup {
   on_attach = on_attach,
@@ -146,14 +98,17 @@ nvim_lsp.diagnosticls.setup {
     }
   }
 }
-
-nvim_lsp.vuels.setup {
-  on_attach = on_attach,
-  filetypes = {
-    "vue",
-  },
-}
-
+-- npm i -g vscode-css-languageserver-bin
+nvim_lsp.cssls.setup { on_attach = on_attach }
+-- npm i -g dartls
+nvim_lsp.dartls.setup { on_attach = on_attach }
+-- npm i -g pyright
+nvim_lsp.pyright.setup { on_attach = on_attach }
+-- npm i -g vuels
+nvim_lsp.vuels.setup { on_attach = on_attach }
+-- npm i -g vscode-css-languageserver-bin
+nvim_lsp.html.setup { on_attach = on_attach }
+-- npm install -g typescript typescript-language-server
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = {
@@ -163,26 +118,4 @@ nvim_lsp.tsserver.setup {
     "typescriptreact",
   },
 }
-
-local servers = { 'pyright', 'angularls', 'dartls' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
-end
-
--- icon
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    -- This sets the spacing and the prefix, obviously.
-    virtual_text = {
-      spacing = 4,
-      prefix = ''
-    }
-  }
-)
 

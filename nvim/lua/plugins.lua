@@ -17,6 +17,8 @@ return require('packer').startup(function()
   use 'glepnir/lspsaga.nvim'
   use 'folke/lsp-colors.nvim'
   use 'onsails/lspkind-nvim'
+  -- flutter
+  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
   -- cmp + vsnip
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -35,9 +37,7 @@ return require('packer').startup(function()
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- telescope
-  use 'nvim-lua/popup.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
+  use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim', opt = true}, {'nvim-lua/popup.nvim', opt = true}}}
   -- Autopairs
   use 'windwp/nvim-autopairs'
   -- Lualine
