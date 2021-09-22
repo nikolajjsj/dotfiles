@@ -45,5 +45,5 @@ return require('packer').startup(function()
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
   -- Gitsigns
-  use 'lewis6991/gitsigns.nvim'
+  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 end)

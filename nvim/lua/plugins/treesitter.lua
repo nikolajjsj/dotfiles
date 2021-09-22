@@ -19,11 +19,6 @@ require'nvim-treesitter.configs'.setup {
       enable = true, -- you can also use a table with list of langs here (e.g. { "python", "javascript" })
       disable = {},
     },
-
-    indent = {
-      enable = false,
-      disable = {},
-    },
 }
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

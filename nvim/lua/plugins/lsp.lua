@@ -1,5 +1,4 @@
 local nvim_lsp = require('lspconfig')
-local protocol = require'vim.lsp.protocol'
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -17,13 +16,13 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', '<Leader>gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', '<Leader>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', '<Leader>k', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<Leader>k', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<Leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap("n", "<Leader>fc", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap("n", "<Leader>fc", '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[ augroup Format ]]
@@ -101,21 +100,21 @@ nvim_lsp.diagnosticls.setup {
 -- npm i -g vscode-css-languageserver-bin
 nvim_lsp.cssls.setup { on_attach = on_attach }
 -- npm i -g dartls
-nvim_lsp.dartls.setup { on_attach = on_attach }
+nvim_lsp.dartls.setup { on_attach = on_attach, filetypes = { 'dart' } }
 -- npm i -g pyright
-nvim_lsp.pyright.setup { on_attach = on_attach }
+nvim_lsp.pyright.setup { on_attach = on_attach, filetypes = { 'python' } }
 -- npm i -g vuels
-nvim_lsp.vuels.setup { on_attach = on_attach }
+nvim_lsp.vuels.setup { on_attach = on_attach, filetypes = { 'vue' } }
 -- npm i -g vscode-css-languageserver-bin
 nvim_lsp.html.setup { on_attach = on_attach }
 -- npm install -g typescript typescript-language-server
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = {
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
   },
 }
 

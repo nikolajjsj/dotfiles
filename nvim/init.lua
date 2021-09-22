@@ -27,8 +27,10 @@ vim.opt.updatetime = 300
 vim.opt.lazyredraw = true
 vim.opt.clipboard = 'unnamedplus'
 
--- Setting leader key to space
-vim.g.mapleader = " "
+--Remap space as leader key
+vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 vim.cmd('filetype plugin indent on') --- " Enables plugin & indent
 vim.cmd('set formatoptions-=c')      --- " Stop newline continuation of comments
