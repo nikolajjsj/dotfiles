@@ -97,6 +97,10 @@ nvim_lsp.diagnosticls.setup {
     }
   }
 }
+nvim_lsp.gopls.setup{
+  on_attach = on_attach,
+  filetypes = { "go", "gomod" },
+}
 -- npm i -g vscode-css-languageserver-bin
 nvim_lsp.cssls.setup { on_attach = on_attach }
 -- npm i -g dartls

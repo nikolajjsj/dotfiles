@@ -12,7 +12,8 @@ require'nvim-treesitter.configs'.setup {
       "scss",
       "lua",
       "vue",
-      "json"
+      "json",
+      "go"
     },
 
     highlight = {
