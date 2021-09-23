@@ -32,15 +32,6 @@ vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.cmd([[filetype plugin indent on]]) --- " Enables plugin & indent
-vim.cmd([[set formatoptions-=c]])      --- " Stop newline continuation of comments
-vim.cmd([[set completeopt=menuone,noselect]])
--- Make background transparent
-vim.cmd([[highlight Normal guibg=none]])
-vim.cmd([[highlight NonText guibg=none]])
-vim.cmd([[highlight Normal ctermbg=none]])
-vim.cmd([[highlight NonText ctermbg=none]])
-
 -- Sourcing plugins and mappin
 require('plugins') -- ~/.config/nvim/plugins.vim
 require('mappings') -- ~/.config/nvim/maps.vim
@@ -56,3 +47,10 @@ require('plugins.telescopes')
 require('plugins.flutter_lsp')
 -- Non config(-ed) plugins
 require('gitsigns').setup()
+
+vim.cmd([[filetype plugin indent on]]) --- " Enables plugin & indent
+vim.cmd([[set formatoptions-=c]])      --- " Stop newline continuation of comments
+vim.cmd([[set completeopt=menuone,noselect]])
+-- Make background transparent
+vim.cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
+
