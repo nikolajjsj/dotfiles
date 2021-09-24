@@ -15,7 +15,8 @@ alias myip='curl http://ipecho.net/plain; echo' # echoes current ip
 alias reload='source ~/.zshrc' # reloads current sessions
 # Alias for editing init.vim, .zshrc, alacritty.yml, .tmux.conf:
 alias eshell='nvim ~/code/.dotfiles/.zshrc'
-alias envim='nvim ~/code/.dotfiles/nvim/init.vim'
+alias envim='nvim ~/code/.dotfiles/nvim/init.lua'
+alias ekitty='nvim ~/code/.dotfiles/kitty.conf'
 alias ealacritty='nvim ~/code/.dotfiles/alacritty.yml'
 alias etmux='nvim ~/code/.dotfiles/.tmux.conf'
 # VIM like alias'

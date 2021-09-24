@@ -35,7 +35,6 @@ cmp.setup({
         nvim_lsp = "[LSP]",
         luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
-        latex_symbols = "[Latex]",
         treesitter = "[Treesitter]",
       })[entry.source.name]
       return vim_item
