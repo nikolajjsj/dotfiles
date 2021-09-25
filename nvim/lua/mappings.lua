@@ -28,4 +28,7 @@ vim.api.nvim_set_keymap('v', '<', '<gv', {})
 vim.api.nvim_set_keymap('v', '>', '>gv', {})
 -- Vim fugitive key mappings
 vim.api.nvim_set_keymap('n', '<Leader>gs', ':G<CR>', {})
+-- Open lazy git in split
+vim.api.nvim_set_keymap('n', '<Leader>lg', ':below 30sp term://$SHELL<CR>i lazygit && exit<CR>', { noremap = true })
+
 
