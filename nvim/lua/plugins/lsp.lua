@@ -1,21 +1,18 @@
-local nvim_lsp = require('lspconfig')
+-- nvim-cmp supports additional completion capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  -- Add lsp_signature on attach
   require "lsp_signature".on_attach();
 
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
   local opts = { noremap=true, silent=true }
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', '<Leader>k', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -32,12 +29,9 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- nvim-cmp supports additional completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-nvim_lsp.diagnosticls.setup {
+require'lspconfig'.diagnosticls.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'css', 'less', 'scss', 'markdown', 'html', 'vue' },
   init_options = {
     filetypes = {
@@ -97,23 +91,62 @@ nvim_lsp.diagnosticls.setup {
     }
   }
 }
-nvim_lsp.gopls.setup{
+require'lspconfig'.gopls.setup{
   on_attach = on_attach,
-  filetypes = { "go", "gomod" },
+  capabilities = capabilities,
+	cmd = {'gopls', 'serve'},
+  settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+        shadow = true,
+			},
+			staticcheck = true,
+			linksInHover = false,
+			codelenses = {
+				generate = true,
+				gc_details = true,
+				regenerate_cgo = true,
+				tidy = true,
+				upgrade_depdendency = true,
+				vendor = true,
+			},
+			usePlaceholders = true,
+		},
+	},
 }
 -- npm i -g vscode-css-languageserver-bin
-nvim_lsp.cssls.setup { on_attach = on_attach }
--- npm i -g dartls
-nvim_lsp.dartls.setup { on_attach = on_attach, filetypes = { 'dart' } }
--- npm i -g pyright
-nvim_lsp.pyright.setup { on_attach = on_attach, filetypes = { 'python' } }
--- npm i -g vuels
-nvim_lsp.vuels.setup { on_attach = on_attach, filetypes = { 'vue' } }
--- npm i -g vscode-css-languageserver-bin
-nvim_lsp.html.setup { on_attach = on_attach }
--- npm install -g typescript typescript-language-server
-nvim_lsp.tsserver.setup {
+require'lspconfig'.cssls.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
+}
+-- npm i -g dartls
+require'lspconfig'.dartls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'dart' },
+}
+-- npm i -g pyright
+require'lspconfig'.pyright.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'python' }
+}
+-- npm i -g vuels
+require'lspconfig'.vuels.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { 'vue' }
+}
+-- npm i -g vscode-css-languageserver-bin
+require'lspconfig'.html.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+-- npm install -g typescript typescript-language-server
+require'lspconfig'.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
   filetypes = {
     'javascript',
     'javascriptreact',
@@ -122,3 +155,32 @@ nvim_lsp.tsserver.setup {
   },
 }
 
+function goimports(timeoutms)
+  local context = { source = { organizeImports = true } }
+  vim.validate { context = { context, "t", true } }
+
+  local params = vim.lsp.util.make_range_params()
+  params.context = context
+
+  -- See the implementation of the textDocument/codeAction callback
+  -- (lua/vim/lsp/handler.lua) for how to do this properly.
+  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
+  if not result or next(result) == nil then return end
+  local actions = result[1].result
+  if not actions then return end
+  local action = actions[1]
+
+  -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
+  -- is a CodeAction, it can have either an edit, a command or both. Edits
+  -- should be executed first.
+  if action.edit or type(action.command) == "table" then
+    if action.edit then
+      vim.lsp.util.apply_workspace_edit(action.edit)
+    end
+    if type(action.command) == "table" then
+      vim.lsp.buf.execute_command(action.command)
+    end
+  else
+    vim.lsp.buf.execute_command(action)
+  end
+end

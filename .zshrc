@@ -20,7 +20,7 @@ alias ekitty='nvim ~/code/.dotfiles/kitty.conf'
 alias ealacritty='nvim ~/code/.dotfiles/alacritty.yml'
 alias etmux='nvim ~/code/.dotfiles/.tmux.conf'
 # VIM like alias'
-alias :q="exit"
+alias :q='exit'
 
 #############
 ## Scripts ##
