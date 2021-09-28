@@ -4,32 +4,19 @@ env:
 
 window:
   dimensions:
-    columns: 125
-    lines: 40
+    columns: 150
+    lines: 50
   padding:
     x: 4
-    y: 8
+    y: 4
 
   # Window decorations
-  # Available values:
-  # - full: borders and title bar
-  # - none: neither borders nor title bar
-  # - transparent: title bar, transparent background and title bar buttons
-  # - buttonless: title bar, transparent background, but no title bar buttons
-  decorations: full
+  decorations: full # full, none, transparent, buttonless
 
   # Startup Mode (changes require restart)
-  # Values for `startup_mode`:
-  #   - Windowed
-  #   - Maximized
-  #   - Fullscreen
-  # Values for `startup_mode` (macOS only):
-  #   - SimpleFullscreen
-  startup_mode: Windowed
+  startup_mode: Windowed # Windowed, Maximized, Fullscreen, SimpleFullscreen
 
 scrolling:
-  # maximum number of lines in the scrollback buffer. Specifying '0' will
-  # disable scrolling.
   history: 5000
 
 font:
@@ -41,8 +28,6 @@ font:
     family: FiraCode Nerd Font
   size: 12.0
   use_thin_strokes: true
-
-# If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: false
 
 # Colors (Gruvbox dark)
@@ -53,7 +38,6 @@ colors:
     background: '#282828'
     # soft contrast: background = '#32302f'
     foreground: '#ebdbb2'
-
   # Normal colors
   normal:
     black:   '#282828'
@@ -64,7 +48,6 @@ colors:
     magenta: '#b16286'
     cyan:    '#689d6a'
     white:   '#a89984'
-
   # Bright colors
   bright:
     black:   '#928374'
@@ -75,21 +58,15 @@ colors:
     magenta: '#d3869b'
     cyan:    '#8ec07c'
     white:   '#ebdbb2'
-
 # Change cursor colors
   cursor:
     text: "#3B4252"
     cursor: "#ECEFF4"
 
 # Background opacity
-background_opacity: .95
+background_opacity: .93
 
 cursor:
-  # Cursor style
-  # Values for 'style':
-  #   - ▇ Block
-  #   - _ Underline
-  #   - | Beam
   style: Block
 
 debug:
@@ -97,14 +74,7 @@ debug:
   persistent_logging: false
 
   # Log level
-  # Values for `log_level`:
-  #   - None
-  #   - Error
-  #   - Warn
-  #   - Info
-  #   - Debug
-  #   - Trace
-  log_level: OFF
+  log_level: OFF # None, Error, Warn, Info, Debug, Trace
   print_events: false
   ref_test: false
 
