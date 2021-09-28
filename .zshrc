@@ -29,18 +29,5 @@ alias :q='exit'
 #############
 alias ide='sh ~/code/.dotfiles/scripts/ide.sh'
 
-#############
-## Prompt  ##
-#############
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-zstyle ':vcs_info:git:*' formats '%F{7}(%b)%r%f'
-zstyle ':vcs_info:*' enable git
-# Set up the prompt (with git branch name)
-PROMPT='%F{8}%B%n >%F{1} %1~ ${u2192} %f$%b '
-RPROMPT=\$vcs_info_msg_0_
-
 # Initialize starship prompt
 eval "$(starship init zsh)"
