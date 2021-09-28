@@ -1,5 +1,7 @@
 # Editor
 EDITOR=nvim
+# Enable vi mode
+bindkey -v
 # Add colors to the terminal
 export CLICOLOR=1
 
@@ -40,3 +42,5 @@ zstyle ':vcs_info:*' enable git
 PROMPT='%F{8}%B%n >%F{1} %1~ ${u2192} %f$%b '
 RPROMPT=\$vcs_info_msg_0_
 
+# Initialize starship prompt
+eval "$(starship init zsh)"
