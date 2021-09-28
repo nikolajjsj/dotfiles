@@ -15,18 +15,12 @@ return require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
   use 'ray-x/lsp_signature.nvim'
   use 'glepnir/lspsaga.nvim'
-  use 'folke/lsp-colors.nvim'
-  use 'onsails/lspkind-nvim'
   -- flutter
   use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
   -- cmp + vsnip
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/nvim-cmp'
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
-  -- Friendly snippets
-  use { "rafamadriz/friendly-snippets", module = { "luasnip" } }
   -- normal (alhtough tpope)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
