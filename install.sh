@@ -12,7 +12,9 @@ read -p "Continue? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     cd ~
-    mkdir .config/fish/
+    mkdir .config/
+    mkdir .config/alacritty/
+    mkdir .config/kitty/
 
     # symlinking
     ln -s ~/code/.dotfiles/nvim ~/.config/
