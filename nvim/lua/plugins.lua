@@ -29,7 +29,10 @@ return require('packer').startup(function()
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- telescope
-  use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim', opt = true}, {'nvim-lua/popup.nvim', opt = true}}}
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+  }
   -- Autopairs
   use 'windwp/nvim-autopairs'
   -- Lualine
@@ -37,7 +40,10 @@ return require('packer').startup(function()
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
   -- Gitsigns
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+  }
   -- flutter
-  use {'akinsho/flutter-tools.nvim', ft = 'dart', requires = 'nvim-lua/plenary.nvim'}
+  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
 end)
