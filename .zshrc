@@ -23,6 +23,8 @@ alias ealacritty='nvim ~/code/.dotfiles/alacritty.yml'
 alias etmux='nvim ~/code/.dotfiles/.tmux.conf'
 # VIM like alias'
 alias :q='exit'
+# FZF utilities
+alias fzf="fzf --height=80% --preview 'bat --style=numbers --color=always {}'"
 
 #############
 ## Scripts ##
