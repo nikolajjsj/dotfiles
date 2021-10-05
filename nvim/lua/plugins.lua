@@ -15,7 +15,7 @@ return require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
   use 'ray-x/lsp_signature.nvim'
   use 'glepnir/lspsaga.nvim'
-  -- cmp + vsnip
+  -- cmp
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/nvim-cmp'
@@ -27,7 +27,6 @@ return require('packer').startup(function()
   use 'gruvbox-community/gruvbox'
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- telescope
   use {
     'nvim-telescope/telescope.nvim',
