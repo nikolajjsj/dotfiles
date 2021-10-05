@@ -1,7 +1,11 @@
+local api = vim.api
+local glo = vim.g
+local cmd = vim.cmd
+
 --Remap space as leader key
-vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+glo.mapleader = ' '
+glo.maplocalleader = ' '
 
 -- Sourcing plugins and mappin
 require('plugins') -- ~/.config/nvim/plugins.vim
@@ -18,10 +22,10 @@ require('plugins/flutter_lsp')
 -- Non config(-ed) plugins
 require('gitsigns').setup()
 
-vim.cmd([[filetype plugin indent on]]) --- " Enables plugin & indent
-vim.cmd([[set completeopt=menuone,noselect]])
+cmd([[filetype plugin indent on]]) --- " Enables plugin & indent
+cmd([[set completeopt=menuone,noselect]])
 -- Make background transparent
-vim.cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
+cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
 
 local opt = vim.opt
 
