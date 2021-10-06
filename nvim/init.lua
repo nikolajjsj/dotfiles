@@ -1,6 +1,5 @@
 local api = vim.api
 local glo = vim.g
-local cmd = vim.cmd
 
 --Remap space as leader key
 api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
@@ -12,20 +11,18 @@ require('plugins') -- ~/.config/nvim/plugins.vim
 require('mappings') -- ~/.config/nvim/maps.vim
 require('theme') -- ~/.config/nvim/theme.vim
 -- Lua plugins configurations
-require('plugins/lsp')
-require('plugins/treesitter')
-require('plugins/completion')
-require('plugins/statusbar')
-require('plugins/autopair')
-require('plugins/telescopes')
-require('plugins/flutter_lsp')
--- Non config(-ed) plugins
+require('lsp')
+require('plugins.treesitter')
+require('plugins.completion')
+require('plugins.statusbar')
+require('plugins.autopair')
+require('plugins.telescopes')
 require('gitsigns').setup()
 
-cmd([[filetype plugin indent on]]) --- " Enables plugin & indent
-cmd([[set completeopt=menuone,noselect]])
+vim.cmd([[filetype plugin indent on]]) --- " Enables plugin & indent
+vim.cmd([[set completeopt=menuone,noselect]])
 -- Make background transparent
-cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
+vim.cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
 
 local opt = vim.opt
 
