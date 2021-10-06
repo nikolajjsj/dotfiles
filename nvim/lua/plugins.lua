@@ -15,6 +15,12 @@ return require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
   use 'ray-x/lsp_signature.nvim'
   use 'glepnir/lspsaga.nvim'
+  use 'nvim-lua/lsp-status.nvim'
+  use {
+    "akinsho/flutter-tools.nvim",
+    ft = { "flutter", "dart" },
+    requires = 'nvim-lua/plenary.nvim',
+  }
   -- cmp
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -43,6 +49,4 @@ return require('packer').startup(function()
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
   }
-  -- flutter
-  use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
 end)
