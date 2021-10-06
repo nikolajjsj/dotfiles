@@ -1,10 +1,10 @@
 local api = vim.api
-local glo = vim.g
+local g = vim.g
 
 --Remap space as leader key
 api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
-glo.mapleader = ' '
-glo.maplocalleader = ' '
+g.mapleader = ' '
+g.maplocalleader = ' '
 
 -- Sourcing plugins and mappin
 require('plugins') -- ~/.config/nvim/plugins.vim
@@ -60,3 +60,16 @@ opt.number = true -- But show the actual number for the line we're on
 opt.updatetime = 1000 -- Make updates happen faster
 opt.lazyredraw = true
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
+
+
+-- Disable builtins
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+g.loaded_netrwPlugin = 1
+g.loaded_netrwSettings = 1
+
+g.loaded_gzip = 1
+g.loaded_zip = 1
+g.loaded_zipPlugin = 1
+g.loaded_tar = 1
+g.loaded_tarPlugin = 1
