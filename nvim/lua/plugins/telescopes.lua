@@ -1,5 +1,8 @@
 local actions = require('telescope.actions')
 
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
 require('telescope').setup{
   defaults = {
     mappings = {
@@ -50,9 +53,8 @@ require('telescope').setup{
   }
 }
 
-vim.api.nvim_set_keymap('n', '<Leader>ff', '<Cmd>Telescope find_files<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>fg', '<Cmd>Telescope live_grep<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>fb', '<Cmd>Telescope buffers<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>fh', '<Cmd>Telescope help_tags<CR>', { noremap = true })
--- Git
-vim.api.nvim_set_keymap("n", "<Leader>gc", "<Cmd>Telescope git_commits<CR>", { noremap = true, silent = true })
+map('n', '<Leader>ff', '<Cmd>Telescope find_files<CR>', opts)
+map('n', '<Leader>fg', '<Cmd>Telescope live_grep<CR>', opts )
+map('n', '<Leader>fb', '<Cmd>Telescope buffers<CR>', opts )
+map('n', '<Leader>fh', '<Cmd>Telescope help_tags<CR>', opts )
+map("n", "<Leader>gc", "<Cmd>Telescope git_commits<CR>", opts )

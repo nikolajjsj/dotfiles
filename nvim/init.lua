@@ -1,29 +1,10 @@
 local api = vim.api
 local g = vim.g
+local opt = vim.opt
 
 --Remap space as leader key
 api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 g.mapleader = ' '
-g.maplocalleader = ' '
-
--- Sourcing plugins and mappin
-require('plugins') -- ~/.config/nvim/plugins.vim
-require('mappings') -- ~/.config/nvim/maps.vim
-require('theme') -- ~/.config/nvim/theme.vim
--- Lua plugins configurations
-require('lsp')
-require('plugins.treesitter')
-require('plugins.completion')
-require('plugins.statusbar')
-require('plugins.autopair')
-require('plugins.telescopes')
-
-vim.cmd([[filetype plugin indent on]]) --- " Enables plugin & indent
-vim.cmd([[set completeopt=menuone,noselect]])
--- Make background transparent
-vim.cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
-
-local opt = vim.opt
 
 opt.hidden = true
 opt.cmdheight = 1
@@ -59,7 +40,7 @@ opt.number = true -- But show the actual number for the line we're on
 opt.updatetime = 1000 -- Make updates happen faster
 opt.lazyredraw = true
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
-
+opt.completeopt = 'menu','menuone','noselect'
 
 -- Disable builtins
 g.loaded_netrw = 1
@@ -72,3 +53,20 @@ g.loaded_zip = 1
 g.loaded_zipPlugin = 1
 g.loaded_tar = 1
 g.loaded_tarPlugin = 1
+
+-- Sourcing plugins and mappin
+require('plugins')
+require('mappings')
+require('theme')
+
+-- Lua plugins configurations
+require('lsp')
+require('plugins.treesitter')
+require('plugins.completion')
+require('plugins.statusbar')
+require('plugins.telescopes')
+
+-- Make background transparent
+vim.cmd([[au ColorScheme * hi Normal ctermbg=none guibg=none]])
+
+
