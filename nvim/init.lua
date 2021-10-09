@@ -17,7 +17,6 @@ require('plugins.completion')
 require('plugins.statusbar')
 require('plugins.autopair')
 require('plugins.telescopes')
-require('gitsigns').setup()
 
 vim.cmd([[filetype plugin indent on]]) --- " Enables plugin & indent
 vim.cmd([[set completeopt=menuone,noselect]])

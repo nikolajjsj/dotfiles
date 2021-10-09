@@ -21,6 +21,20 @@ return require('packer').startup(function()
     ft = { "flutter", "dart" },
     requires = 'nvim-lua/plenary.nvim',
   }
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+        vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
+          {silent = true, noremap = true}
+        )
+      }
+    end
+  }
   -- cmp
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -48,5 +62,8 @@ return require('packer').startup(function()
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('gitsigns').setup()
+    end
   }
 end)
