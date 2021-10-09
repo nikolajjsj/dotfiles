@@ -13,11 +13,20 @@ brew install --formula git
 brew install --formula htop
 brew install --formula node
 brew install --formula exa
+brew install --formula bat
+brew install --formula fd
+brew install --formula fzf
+brew install --formula go
+brew install --formula gopls
+brew install --formula lazygit
+brew install --formula luajit
+brew install --formula ripgrep
 brew install --formula tmux
 brew install --formula starship
 
 ## casks
 brew install --cask alfred
+brew install --cask alacritty
 brew install --cask android-file-transfer
 brew install --cask android-platform-tools
 brew install --cask android-studio
