@@ -9,12 +9,10 @@ window:
     columns: 150
     lines: 50
   padding:
-    x: 4
-    y: 4
-
+    x: 2
+    y: 8
   # Window decorations
   decorations: full # full, none, transparent, buttonless
-
   # Startup Mode (changes require restart)
   startup_mode: Windowed # Windowed, Maximized, Fullscreen, SimpleFullscreen
 
@@ -128,12 +126,10 @@ schemes:
     primary:
       background: '#002b36' # base03
       foreground: '#839496' # base0
-
     # Cursor colors
     cursor:
       text:   '#002b36' # base03
       cursor: '#839496' # base0
-
     # Normal colors
     normal:
       black:   '#073642' # base02
@@ -144,7 +140,6 @@ schemes:
       magenta: '#d33682' # magenta
       cyan:    '#2aa198' # cyan
       white:   '#eee8d5' # base2
-
     # Bright colors
     bright:
       black:   '#002b36' # base03
@@ -191,20 +186,5 @@ schemes:
 
 # Choose ONE color scheme from those available in the above list.
 colors: *gruvbox-dark
-
-
-# Background opacity
 background_opacity: .93
-
-cursor:
-  style: Block
-
-debug:
-  render_timer: false
-  persistent_logging: false
-
-  # Log level
-  log_level: OFF # None, Error, Warn, Info, Debug, Trace
-  print_events: false
-  ref_test: false
 
