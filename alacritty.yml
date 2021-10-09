@@ -23,18 +23,15 @@ scrolling:
 
 font:
   normal:
-    family: FiraCode Nerd Font
+    family: Fira Code
     style: Regular
   bold:
-    family: FiraCode Nerd Font
+    family: Fira Code
     style: Bold
   italic:
-    family: FiraCode Nerd Font
+    family: Fira Code
     style: Italic
   size: 12.0
-  offset:
-    x: 1
-    y: 1
   use_thin_strokes: true
   draw_bold_text_with_bright_colors: true
 
