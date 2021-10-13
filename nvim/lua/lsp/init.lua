@@ -6,6 +6,7 @@ end
 local lspconfig_util = require "lspconfig.util"
 local nvim_status = require "lsp-status"
 local status = require "lsp.status"
+local cmp_nvim_lsp = require'cmp_nvim_lsp'
 
 status.activate()
 
@@ -75,7 +76,7 @@ end
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
 updated_capabilities = vim.tbl_deep_extend("keep", updated_capabilities, nvim_status.capabilities)
 updated_capabilities.textDocument.codeLens = { dynamicRegistration = false }
-updated_capabilities = require("cmp_nvim_lsp").update_capabilities(updated_capabilities)
+updated_capabilities = cmp_nvim_lsp.update_capabilities(updated_capabilities)
 
 local servers = {
   graphql = true,
@@ -86,18 +87,7 @@ local servers = {
   html = true,
   cssls = true,
   gopls = {
-    root_dir = function(fname)
-      local Path = require "plenary.path"
-
-      local absolute_cwd = Path:new(vim.loop.cwd()):absolute()
-      local absolute_fname = Path:new(fname):absolute()
-
-      if string.find(absolute_cwd, "/cmd/", 1, true) and string.find(absolute_fname, absolute_cwd, 1, true) then
-        return absolute_cwd
-      end
-
-      return lspconfig_util.root_pattern("go.mod", ".git")(fname)
-    end,
+    cmd = {'gopls'},
     settings = {
       gopls = {
         analyses = {
@@ -117,9 +107,6 @@ local servers = {
         },
         usePlaceholders = true,
       },
-    },
-    flags = {
-      debounce_text_changes = 200,
     },
   },
   tsserver = {

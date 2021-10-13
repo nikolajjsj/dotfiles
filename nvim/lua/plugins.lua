@@ -39,6 +39,9 @@ return require('packer').startup(function()
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/nvim-cmp'
+  -- Snippet plugin
+  use 'L3MON4D3/LuaSnip'
+  use { 'saadparwaiz1/cmp_luasnip' }
   -- normal (alhtough tpope)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
@@ -63,10 +66,7 @@ return require('packer').startup(function()
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = function()
-      require('gitsigns').setup {
-        numhl = true,
-        current_line_blame = true,
-      }
+      require('gitsigns').setup()
     end
   }
 end)
