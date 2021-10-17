@@ -37,10 +37,6 @@ opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 opt.completeopt = 'menu','menuone','noselect'
 
 -- Disable builtins
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
-g.loaded_netrwPlugin = 1
-g.loaded_netrwSettings = 1
 g.loaded_gzip = 1
 g.loaded_zip = 1
 g.loaded_zipPlugin = 1
