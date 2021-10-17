@@ -24,6 +24,9 @@ local filetype_attach = setmetatable({
       augroup END
     ]]
   end,
+  dart = function(client)
+    require'lsp.flutter_lsp'
+  end
 }, {
   __index = function()
     return function() end
@@ -69,6 +72,15 @@ local custom_attach = function(client)
     ]]
   end
 
+  if client.resolved_capabilities.document_formatting then
+    vim.cmd [[
+      augroup Format
+        autocmd! * <buffer>
+        autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
+      augroup END
+    ]]
+  end
+
   -- Attach any filetype specific options to the client
   filetype_attach[filetype](client)
 end
@@ -83,7 +95,7 @@ local servers = {
   pyright = true,
   vimls = true,
   yamlls = true,
-  dartls = pcall(require, "flutter_lsp"),
+  dartls = true,
   html = true,
   cssls = true,
   gopls = {
@@ -169,14 +181,12 @@ local servers = {
         typescript = 'eslint_d',
         typescriptreact = 'eslint_d',
         vue = 'eslint_d',
-        vue = 'eslint_d',
+        html = 'prettier',
         css = 'prettier',
-        json = 'prettier',
-        scss = 'prettier',
         less = 'prettier',
+        scss = 'prettier',
         json = 'prettier',
         markdown = 'prettier',
-        html = 'prettier',
       }
     }
   }
