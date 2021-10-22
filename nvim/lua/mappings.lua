@@ -30,4 +30,5 @@ map('v', '<', '<gv', {})
 map('v', '>', '>gv', {})
 -- Vim fugitive key mappings
 map('n', '<Leader>gs', ':G<CR>', {})
-
+-- Open Netrw
+map('n', '<leader>p', ':Explore<CR>', { noremap = true })

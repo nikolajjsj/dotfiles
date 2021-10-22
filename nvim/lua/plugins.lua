@@ -35,13 +35,16 @@ return require('packer').startup(function()
       }
     end
   }
-  -- cmp
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/nvim-cmp'
+  -- Completion
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-path"
+  use "hrsh7th/cmp-nvim-lua"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "saadparwaiz1/cmp_luasnip"
+  use 'onsails/lspkind-nvim'
   -- Snippet plugin
   use 'L3MON4D3/LuaSnip'
-  use { 'saadparwaiz1/cmp_luasnip' }
   -- normal (alhtough tpope)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'

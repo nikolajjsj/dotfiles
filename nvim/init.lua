@@ -34,7 +34,6 @@ opt.number = true -- But show the actual number for the line we're on
 opt.updatetime = 1000 -- Make updates happen faster
 opt.lazyredraw = true
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
-opt.completeopt = 'menu','menuone','noselect'
 
 -- Disable builtins
 g.loaded_gzip = 1
@@ -49,7 +48,8 @@ require('mappings')
 require('theme')
 
 -- Lua plugins configurations
-require('lsp')
+require('plugins.lsp')
+require('plugins.lsp-saga')
 require('plugins.treesitter')
 require('plugins.completion')
 require('plugins.statusbar')

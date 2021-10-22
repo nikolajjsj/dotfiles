@@ -1,41 +1,10 @@
-local has_lsp, lspconfig = pcall(require, "lspconfig")
-if not has_lsp then
-  return
-end
-
-local lspconfig_util = require "lspconfig.util"
-local nvim_status = require "lsp-status"
-local status = require "lsp.status"
-local cmp_nvim_lsp = require'cmp_nvim_lsp'
-
-status.activate()
-
-local custom_init = function(client)
-  client.config.flags = client.config.flags or {}
-  client.config.flags.allow_incremental_sync = true
-end
-
-local filetype_attach = setmetatable({
-  go = function(client)
-    vim.cmd [[
-      augroup lsp_buf_format
-        au! BufWritePre <buffer>
-        autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting_sync()
-      augroup END
-    ]]
-  end,
-  dart = function(client)
-    require'lsp.flutter_lsp'
-  end
-}, {
-  __index = function()
-    return function() end
-  end,
-})
+local lspconfig = require'lspconfig'
+local protocol = require'vim.lsp.protocol'
 
 local custom_attach = function(client)
   local filetype = vim.api.nvim_buf_get_option(0, "filetype")
-  nvim_status.on_attach(client)
+
+  vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
   require "lsp_signature".on_attach();
 
@@ -50,28 +19,7 @@ local custom_attach = function(client)
   buf_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap("n", "<Leader>fc", '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
-  vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-
-  -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.cmd [[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]]
-  end
-
-  if client.resolved_capabilities.code_lens then
-    vim.cmd [[
-      augroup lsp_document_codelens
-        au! * <buffer>
-        autocmd BufWritePost,CursorHold <buffer> lua vim.lsp.codelens.refresh()
-      augroup END
-    ]]
-  end
-
+  -- Autoformatting
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[
       augroup Format
@@ -80,15 +28,10 @@ local custom_attach = function(client)
       augroup END
     ]]
   end
-
-  -- Attach any filetype specific options to the client
-  filetype_attach[filetype](client)
 end
 
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
-updated_capabilities = vim.tbl_deep_extend("keep", updated_capabilities, nvim_status.capabilities)
-updated_capabilities.textDocument.codeLens = { dynamicRegistration = false }
-updated_capabilities = cmp_nvim_lsp.update_capabilities(updated_capabilities)
+updated_capabilities = require'cmp_nvim_lsp'.update_capabilities(updated_capabilities)
 
 local servers = {
   graphql = true,
@@ -216,9 +159,3 @@ end
 for server, config in pairs(servers) do
   setup_server(server, config)
 end
-
-return {
-  on_init = custom_init,
-  on_attach = custom_attach,
-  capabilities = updated_capabilities,
-}
