@@ -27,6 +27,7 @@ sh install.sh
 ```
 
 Optionally you could run each script seperately:
+
 ```
 sh macos.sh
 sh brew.sh
@@ -36,8 +37,7 @@ sh brew.sh
 
 ```json
 {
-  "telemetry.enableTelemetry": false,
-  "telemetry.enableCrashReporter": false,
+  "telemetry.telemetryLevel": "off",
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
@@ -51,7 +51,6 @@ sh brew.sh
   "terminal.integrated.defaultProfile.osx": "zsh",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
-
   "search.exclude": {
     "**/node_modules": true,
     "**/*.code-search": true,
@@ -64,7 +63,6 @@ sh brew.sh
     ".expo": true,
     ".vscode": true
   },
-
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.rulers": [80],
@@ -75,9 +73,7 @@ sh brew.sh
     "editor.wordBasedSuggestions": false,
     "editor.tabSize": 2
   },
-  "dart.previewLsp": false,
   "dart.allowAnalytics": false,
-
   "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[vue]": { "editor.defaultFormatter": "octref.vetur" },
   "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
@@ -88,14 +84,11 @@ sh brew.sh
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[svelte]": { "editor.defaultFormatter": "svelte.svelte-vscode" },
-
   "eslint.validate": ["javascript", "javascriptreact", "vue"],
-
   "vetur.useWorkspaceDependencies": true,
   "vetur.format.defaultFormatter.scss": "prettier",
   "vetur.format.defaultFormatter.css": "prettier",
   "vetur.format.defaultFormatter.js": "prettier",
-
   "prettier.semi": true,
   "prettier.singleQuote": true,
   "prettier.printWidth": 80,
@@ -106,6 +99,7 @@ sh brew.sh
       "semi": false,
       "wrapAttributes": false
     }
-  }
+  },
+  "git.confirmSync": false
 }
 ```
