@@ -30,7 +30,7 @@ alias fzf="fzf --height=80% --preview 'bat --style=numbers --color=always {}'"
 ## Scripts ##
 #############
 alias ide='sh ~/code/.dotfiles/scripts/ide.sh'
-alias mux='sh ~/code/.dotfiles/scripts/tat.sh'
+alias mux='sh ~/code/.dotfiles/scripts/mux.sh'
 
 # Initialize starship prompt
 eval "$(starship init zsh)"
