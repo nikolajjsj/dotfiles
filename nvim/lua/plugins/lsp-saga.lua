@@ -12,5 +12,7 @@ saga.init_lsp_saga {
   border_style     = "round",
 }
 
-vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>lua require\'lspsaga.diagnostic\'.lsp_jump_diagnostic_prev()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<cmd>lua require\'lspsaga.diagnostic\'.lsp_jump_diagnostic_next()<CR>', { noremap = true, silent = true })
+local set = vim.api.nvim_set_keymap
+
+set('n', '<C-k>', '<cmd>lua require\'lspsaga.diagnostic\'.lsp_jump_diagnostic_prev()<CR>', { noremap = true, silent = true })
+set('n', '<C-j>', '<cmd>lua require\'lspsaga.diagnostic\'.lsp_jump_diagnostic_next()<CR>', { noremap = true, silent = true })
