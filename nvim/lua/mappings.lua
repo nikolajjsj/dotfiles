@@ -1,5 +1,8 @@
 local map = vim.api.nvim_set_keymap
 
+-- Quickly edit and source neovim config
+map('n', '<leader>ve', ':edit ~/code/.dotfiles/nvim/init.lua<cr>', { noremap = true })
+map('n', '<leader>vr', ':source ~/code/.dotfiles/nvim/init.lua<cr>', { noremap = true })
 -- Quick switch between two last opened buffer
 map('n', '<leader><leader>', '<c-^>', { noremap = true})
 -- Line navigation
