@@ -76,7 +76,6 @@ vim.cmd([[colorscheme gruvbox]])
 
 -- Sourcing plugins and mappings
 require('plugins')
-require('theme')
 
 -- Lua plugins configurations
 require('plugins.lsp')
