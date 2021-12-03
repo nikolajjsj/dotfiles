@@ -34,9 +34,7 @@ local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
 updated_capabilities = require'cmp_nvim_lsp'.update_capabilities(updated_capabilities)
 
 local servers = {
-  graphql = true,
-  pyright = true,
-  vimls = true,
+  tsserver = true,
   yamlls = true,
   dartls = true,
   html = true,
@@ -64,75 +62,6 @@ local servers = {
       },
     },
   },
-  tsserver = {
-    cmd = { "typescript-language-server", "--stdio" },
-    filetypes = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx",
-    },
-  },
-  diagnosticls = {
-    filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'json', 'css', 'less', 'scss', 'markdown', 'html', 'vue' },
-    init_options = {
-      filetypes = {
-        javascript = 'eslint',
-        javascriptreact = 'eslint',
-        typescript = 'eslint',
-        typescriptreact = 'eslint',
-        vue = 'eslint',
-      },
-      linters = {
-        eslint = {
-          command = 'eslint_d',
-          rootPatterns = { '.git' },
-          debounce = 100,
-          args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
-          sourceName = 'eslint_d',
-          parseJson = {
-            errorsRoot = '[0].messages',
-            line = 'line',
-            column = 'column',
-            endLine = 'endLine',
-            endColumn = 'endColumn',
-            message = '[eslint] ${message} [${ruleId}]',
-            security = 'severity'
-          },
-          securities = {
-            [2] = 'error',
-            [1] = 'warning'
-          }
-        },
-      },
-      formatters = {
-        eslint_d = {
-          command = 'eslint_d',
-          args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
-          rootPatterns = { '.git' },
-        },
-        prettier = {
-          command = 'prettier',
-          args = { '--stdin-filepath', '%filename' }
-        }
-      },
-      formatFiletypes = {
-        javascript = 'eslint_d',
-        javascriptreact = 'eslint_d',
-        typescript = 'eslint_d',
-        typescriptreact = 'eslint_d',
-        vue = 'eslint_d',
-        html = 'prettier',
-        css = 'prettier',
-        less = 'prettier',
-        scss = 'prettier',
-        json = 'prettier',
-        markdown = 'prettier',
-      }
-    }
-  }
 }
 
 local setup_server = function(server, config)
