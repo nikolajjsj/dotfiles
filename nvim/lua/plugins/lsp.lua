@@ -78,41 +78,6 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {virtual_text = false})
 
-local M = {}
-
-local function completionItemResolveCB(err, _, result)
-  if err or not result then
-    return
-  end
-  local bufnr = vim.api.nvim_get_current_buf()
-  if result.additionalTextEdits then
-    vim.lsp.util.apply_text_edits(result.additionalTextEdits, bufnr)
-  end
-end
-local function requestCompletionItemResolve(bufnr, item)
-  vim.lsp.buf_request(bufnr, "completionItem/resolve", item, completionItemResolveCB)
-end
-function M.on_complete_done()
-  local bufnr = vim.api.nvim_get_current_buf()
-  local completed_item_var = vim.v.completed_item
-  if
-    completed_item_var and completed_item_var.user_data and completed_item_var.user_data.nvim and
-      completed_item_var.user_data.nvim.lsp and
-      completed_item_var.user_data.nvim.lsp.completion_item
-   then
-    local item = completed_item_var.user_data.nvim.lsp.completion_item
-    requestCompletionItemResolve(bufnr, item)
-  end
-  if
-    completed_item_var and completed_item_var.user_data and completed_item_var.user_data and
-      completed_item_var.user_data.lsp and
-      completed_item_var.user_data.lsp.completion_item
-   then
-    local item = completed_item_var.user_data.lsp.completion_item
-    requestCompletionItemResolve(bufnr, item)
-  end
-end
-
 local on_attach = function(client, bufnr)
   mapBuf(bufnr, 'n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
   mapBuf(bufnr, 'n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
@@ -177,9 +142,10 @@ lspconfig.tsserver.setup {
   capabilities = capabilities,
 }
 
-nvim_lsp.diagnosticls.setup {
+lspconfig.diagnosticls.setup {
   on_attach = on_attach,
-  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc' },
+  capabilities = capabilities,
+  filetypes = { 'javascript', 'javascriptreact', 'vue', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown' },
   init_options = {
     linters = {
       eslint = {
@@ -208,6 +174,7 @@ nvim_lsp.diagnosticls.setup {
       javascriptreact = 'eslint',
       typescript = 'eslint',
       typescriptreact = 'eslint',
+      vue = 'eslint',
     },
     formatters = {
       eslint_d = {
@@ -230,6 +197,7 @@ nvim_lsp.diagnosticls.setup {
       json = 'prettier',
       scss = 'prettier',
       less = 'prettier',
+      vue = 'prettier',
       typescript = 'prettier',
       typescriptreact = 'prettier',
       json = 'prettier',
@@ -289,76 +257,3 @@ lspconfig.jsonls.setup {
     }
   }
 }
-
-return M
-
--- local custom_attach = function(client)
---   local filetype = vim.api.nvim_buf_get_option(0, "filetype")
-
---   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-
---   require "lsp_signature".on_attach();
-
---   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-
---   local opts = { noremap=true, silent=true }
--- end
-
--- local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
--- updated_capabilities = require'cmp_nvim_lsp'.update_capabilities(updated_capabilities)
-
--- local servers = {
---   tsserver = true,
---   yamlls = true,
---   dartls = true,
---   html = true,
---   cssls = true,
---   gopls = {
---     cmd = {'gopls'},
---     settings = {
---       gopls = {
---         analyses = {
---           unusedparams = true,
---           shadow = true,
---         },
---         staticcheck = true,
---         linksInHover = false,
---         codelenses = {
---           generate = true,
---           gc_details = true,
---           regenerate_cgo = true,
---           tidy = true,
---           upgrade_depdendency = true,
---           vendor = true,
---           test = true,
---         },
---         usePlaceholders = true,
---       },
---     },
---   },
--- }
-
--- local setup_server = function(server, config)
---   if not config then
---     return
---   end
-
---   if type(config) ~= "table" then
---     config = {}
---   end
-
---   config = vim.tbl_deep_extend("force", {
---     on_init = custom_init,
---     on_attach = custom_attach,
---     capabilities = updated_capabilities,
---     flags = {
---       debounce_text_changes = 50,
---     },
---   }, config)
-
---   lspconfig[server].setup(config)
--- end
-
--- for server, config in pairs(servers) do
---   setup_server(server, config)
--- end
