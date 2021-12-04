@@ -170,7 +170,7 @@ lspconfig.tsserver.setup {
     "javascript.jsx",
     "typescript",
     "typescriptreact",
-    "typescript.tsx"
+    "typescript.tsx",
     "vue"
   },
   on_attach = on_attach,
