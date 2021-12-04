@@ -114,8 +114,8 @@ function M.on_complete_done()
 end
 
 local on_attach = function(client, bufnr)
-  mapBuf(bufnr, 'n', '<Leader>gdc', '<cmd>lua vim.lsp.buf.declaration()<CR>')
   mapBuf(bufnr, 'n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+  mapBuf(bufnr, 'n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
   mapBuf(bufnr, 'n', '<Leader>k', '<cmd>lua vim.lsp.buf.hover()<CR>')
   mapBuf(bufnr, "n", "<Leader>gh", "<CMD>lua require('lspsaga.hover').render_hover_doc()<cr>")
   mapBuf(bufnr, 'n', '<Leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
@@ -132,13 +132,16 @@ local on_attach = function(client, bufnr)
   end
 
   -- Autoformatting
+  -- formatting
+  if client.name == 'tsserver' then
+    client.resolved_capabilities.document_formatting = false
+  end
+
   if client.resolved_capabilities.document_formatting then
-    vim.cmd [[
-      augroup Format
-        autocmd! * <buffer>
-        autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()
-      augroup END
-    ]]
+    vim.api.nvim_command [[augroup Format]]
+    vim.api.nvim_command [[autocmd! * <buffer>]]
+    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+    vim.api.nvim_command [[augroup END]]
   end
 end
 
@@ -168,10 +171,71 @@ lspconfig.tsserver.setup {
     "typescript",
     "typescriptreact",
     "typescript.tsx"
-    -- "vue"
+    "vue"
   },
   on_attach = on_attach,
   capabilities = capabilities,
+}
+
+nvim_lsp.diagnosticls.setup {
+  on_attach = on_attach,
+  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc' },
+  init_options = {
+    linters = {
+      eslint = {
+        command = 'eslint_d',
+        rootPatterns = { '.git' },
+        debounce = 100,
+        args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
+        sourceName = 'eslint_d',
+        parseJson = {
+          errorsRoot = '[0].messages',
+          line = 'line',
+          column = 'column',
+          endLine = 'endLine',
+          endColumn = 'endColumn',
+          message = '[eslint] ${message} [${ruleId}]',
+          security = 'severity'
+        },
+        securities = {
+          [2] = 'error',
+          [1] = 'warning'
+        }
+      },
+    },
+    filetypes = {
+      javascript = 'eslint',
+      javascriptreact = 'eslint',
+      typescript = 'eslint',
+      typescriptreact = 'eslint',
+    },
+    formatters = {
+      eslint_d = {
+        command = 'eslint_d',
+        rootPatterns = { '.git' },
+        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
+        rootPatterns = { '.git' },
+      },
+      prettier = {
+        command = 'prettier_d_slim',
+        rootPatterns = { '.git' },
+        -- requiredFiles: { 'prettier.config.js' },
+        args = { '--stdin', '--stdin-filepath', '%filename' }
+      }
+    },
+    formatFiletypes = {
+      css = 'prettier',
+      javascript = 'prettier',
+      javascriptreact = 'prettier',
+      json = 'prettier',
+      scss = 'prettier',
+      less = 'prettier',
+      typescript = 'prettier',
+      typescriptreact = 'prettier',
+      json = 'prettier',
+      markdown = 'prettier',
+    }
+  }
 }
 
 local vs_code_extracted = {
