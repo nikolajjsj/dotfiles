@@ -2,22 +2,9 @@ local lspconfig = require "lspconfig"
 local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 local cmp = require'cmp'
-local lspkind = require "lspkind"
-lspkind.init()
+
+require('lspkind').init()
 require('nvim-autopairs').setup()
-
-local vim = vim
-local uv = vim.loop
-local set = vim.api.nvim_set_keymap
-
--- Function to set mappings
-function mapBuf(buf, mode, lhs, rhs, opts)
-  local options = {noremap = true, silent = true}
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_buf_set_keymap(buf, mode, lhs, rhs, options)
-end
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 -- Don't show the dumb matching stuff.
