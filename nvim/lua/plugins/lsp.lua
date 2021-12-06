@@ -1,5 +1,6 @@
 local lspconfig = require "lspconfig"
 local configs = require "lspconfig/configs"
+local util = require "lspconfig/util"
 local cmp = require'cmp'
 local lspkind = require "lspkind"
 lspkind.init()
@@ -79,22 +80,28 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {virtual_text = false})
 
 local on_attach = function(client, bufnr)
-  mapBuf(bufnr, 'n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-  mapBuf(bufnr, 'n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-  mapBuf(bufnr, 'n', '<Leader>k', '<cmd>lua vim.lsp.buf.hover()<CR>')
-  mapBuf(bufnr, "n", "<Leader>gh", "<CMD>lua require('lspsaga.hover').render_hover_doc()<cr>")
-  mapBuf(bufnr, 'n', '<Leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-  mapBuf(bufnr, 'n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-  mapBuf(bufnr, 'n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-  mapBuf(bufnr, "n", "<Leader>fc", '<cmd>lua vim.lsp.buf.formatting()<CR>')
-  mapBuf(bufnr, "n", "<Leader>gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_command("autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()")
-    vim.api.nvim_command("autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()")
-    vim.api.nvim_command("autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()")
-  end
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  buf_set_keymap('n', 'gD', '<leader>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<leader>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<leader>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<leader>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<leader>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<leader>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<leader>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<leader>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<leader>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<leader>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '[d', '<leader>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<leader>lua vim.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>f', '<leader>lua vim.lsp.buf.formatting()<CR>', opts)
 
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]
@@ -103,6 +110,12 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command [[augroup END]]
   end
 end
+
+lspconfig.gopls.setup {
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod" },
+  root_dir = util.root_pattern("go.mod", ".git"),
+}
 
 lspconfig.vuels.setup { on_attach = on_attach, capabilities = capabilities }
 
@@ -251,3 +264,14 @@ lspconfig.jsonls.setup {
     }
   }
 }
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    -- This sets the spacing and the prefix, obviously.
+    virtual_text = {
+      spacing = 4,
+      prefix = ''
+    }
+  }
+)
