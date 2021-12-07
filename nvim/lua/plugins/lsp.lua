@@ -2,13 +2,12 @@ local lspconfig = require "lspconfig"
 local configs = require "lspconfig/configs"
 local util = require "lspconfig/util"
 local cmp = require'cmp'
+local lspkind = require'lspkind'
+local nvim_autopairs = require'nvim-autopairs'
 
-require('lspkind').init()
-require('nvim-autopairs').setup()
+nvim_autopairs.setup()
+lspkind.init()
 
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
--- Don't show the dumb matching stuff.
-vim.opt.shortmess:append "c"
 cmp.setup({
   mapping = {
     ['K'] = cmp.mapping.scroll_docs(-4),
@@ -76,19 +75,18 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   local opts = { noremap=true, silent=true }
 
-  buf_set_keymap('n', 'gD', '<leader>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<leader>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<leader>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<leader>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<leader>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<leader>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<leader>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<leader>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<leader>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<leader>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '<leader>gD', '<leader>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', '<leader>gd', '<leader>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>D', '<leader>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>K', '<leader>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<leader>gi', '<leader>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<leader><C-k>', '<leader>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<leader>rn', '<leader>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<leader>ca', '<leader>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>e', '<leader>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '<leader>f', '<leader>lua vim.lsp.buf.formatting()<CR>', opts)
   buf_set_keymap('n', '[d', '<leader>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<leader>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<leader>lua vim.lsp.buf.formatting()<CR>', opts)
 
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]
