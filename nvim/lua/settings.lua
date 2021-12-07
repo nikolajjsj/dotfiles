@@ -1,6 +1,17 @@
 local g = vim.g
 local opt = vim.opt
 
+-- hello front end masters
+opt.path:append('**')
+-- Nice menu when typing `:find *.py`
+opt.wildmode='longest,list,full'
+opt.wildmenu = true
+-- Ignore files
+opt.wildignore:append('**/node_modules/*')
+opt.wildignore:append('**/android/*')
+opt.wildignore:append('**/ios/*')
+opt.wildignore:append('**/.git/*')
+
 --Remap space as leader key
 g.mapleader = ' '
 -- Disable builtins
@@ -21,7 +32,6 @@ opt.expandtab = true
 opt.smartindent = true
 opt.smarttab = true
 opt.smartindent = true
-opt.wildmenu = true
 opt.ignorecase = true
 opt.backspace='start,eol,indent'
 opt.cursorline = true
@@ -31,7 +41,6 @@ opt.backup = false
 opt.writebackup = false
 opt.wrap = false
 opt.clipboard = 'unnamedplus'
-opt.wildmode = { "longest", "full" }
 opt.incsearch = true -- Makes search act like search in modern browsers
 opt.showmatch = true -- show matching brackets when text indicator is over them
 opt.relativenumber = true -- Show line numbers
@@ -39,7 +48,7 @@ opt.number = true -- But show the actual number for the line we're on
 opt.updatetime = 1000 -- Make updates happen faster
 opt.lazyredraw = true
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
-opt.completeopt = { "menu", "menuone", "noselect" }
+opt.completeopt = 'menu,menuone,noselect' 
 opt.shortmess:append('c')
 
 -- Theming
