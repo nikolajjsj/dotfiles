@@ -53,7 +53,6 @@ cmp.setup({
         nvim_lua = "[api]",
         path = "[path]",
         luasnip = "[snip]",
-        gh_issues = "[issues]",
       },
     },
   },
@@ -103,22 +102,6 @@ lspconfig.gopls.setup {
 }
 
 lspconfig.vuels.setup { on_attach = on_attach, capabilities = capabilities }
-
-configs.emmet_ls = {
-  default_config = {
-    cmd = {"emmet-ls", "--stdio"},
-    filetypes = { 'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'xml', 'xsl', 'pug', 'slim', 'sass', 'stylus', 'less', 'sss'};
-    root_dir = function()
-      return vim.loop.cwd()
-    end,
-    settings = {}
-  }
-}
-
-lspconfig.emmet_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
 
 lspconfig.tsserver.setup {
   filetypes = {
@@ -209,8 +192,6 @@ for ls, cmd in pairs(vs_code_extracted) do
     capabilities = capabilities
   }
 end
-
--- local lua_lsp_loc = "/Users/mhartington/Github/lua-language-server"
 
 lspconfig.jsonls.setup {
   cmd = {"vscode-json-language-server", "--stdio"},
