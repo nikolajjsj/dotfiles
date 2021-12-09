@@ -9,13 +9,6 @@
 -- repo  :  https://github.com/nikolajjsj/.dotfiles/
 
 -- Sourcing plugins, remaps and settings
-require'settings'
-require'mappings'
 require'plugins'
-
--- Lua plugins configurations
-require'plugins.lsp'
-require'plugins.treesitter'
-require'plugins.statusbar'
-require'plugins.telescopes'
-
+require'options'
+require'mappings'

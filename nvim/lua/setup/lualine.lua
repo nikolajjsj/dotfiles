@@ -1,6 +1,4 @@
-local lualine = require "lualine"
-
-lualine.setup {
+require("lualine").setup({
   options = {
     icons_enabled = true,
     theme = 'gruvbox',
@@ -38,4 +36,4 @@ lualine.setup {
   },
   tabline = {},
   extensions = {'fugitive'}
-}
+})
