@@ -17,18 +17,17 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   local opts = { noremap=true, silent=true }
 
-  buf_set_keymap('n', '<leader>gD', '<leader>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', '<leader>gd', '<leader>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>D', '<leader>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>K', '<leader>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<leader>gi', '<leader>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<leader><C-k>', '<leader>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<leader>rn', '<leader>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<leader>ca', '<leader>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '<leader>e', '<leader>lua vim.diagnostic.open_float()<CR>', opts)
-  buf_set_keymap('n', '<leader>f', '<leader>lua vim.lsp.buf.formatting()<CR>', opts)
-  buf_set_keymap('n', '[d', '<leader>lua vim.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<leader>lua vim.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<Leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', opts)
+  buf_set_keymap('n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<Leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<Leader>K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<Leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<Leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_command [[augroup Format]]
@@ -39,12 +38,12 @@ local on_attach = function(client, bufnr)
 end
 
 lspconfig.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod" },
   root_dir = util.root_pattern("go.mod", ".git"),
 }
-
-lspconfig.vuels.setup { on_attach = on_attach, capabilities = capabilities }
 
 lspconfig.tsserver.setup {
   filetypes = {
@@ -124,17 +123,6 @@ lspconfig.diagnosticls.setup {
   }
 }
 
-local vs_code_extracted = {
-  html = "vscode-html-language-server",
-  cssls = "vscode-css-language-server",
-}
-for ls, cmd in pairs(vs_code_extracted) do
-  lspconfig[ls].setup {
-    cmd = {cmd, "--stdio"},
-    on_attach = on_attach,
-    capabilities = capabilities
-  }
-end
 
 lspconfig.jsonls.setup {
   cmd = {"vscode-json-language-server", "--stdio"},
@@ -173,6 +161,19 @@ lspconfig.jsonls.setup {
     }
   }
 }
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'pyright', 'vuels', 'angularls', 'bashls', 'cssls', 'html', 'dartls', 'sqlls'}
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
