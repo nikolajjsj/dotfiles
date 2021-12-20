@@ -42,6 +42,7 @@ opt.relativenumber = true -- Show line numbers
 opt.number = true -- But show the actual number for the line we're on
 opt.lazyredraw = true
 opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
+opt.formatoptions:remove("o", "")
 
 -- Theming
 vim.o.background = 'dark'
