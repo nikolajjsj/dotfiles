@@ -7,12 +7,15 @@ export CLICOLOR=1
 ### Aliases ###
 ###############
 alias v='nvim'
-alias gs='git status' # Abbreviation for git status
 alias ll='exa -l -g --icons --git'
 alias lla='ll -a'
 alias reload='source ~/.zshrc' # reloads current sessions
 alias c='clear' # clear terminal screen
 alias :q='exit' # Exit like vim
+
+# Git aliases
+alias gs='git status' # Shows the current git status
+alias gc='git commit' # Uses default editor for a commit message
 
 # FZF utilities
 alias fzf="fzf --height=80% --preview 'bat --style=numbers --color=always {}'"
