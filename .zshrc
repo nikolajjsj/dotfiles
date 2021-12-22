@@ -15,6 +15,8 @@ alias :q='exit' # Exit like vim
 
 # Git aliases
 alias gs='git status' # Shows the current git status
+alias ga='git add' # Add files for a git commit
+alias gA='git add .' # Adds all changed files for the next commit
 alias gc='git commit' # Uses default editor for a commit message
 
 # FZF utilities
