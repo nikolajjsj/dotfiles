@@ -79,6 +79,11 @@ return require("packer").startup({
     })
     -- Lualine
     use({ "hoob3rt/lualine.nvim", config = get_setup("lualine") })
+    use ({
+      'kyazdani42/nvim-tree.lua',
+      requires = {'kyazdani42/nvim-web-devicons'},
+      config = get_setup("nvimtree"),
+    })
     -- Tpope!
     use({ 'tpope/vim-commentary' })
   end,
