@@ -7,14 +7,18 @@ map('n', '<leader>ve', ':edit ~/code/.dotfiles/nvim/init.lua<cr>', opts)
 map('n', '<leader>vr', ':source ~/code/.dotfiles/nvim/init.lua<cr>', opts)
 -- Quick switch between two last opened buffer
 map('n', '<leader><leader>', '<c-^>', opts)
--- Line navigation
-map('n', 'H', '^', opts)
-map('n', 'L', '$', opts)
+-- Toggle explore to the left
+map('n', '<leader>e', ':Lex 30<cr>', opts)
 -- Navigation between windows
 map('n', '<C-h>', '<C-w>h', opts)
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
+-- Resize with arrows
+map('n', '<Up>', ':resize +2<cr>', opts)
+map('n', '<Down>', ':resize -2<cr>', opts)
+map('n', '<Left>', ':vertical resize +2<cr>', opts)
+map('n', '<Right>', ':vertical resize -2<cr>', opts)
 -- Split window
 map('n', 'ss', ':split<Return><C-w>w', opts)
 map('n', 'sv', ':vsplit<Return><C-w>w', opts)
