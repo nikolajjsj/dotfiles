@@ -1,6 +1,6 @@
 local map = vim.api.nvim_set_keymap
 
-local opts = { noremap = true }
+local opts = { noremap = true, silent = true }
 
 -- Quickly edit and source neovim config
 map('n', '<leader>ve', ':edit ~/code/.dotfiles/nvim/init.lua<cr>', opts)
