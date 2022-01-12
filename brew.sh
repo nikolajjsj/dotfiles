@@ -26,17 +26,16 @@ brew install --formula starship
 
 ## casks
 brew install --cask alfred
-brew install --cask alacritty
 brew install --cask android-file-transfer
 brew install --cask android-platform-tools
 brew install --cask android-studio
 brew install --cask appcleaner
 brew install --cask flutter
 brew install --cask google-chrome
-brew install --cask iterm2
 brew install --cask spotify
-brew install --cask rectangle
 brew install --cask visual-studio-code
+brew install --cask amethyst
+brew install --cask kitty
 
 # Cleans up
 brew cleanup
