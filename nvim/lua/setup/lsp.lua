@@ -167,7 +167,6 @@ lspconfig.jsonls.setup {
 local servers = { 
   'pyright', 
   'vuels', 
-  'angularls', 
   'bashls', 
   'cssls', 
   'html', 
