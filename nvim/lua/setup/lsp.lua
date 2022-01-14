@@ -174,7 +174,6 @@ local servers = {
   'dartls', 
   'sqlls', 
   'rls',
-  -- 'rust_analyzer',
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
