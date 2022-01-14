@@ -66,6 +66,7 @@ return require("packer").startup({
     -- LSP configuration plugin
     use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
     use({ "onsails/lspkind-nvim", requires = {{ "famiu/bufdelete.nvim" }}})
+    use({ "jose-elias-alvarez/null-ls.nvim", config = get_setup("null-ls") })
     -- Telescope!
     use({
       "nvim-telescope/telescope.nvim",
