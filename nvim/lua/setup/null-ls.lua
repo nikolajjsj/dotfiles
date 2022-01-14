@@ -9,8 +9,8 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup({
     debug = false,
     sources = {
-        formatting.prettier.with { extra_args = { "--no-semi", "--single-quote" } },
+        formatting.prettier_d_slim.with { extra_args = { '--stdin', '--stdin-filepath', '%filename' } },
         formatting.stylua,
-        diagnostics.eslint,
+        diagnostics.eslint_d.with { extra_args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' }},
     },
 })

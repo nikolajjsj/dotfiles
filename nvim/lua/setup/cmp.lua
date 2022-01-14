@@ -2,12 +2,6 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      -- For `vsnip` user.
-      vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
   mapping = {
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
@@ -32,7 +26,6 @@ cmp.setup({
   },
   sources = {
     { name = "nvim_lsp" },
-    { name = "vsnip" },
     { name = "buffer" },
   },
   formatting = {

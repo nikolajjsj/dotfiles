@@ -8,8 +8,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {virtual_text = false})
 
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  local function buf_set_keymap(...) vim.api.nvim_set_keymap(...) end
+  local function buf_set_option(...) vim.api.nvim_set_option(...) end
 
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -18,6 +18,7 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
 
   buf_set_keymap('n', '<Leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', opts)
+  buf_set_keymap('n', '<Leader>F', '<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>', opts)
   buf_set_keymap('n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', '<Leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -58,71 +59,6 @@ lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
-
--- lspconfig.diagnosticls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   filetypes = { 'javascript', 'javascriptreact', 'vue', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown' },
---   init_options = {
---     linters = {
---       eslint = {
---         command = 'eslint_d',
---         rootPatterns = { '.git' },
---         debounce = 100,
---         args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
---         sourceName = 'eslint_d',
---         parseJson = {
---           errorsRoot = '[0].messages',
---           line = 'line',
---           column = 'column',
---           endLine = 'endLine',
---           endColumn = 'endColumn',
---           message = '[eslint] ${message} [${ruleId}]',
---           security = 'severity'
---         },
---         securities = {
---           [2] = 'error',
---           [1] = 'warning'
---         }
---       },
---     },
---     filetypes = {
---       javascript = 'eslint',
---       javascriptreact = 'eslint',
---       typescript = 'eslint',
---       typescriptreact = 'eslint',
---       vue = 'eslint',
---     },
---     formatters = {
---       eslint_d = {
---         command = 'eslint_d',
---         rootPatterns = { '.git' },
---         args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
---         rootPatterns = { '.git' },
---       },
---       prettier = {
---         command = 'prettier_d_slim',
---         rootPatterns = { '.git' },
---         -- requiredFiles: { 'prettier.config.js' },
---         args = { '--stdin', '--stdin-filepath', '%filename' }
---       }
---     },
---     formatFiletypes = {
---       css = 'prettier',
---       javascript = 'prettier',
---       javascriptreact = 'prettier',
---       json = 'prettier',
---       scss = 'prettier',
---       less = 'prettier',
---       vue = 'prettier',
---       typescript = 'prettier',
---       typescriptreact = 'prettier',
---       json = 'prettier',
---       markdown = 'prettier',
---     }
---   }
--- }
-
 
 lspconfig.jsonls.setup {
   cmd = {"vscode-json-language-server", "--stdio"},
