@@ -1,7 +1,9 @@
 ### Aliases ###
 alias v='nvim'
-alias ll='exa -l -g --icons --git'
-alias lla='ll -a'
+alias l='exa'
+alias ls='exa'
+alias ll='exa -l'
+alias lla='exa -la'
 alias reload='source ~/.zshrc' # reloads current sessions
 alias c='clear' # clear terminal screen
 alias :q='exit' # Exit like vim
