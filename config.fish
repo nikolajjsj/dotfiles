@@ -18,5 +18,7 @@ alias fzf="fzf --height=80% --preview 'bat --style=numbers --color=always {}'"
 # Recursively clean .DS_Store files
 alias cleanup='find . -type f -name "*.DS_Store" -ls -delete'
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Starship prompt
 starship init fish | source
