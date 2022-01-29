@@ -24,6 +24,7 @@ map('n', 'ss', ':split<Return><C-w>w', opts)
 map('n', 'sv', ':vsplit<Return><C-w>w', opts)
 -- Open Terminal in split window
 map('n', '<Leader>t', ':below 10sp term://$SHELL<CR>i', opts)
+map('n', '<Leader>T', ':vsp | :te<CR>i', opts)
 -- Better Visual lines and handling
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)
