@@ -32,7 +32,8 @@ alias cleanup='find . -type f -name "*.DS_Store" -ls -delete'
 alias ide='sh ~/code/.dotfiles/scripts/ide.sh'
 alias mux='sh ~/code/.dotfiles/scripts/mux.sh'
 
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH=/opt/homebrew/bin:$PATH
+
 # Initialize starship prompt
 eval "$(starship init zsh)"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
