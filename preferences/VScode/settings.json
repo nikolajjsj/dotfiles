@@ -1,58 +1,61 @@
 {
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
-    "editor.minimap.enabled": false,
-    "editor.suggestSelection": "first",
-    "workbench.startupEditor": "none",
-    "git.enableSmartCommit": true,
-    "debug.openDebug": "openOnDebugBreak",
-    "[dart]": {
-      "editor.formatOnSave": true,
-      "editor.formatOnType": true,
-      "editor.rulers": [80],
-      "editor.selectionHighlight": false,
-      "editor.suggest.snippetsPreventQuickSuggestions": false,
-      "editor.suggestSelection": "first",
-      "editor.tabCompletion": "onlySnippets",
-      "editor.wordBasedSuggestions": false
-    },
-    "dart.allowAnalytics": false,
-    "dart.previewLsp": true,
+  "workbench.colorTheme": "Default Dark+",
+  "telemetry.telemetryLevel": "off",
+  "editor.minimap.enabled": false,
+  "editor.suggestSelection": "first",
+  "workbench.startupEditor": "none",
+  "git.enableSmartCommit": true,
+  "debug.openDebug": "openOnDebugBreak",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.bracketPairColorization.enabled": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": true,
 
-    "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.tabSize": 2
-    },
-    "[vue]": {
-      "editor.defaultFormatter": "octref.vetur",
-      "editor.tabSize": 2
-    },
-    "[css]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-  
-    "eslint.validate": ["javascript", "javascriptreact", "vue"],
-  
-    "vetur.useWorkspaceDependencies": true,
-    "vetur.format.defaultFormatter.scss": "prettier",
-    "vetur.format.defaultFormatter.css": "prettier",
-    "vetur.format.defaultFormatter.js": "prettier",
-  
-    "prettier.semi": false,
-    "prettier.singleQuote": true,
-    "prettier.printWidth": 80,
-    "vetur.format.defaultFormatterOptions": {
-      "prettier": {
-        "printWidth": 80,
-        "singleQuote": true,
-        "semi": false,
-        "wrapAttributes": false
-      }
-    }
+  "gitlens.defaultGravatarsStyle": "identicon",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.codeLens.enabled": false,
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
+  "prettier.semi": true,
+  "prettier.singleQuote": false,
+  "prettier.printWidth": 80,
+
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
   }
+}
