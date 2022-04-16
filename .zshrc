@@ -18,6 +18,7 @@ alias gs='git status' # Shows the current git status
 alias ga='git add' # Add files for a git commit
 alias gA='git add .' # Adds all changed files for the next commit
 alias gc='git commit' # Uses default editor for a commit message
+alias gcne='git commit --amend --no-edit' # Amends to previous commit
 alias gac='gA && gc' # Combination of adding all recent changes and git commit
 
 # FZF utilities
