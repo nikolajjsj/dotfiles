@@ -48,9 +48,6 @@ opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 vim.o.background = 'dark'
 vim.cmd('colorscheme gruvbox')
     
--- Quickly edit and source neovim config
-map('n', '<leader>ve', ':edit ~/code/.dotfiles/nvim/init.lua<cr>', opts)
-map('n', '<leader>vr', ':source ~/code/.dotfiles/nvim/init.lua<cr>', opts)
 -- Quick switch between two last opened buffer
 map('n', '<leader><leader>', '<c-^>', opts)
 -- Toggle explore to the left
@@ -107,58 +104,30 @@ if fn.empty(fn.glob(install_path)) > 0 then
   })
 end
 vim.api.nvim_command("packadd packer.nvim")
-function get_setup(name)
-  return string.format('require("plugins/%s")', name)
-end
-
-return require("packer").startup({
+require("packer").startup({
   function(use)
     -- Packer can manage itself as an optional usein
-    use("wbthomason/packer.nvim")
-    -- Treesitter
-    use({
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-      config = get_setup("lsp")
-    })
-    -- themes
-    use 'gruvbox-community/gruvbox'
-    -- Completion plugin
-    use({
+    use{"wbthomason/packer.nvim"}
+    use{"gruvbox-community/gruvbox"}
+    use{"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+    use{"neovim/nvim-lspconfig"}
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = {{'nvim-lua/plenary.nvim'}} 
+    }
+    use{
       "hrsh7th/nvim-cmp",
       requires = {
-        { "hrsh7th/cmp-nvim-lsp" },
-        { "hrsh7th/cmp-nvim-lua" },
-        { "hrsh7th/cmp-buffer" },
-        { "hrsh7th/cmp-path" },
-        { 'hrsh7th/cmp-vsnip' },
-        { 'hrsh7th/vim-vsnip' },
+        {"hrsh7th/cmp-nvim-lsp"},
+        {"hrsh7th/cmp-buffer"},
+        {"hrsh7th/cmp-cmdline"},
+        {"hrsh7th/cmp-path"},
+        {"hrsh7th/cmp-vsnip"},
+        {"hrsh7th/vim-vsnip"},
       },
-      config = get_setup("lsp")
-    })
-    -- Gitsigns
-    use({
-      "lewis6991/gitsigns.nvim",
-      requires = { "nvim-lua/plenary.nvim" },
-      event = "BufReadPre",
-    })
-    -- LSP configuration plugin
-    use({ "neovim/nvim-lspconfig", config = get_setup("lsp") })
-    -- Telescope!
-    use({
-      "nvim-telescope/telescope.nvim",
-      module = "telescope",
-      cmd = "Telescope",
-      requires = {
-        { "nvim-lua/popup.nvim" },
-        { "nvim-lua/plenary.nvim" },
-	}, 
-	config = get_setup("telescope"),
-    })
-    -- Lualine
-    use({ "hoob3rt/lualine.nvim", config = get_setup("lualine") })
-    -- Tpope!
-    use({ 'tpope/vim-commentary' })
+    }
+    use{"hoob3rt/lualine.nvim"}
+    use{"tpope/vim-commentary"}
   end,
   config = {
     display = {
@@ -170,3 +139,9 @@ return require("packer").startup({
     },
   },
 })
+
+require"lsp"
+require"telescope"
+require"cmp"
+require"treesitter"
+require"lualine"
