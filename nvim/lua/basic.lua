@@ -68,5 +68,3 @@ map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
 -- Theming
 vim.o.background = 'dark'
-vim.cmd('colorscheme gruvbox')
-

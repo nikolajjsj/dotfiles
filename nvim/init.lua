@@ -9,6 +9,11 @@
 require("basic")
 
 
+
+
+require('github-theme').setup({
+  theme_style = "dark_default",
+})
 require('telescope').setup{}
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",
@@ -45,7 +50,7 @@ require'nvim-treesitter.configs'.setup {
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    theme = 'gruvbox',
+    theme = 'github',
     section_separators = {'', ''},
     component_separators = {'', ''},
   },
@@ -145,6 +150,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'gruvbox-community/gruvbox'
+  use 'projekt0n/github-nvim-theme'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'neovim/nvim-lspconfig'
   use {
