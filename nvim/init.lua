@@ -1,155 +1,73 @@
--- d8b   db d888888b db   dD  .d88b.  db       .d8b.     d88b    d88b .d8888.    d88b 
--- 888o  88   `88'   88 ,8P' .8P  Y8. 88      d8' `8b    `8P'    `8P' 88'  YP    `8P' 
--- 88V8o 88    88    88,8P   88    88 88      88ooo88     88      88  `8bo.       88  
--- 88 V8o88    88    88`8b   88    88 88      88~~~88     88      88    `Y8b.     88  
--- 88  V888   .88.   88 `88. `8b  d8' 88booo. 88   88 db. 88  db. 88  db   8D db. 88  
--- VP   V8P Y888888P YP   YD  `Y88P'  Y88888P YP   YP Y8888P  Y8888P  `8888Y' Y8888P  
+require("packages")
 
--- Sourcing plugins, remaps and settings
-require("basic")
+vim.g.mapleader = " "
+vim.o.number  =true
+vim.o.relativenumber = true
+vim.o.wrap = false
+vim.o.expandtab = true
+vim.o.incsearch = true
+vim.o.tabstop = 2
+vim.o.cursorline = true
+vim.o.ignorecase = true
+vim.o.hlsearch = false
+vim.o.swapfile = false
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.scrolloff = 10
+vim.o.shiftwidth = 2
+vim.o.numberwidth = 4
+vim.o.termguicolors = true
+vim.o.colorcolumn = '80'
+vim.o.showtabline = 2
+vim.o.signcolumn = 'yes'
+vim.o.mouse = 'a'
+vim.o.background = 'dark'
 
+local opts = { noremap = true, silent = true}
+local map = vim.api.nvim_set_keymap
+-- Remaps
+map("n", "<leader>t", ":sp<CR> :term<CR> :resize 20N<CR> i", opts)
+map("t", "<Esc>", "<C-\\><C-n>", opts)
+map('n', '<C-N>', ":Lexplore<CR> :vertical resize 30<CR>", opts)
+map('n', 'te', ':tabedit', opts)
+map('n', '<S-Tab>', ':tabprev<Return>', opts)
+map('n', '<Tab>', ':tabnext<Return>', opts)
+-- Quick switch between two last opened buffer
+map('n', '<leader><leader>', '<c-^>', opts)
+-- Toggle explore to the left
+map('n', '<leader>e', ':Lex 30<cr>', opts)
+-- Navigation between windows
+map('n', '<C-h>', '<C-w>h', opts)
+map('n', '<C-j>', '<C-w>j', opts)
+map('n', '<C-k>', '<C-w>k', opts)
+map('n', '<C-l>', '<C-w>l', opts)
+-- Resize with arrows
+map('n', '<Up>', ':resize -2<cr>', opts)
+map('n', '<Down>', ':resize +2<cr>', opts)
+map('n', '<Left>', ':vertical resize +2<cr>', opts)
+map('n', '<Right>', ':vertical resize -2<cr>', opts)
+-- Split window
+map('n', 'ss', ':split<Return><C-w>w', opts)
+-- Awesome stuff
+map('n', '<Leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', opts)
+map('n', '<Leader>F', '<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>', opts)
+map('n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+map('n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+map('n', '<Leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+map('n', '<Leader>K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+map('n', '<Leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+map('n', '<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+map('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+map('n', '<Leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
+vim.cmd [[packadd packer.nvim]]
 
-
-require('github-theme').setup({
-  theme_style = "dark_default",
-})
-require('telescope').setup{}
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
-  ignore_install = { "phpdoc" },
-  context_commentstring = {
-    enable = true
-  },
-  highlight = {
-    enable = true,
-  },
-  indent = {
-    enable = true
-  }
-}
--- require('cmp').setup({
---   snippet = {
---     expand = function(args)
---       vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
---     end,
---   },
---   mapping = cmp.mapping.preset.insert({
---     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
---     ['<C-f>'] = cmp.mapping.scroll_docs(4),
---     ['<C-Space>'] = cmp.mapping.complete(),
---     ['<C-e>'] = cmp.mapping.abort(),
---     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
---   }),
---   sources = cmp.config.sources({
---     { name = 'nvim_lsp' },
---     { name = 'vsnip' }, -- For vsnip users.
---     { name = buffer },
---   })
--- })
-require("lualine").setup({
-  options = {
-    icons_enabled = true,
-    theme = 'github',
-    section_separators = {'', ''},
-    component_separators = {'', ''},
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch'},
-    lualine_c = {{
-      'filename',
-      file_status = true, -- displays file status (readonly status, modified status)
-      path = 0 -- 0 = just filename, 1 = relative path, 2 = absolute path
-    }},
-    lualine_x = {
-      { 'diagnostics', sources = {"nvim_diagnostic"}, symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },
-      'encoding',
-      'filetype'
-    },
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {{
-      'filename',
-      file_status = true, -- displays file status (readonly status, modified status)
-      path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
-    }},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = {'fugitive'}
-})
-local lspconfig = require "lspconfig"
-local configs = require "lspconfig/configs"
-local util = require "lspconfig/util"
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {virtual_text = false})
-
-local on_attach = function(client, bufnr)
-  if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_command [[augroup Format]]
-    vim.api.nvim_command [[autocmd! * <buffer>]]
-    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-    vim.api.nvim_command [[augroup END]]
-  end
-end
-lspconfig.gopls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = { "gopls" },
-  filetypes = { "go", "gomod" },
-  root_dir = util.root_pattern("go.mod", ".git"),
-}
-lspconfig.tsserver.setup {
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "typescript",
-    "typescriptreact",
-    "typescript.tsx",
-    "vue"
-  },
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-local servers = { 
-  'pyright', 
-  'vuels', 
-  'bashls', 
-  'cssls', 
-  'html', 
-  'sqlls', 
-}
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
-end
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    virtual_text = {
-      spacing = 4,
-      prefix = ''
-    }
-  }
-)
 return require('packer').startup(function()
+  -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  use 'gruvbox-community/gruvbox'
+  use 'wbthomason/packer.nvim'
   use 'projekt0n/github-nvim-theme'
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'neovim/nvim-lspconfig'
@@ -157,18 +75,15 @@ return require('packer').startup(function()
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/plenary.nvim'}} 
   }
-  -- use {
-  --   'hrsh7th/nvim-cmp',
-  --   requires = {
-  --     {'hrsh7th/cmp-nvim-lsp'},
-  --     {'hrsh7th/cmp-buffer'},
-  --     {'hrsh7th/cmp-cmdline'},
-  --     {'hrsh7th/cmp-path'},
-  --     {'hrsh7th/cmp-vsnip'},
-  --     {'hrsh7th/vim-vsnip'},
-  --   },
-  -- }
   use 'hoob3rt/lualine.nvim'
   use 'tpope/vim-commentary'
+  -- Completion
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  -- Snippets
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
 end)
-
