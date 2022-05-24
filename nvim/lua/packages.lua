@@ -1,11 +1,14 @@
 require('github-theme').setup({theme_style = "dark_default"})
+
 require('telescope').setup{}
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",
   ignore_install = { "phpdoc" },
   highlight = {enable = true},
   indent = {enable = true}
 }
+
 require("lualine").setup({
   options = {
     icons_enabled = true,
@@ -78,30 +81,27 @@ local on_attach = function(client, bufnr)
 end
 
 lspconfig.gopls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = { "gopls" },
-  filetypes = { "go", "gomod" },
-  root_dir = util.root_pattern("go.mod", ".git"),
-}
-lspconfig.tsserver.setup {
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "typescript",
-    "typescriptreact",
-    "typescript.tsx",
+  cmd = {"gopls", "serve"},
+  filetypes = {"go", "gomod"},
+  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    },
   },
-  on_attach = on_attach,
-  capabilities = capabilities,
 }
+
 local servers = { 
   'bashls', 
   'cssls', 
   'html', 
   'sqlls', 
+  'tsserver',
 }
+
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -111,6 +111,7 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
