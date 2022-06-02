@@ -40,66 +40,64 @@ sh brew.sh
   "telemetry.telemetryLevel": "off",
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
-  "editor.tabSize": 2,
-  "workbench.startupEditor": "newUntitledFile",
+  "workbench.startupEditor": "none",
   "git.enableSmartCommit": true,
-  "editor.fontFamily": "'FiraCode Nerd Font' , Menlo, Monaco, 'Courier New', monospace",
-  "editor.cursorSmoothCaretAnimation": true,
+  "debug.openDebug": "openOnDebugBreak",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.bracketPairColorization.enabled": true,
   "workbench.iconTheme": "material-icon-theme",
-  "editor.linkedEditing": true,
-  "dart.flutterSdkPath": "/opt/homebrew/Caskroom/flutter/2.2.2/flutter",
-  "terminal.integrated.defaultProfile.osx": "zsh",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/*.code-search": true,
-    "ios/": true,
-    "android/": true,
-    "dist/": true,
-    "yarn.lock": true,
-    "package-lock.json": true,
-    ".gitignore": true,
-    ".expo": true,
-    ".vscode": true
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.fontFamily": "'FiraCode Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+  "terminal.integrated.tabs.enabled": false,
+  "workbench.colorTheme": "GitHub Dark Default",
+  "gitlens.views.branches.branches.layout": "list",
+  "gitlens.defaultGravatarsStyle": "identicon",
+  "gitlens.codeLens.enabled": false,
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
   },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
+  "prettier.semi": true,
+  "prettier.trailingComma": "all",
+  "prettier.printWidth": 80,
+
   "[dart]": {
     "editor.formatOnSave": true,
+    "editor.formatOnType": true,
     "editor.rulers": [80],
     "editor.selectionHighlight": false,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggestSelection": "first",
     "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": false,
-    "editor.tabSize": 2
+    "editor.wordBasedSuggestions": false
   },
-  "dart.allowAnalytics": false,
-  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[vue]": { "editor.defaultFormatter": "octref.vetur" },
-  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[svelte]": { "editor.defaultFormatter": "svelte.svelte-vscode" },
-  "eslint.validate": ["javascript", "javascriptreact", "vue"],
-  "vetur.useWorkspaceDependencies": true,
-  "vetur.format.defaultFormatter.scss": "prettier",
-  "vetur.format.defaultFormatter.css": "prettier",
-  "vetur.format.defaultFormatter.js": "prettier",
-  "prettier.semi": true,
-  "prettier.singleQuote": true,
-  "prettier.printWidth": 80,
-  "vetur.format.defaultFormatterOptions": {
-    "prettier": {
-      "printWidth": 80,
-      "singleQuote": true,
-      "semi": false,
-      "wrapAttributes": false
-    }
-  },
-  "git.confirmSync": false
+  "javascript.preferences.importModuleSpecifier": "project-relative",
+  "typescript.preferences.importModuleSpecifier": "project-relative"
 }
 ```
