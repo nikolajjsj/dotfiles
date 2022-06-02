@@ -37,6 +37,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH="$PATH:$HOME/code/flutter/bin"
 export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
+export PATH="~/go/bin:$PATH"
 
 # Initialize starship prompt
 eval "$(starship init zsh)"
