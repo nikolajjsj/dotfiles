@@ -1,3 +1,3 @@
-require("plugins")
-require("mappings")
-require("options")
+require('nikolajjsj.set')
+require('nikolajjsj.plugins')
+require('nikolajjsj.mappings')
