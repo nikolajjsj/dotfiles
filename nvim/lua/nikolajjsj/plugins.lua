@@ -23,6 +23,9 @@ return require('packer').startup(function()
   -- tpope
   use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
+  -- Auto pair
+  use 'jiangmiao/auto-pairs'
+  -- Themes
   use('folke/tokyonight.nvim')
   use('projekt0n/github-nvim-theme')
 end)
