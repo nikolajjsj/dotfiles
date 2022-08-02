@@ -25,6 +25,11 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
   -- Auto pair
   use 'jiangmiao/auto-pairs'
+  -- diagnostics
+  use{
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+  }
   -- Themes
   use('folke/tokyonight.nvim')
   use('projekt0n/github-nvim-theme')

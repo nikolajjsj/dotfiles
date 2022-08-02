@@ -37,3 +37,6 @@ nnoremap('<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 nnoremap('<Leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
 nnoremap('[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 nnoremap(']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+-- folke/trouble
+nnoremap('<Leader>xx', '<cmd>TroubleToggle<CR>')
+nnoremap('<Leader>xq', '<cmd>TroubleToggle quickfix<CR>')

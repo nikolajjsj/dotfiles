@@ -50,7 +50,13 @@ local on_attach = function(client, bufnr)
   }
 end
 
-require'lspconfig'.rust_analyzer.setup{
+require("lspconfig").rust_analyzer.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+}
+
+require'lspconfig'.rls.setup{
   on_attach = on_attach,
   capabilities = capabilities,
 }
