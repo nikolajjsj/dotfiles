@@ -10,12 +10,12 @@ nnoremap('<Tab>', ':tabnext<Return>')
 -- Quick switch between two last opened buffer
 nnoremap('<leader><leader>', '<c-^>')
 -- Toggle explore to the left
-nnoremap('<leader>e', ':Lex 30<cr>')
+nnoremap('<Leader>p', '<cmd>Ex<CR>')
 -- Navigation between windows
-nnoremap('<C-h>', '<C-w>h')
-nnoremap('<C-j>', '<C-w>j')
-nnoremap('<C-k>', '<C-w>k')
-nnoremap('<C-l>', '<C-w>l')
+nnoremap('<Leader>h', '<C-w>h')
+nnoremap('<Leader>j', '<C-w>j')
+nnoremap('<Leader>k', '<C-w>k')
+nnoremap('<Leader>l', '<C-w>l')
 -- Resize with arrows
 nnoremap('<Up>', ':resize -2<cr>')
 nnoremap('<Down>', ':resize +2<cr>')
@@ -25,7 +25,6 @@ nnoremap('<Right>', ':vertical resize -2<cr>')
 nnoremap('ss', ':split<Return><C-w>w')
 -- Awesome stuff
 nnoremap('<Leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>')
-nnoremap('<Leader>p', '<cmd>Ex<CR>')
 nnoremap('<Leader>F', '<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>')
 nnoremap('<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
 nnoremap('<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
