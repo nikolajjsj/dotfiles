@@ -20,6 +20,5 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 -- vim.o.termguicolors = true
 vim.o.signcolumn = 'yes'
-vim.o.mouse = 'a'
 
 vim.g.mapleader = " "
