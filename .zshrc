@@ -6,7 +6,7 @@ export CLICOLOR=1
 ###############
 ### Aliases ###
 ###############
-alias v='nvim'
+alias nv='nvim'
 alias ll='exa -l -g --icons --git'
 alias lla='ll -a'
 alias reload='source ~/.zshrc' # reloads current sessions
