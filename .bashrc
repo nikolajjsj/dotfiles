@@ -1,6 +1,6 @@
 eval "$(starship init bash)"
 
-alias ll="ls -lah"
+alias ll="exa -lah"
 alias :q="exit"
 alias gs="git status"
 
