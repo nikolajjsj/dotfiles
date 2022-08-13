@@ -42,8 +42,5 @@ return require('packer').startup(function()
 
   -- Themes
   use('folke/tokyonight.nvim')
-  use {
-    'svrana/neosolarized.nvim',
-    requires = { 'tjdevries/colorbuddy.nvim' }
-  }
+  use 'Mofiqul/dracula.nvim'
 end)
