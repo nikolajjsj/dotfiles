@@ -3,12 +3,12 @@ cd ~
 mkdir .config/
 mkdir .config/kitty/
 # symlinking
-ln -s ~/code/.dotfiles/nvim ~/.config/
-ln -sf ~/code/.dotfiles/.zshrc ~/.zshrc
-ln -sf ~/code/.dotfiles/.bashrc ~/.bashrc
-ln -sf ~/code/.dotfiles/.tmux.conf ~/.tmux.conf
-ln -sf ~/code/.dotfiles/.gitconfig ~/.gitconfig
-ln -sf ~/code/.dotfiles/kitty.conf ~/.config/kitty/kitty.conf
+ln -s ~/code/dotfiles/nvim ~/.config/nvim
+ln -sf ~/code/dotfiles/.zshrc ~/.zshrc
+ln -sf ~/code/dotfiles/.bashrc ~/.bashrc
+ln -sf ~/code/dotfiles/.tmux.conf ~/.tmux.conf
+ln -sf ~/code/dotfiles/.gitconfig ~/.gitconfig
+ln -sf ~/code/dotfiles/kitty.conf ~/.config/kitty/kitty.conf
 
 # Check if machine is Linux
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
