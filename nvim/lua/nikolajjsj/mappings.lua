@@ -3,6 +3,9 @@ local nnoremap = require("nikolajjsj.remap").nnoremap
 -- Remaps
 nnoremap("<leader>t", ":sp<cr> :term<CR> :resize 20N<cr> i")
 
+-- NvimTree
+nnoremap("<Leader>n", ":NvimTreeToggle<cr>")
+
 -- Tabs
 nnoremap('te', ':tabedit<cr>')
 nnoremap('<S-Tab>', ':tabprev<cr>')

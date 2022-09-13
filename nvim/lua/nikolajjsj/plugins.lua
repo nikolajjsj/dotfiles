@@ -25,6 +25,7 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'norcalli/nvim-colorizer.lua'
   use 'lewis6991/gitsigns.nvim'
+  use 'kyazdani42/nvim-tree.lua'
 
   -- Lualine
   use 'nvim-lualine/lualine.nvim' -- Statusline
