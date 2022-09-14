@@ -27,7 +27,8 @@ vim.opt.wrap = false -- No Wrap lines
 vim.opt.backspace = { 'start', 'eol', 'indent' }
 vim.opt.path:append { '**' } -- Finding files - Search down into subfolders
 vim.opt.wildignore:append { '*/node_modules/*' }
-vim.opt.termguicolors = truear
+vim.opt.termguicolors = true
+vim.opt.mouse = 'nv'
 
 require('nikolajjsj.plugins')
 require('nikolajjsj.mappings')
