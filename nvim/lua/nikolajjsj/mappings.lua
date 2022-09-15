@@ -29,18 +29,10 @@ nnoremap('<Left>', ':vertical resize +2<cr>')
 nnoremap('<Right>', ':vertical resize -2<cr>')
 
 -- Awesome stuff
-nnoremap('<Leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>')
 nnoremap('<Leader>F', '<cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>')
 nnoremap('<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
 nnoremap('<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-nnoremap('<Leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-nnoremap('<Leader>K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 nnoremap('<Leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-nnoremap('<Leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-nnoremap('<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-nnoremap('<Leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
-nnoremap('[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-nnoremap(']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 
 -- folke/trouble
 nnoremap('<Leader>xx', '<cmd>TroubleToggle<CR>')
