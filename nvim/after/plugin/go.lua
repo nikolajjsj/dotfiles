@@ -13,9 +13,7 @@ function OrgImports(wait_ms)
   end
 end
 
-local cmd = vim.cmd
-
-cmd [[
+vim.cmd [[
   augroup GoOrgImports
     autocmd!
     autocmd BufWritePre *.go lua OrgImports(1000)

@@ -9,16 +9,6 @@ end
 
 local fb_actions = require "telescope".extensions.file_browser.actions
 
-telescope.setup {
-  defaults = {
-    mappings = {
-      n = {
-        ["q"] = actions.close
-      },
-    },
-  },
-}
-
 -- keymaps
 vim.keymap.set('n', '<leader>ff', function()
   builtin.find_files({
@@ -40,6 +30,9 @@ telescope.setup {
         ["q"] = actions.close
       },
     },
+    file_ignore_patterns = {
+      "node_modules",
+    }
   },
   extensions = {
     file_browser = {
