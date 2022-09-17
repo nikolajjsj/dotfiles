@@ -7,6 +7,7 @@ return require('packer').startup(function()
   -- LSP
   use 'neovim/nvim-lspconfig' -- LSP
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+  use 'MunifTanjim/prettier.nvim'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   -- Completion
@@ -16,7 +17,6 @@ return require('packer').startup(function()
   -- Auto stuff
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
-  use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
 
   -- necessities
   use 'glepnir/lspsaga.nvim' -- LSP UIs
