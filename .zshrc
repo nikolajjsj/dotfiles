@@ -23,10 +23,14 @@ alias gac='gA && gc' # Combination of adding all recent changes and git commit
 # Recursively clean .DS_Store files
 alias cleanup='find . -type f -name "*.DS_Store" -ls -delete'
 
+# MongoDB
+alias mongod='mongod --dbpath=/Users/nikolaj/mongodb/data/db'
+
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH="$PATH:$HOME/code/flutter/bin"
 export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
