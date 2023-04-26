@@ -1,34 +1,33 @@
 vim.cmd("autocmd!")
-
+-- Leader
 vim.g.mapleader = " "
-vim.g.loaded = 1
-vim.g.loaded_netrwPlugin = 1
-
-vim.opt.nu = true
-vim.opt.relativenumber = true
-vim.opt.signcolumn = 'yes'
-vim.opt.errorbells = false
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.wrap = false
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-vim.opt.scrolloff = 8
-vim.opt.cmdheight = 1
-vim.opt.updatetime = 50
-vim.opt.shortmess:append("c")
-vim.opt.colorcolumn = "80"
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.wrap = false -- No Wrap lines
-vim.opt.backspace = { 'start', 'eol', 'indent' }
+-- Options
+vim.o.nu = true
+vim.o.relativenumber = true
+vim.o.signcolumn = 'yes'
+vim.o.errorbells = false
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
+vim.o.smartindent = true
+vim.o.smarttab = true
+vim.o.wrap = false
+vim.o.hlsearch = false
+vim.o.incsearch = true
+vim.o.scrolloff = 10
+vim.o.wrap = false -- No Wrap lines
+vim.o.mouse = 'nv'
+-- File stuff
 vim.opt.path:append { '**' } -- Finding files - Search down into subfolders
+vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
 vim.opt.wildignore:append { '*/node_modules/*' }
-vim.opt.termguicolors = true
-vim.opt.mouse = 'nv'
+-- MacOS
+vim.opt.clipboard:append { 'unnamedplus' }
+-- Visual stuff
+vim.o.cursorline = true
+vim.o.termguicolors = true
+vim.o.background = 'dark'
 
-require('nikolajjsj.plugins')
-require('nikolajjsj.mappings')
+require"plugins"
+require"maps"
