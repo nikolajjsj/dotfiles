@@ -18,6 +18,15 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command [[augroup END]]
   end
 
+  -- Show diagnostic popup on cursor hover
+  local diag_float_grp = vim.api.nvim_create_augroup("DiagnosticFloat", { clear = true })
+  vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+      vim.diagnostic.open_float(nil, { focusable = false })
+    end,
+    group = diag_float_grp,
+  })
+
   vim.lsp.protocol.CompletionItemKind = {
     '', -- Text
     '', -- Method
@@ -47,10 +56,33 @@ local on_attach = function(client, bufnr)
   }
 end
 
-require'lspconfig'.tsserver.setup{
+nvim_lsp.tsserver.setup{
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
+nvim_lsp.rust_analyzer.setup({
+  on_attach=on_attach,
+  capabilities=capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      imports = {
+        granularity = {
+          group = "module",
+        },
+        prefix = "self",
+      },
+      cargo = {
+        buildScripts = {
+          enable = true,
+        },
+      },
+      procMacro = {
+        enable = true
+      },
+    }
+  }
+})
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
