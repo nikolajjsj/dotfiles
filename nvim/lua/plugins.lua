@@ -27,5 +27,5 @@ return require('packer').startup(function()
   use 'lewis6991/gitsigns.nvim'
   use 'kyazdani42/nvim-tree.lua'
   -- theme
-  use "ellisonleao/gruvbox.nvim"
+  use { 'rose-pine/neovim', as = 'rose-pine' }
 end)
