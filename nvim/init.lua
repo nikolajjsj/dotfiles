@@ -171,7 +171,20 @@ require('lazy').setup({
       require("nvim-autopairs").setup {}
     end,
   },
-  { "github/copilot.vim" },
+  {
+    "github/copilot.vim",
+    config = function()
+      vim.g.copilot_assume_mapped = true
+      -- Set which types Copilot should init
+      vim.g.copilot_filetypes = {
+        ["*"] = false,
+        ["javascript"] = true,
+        ["typescript"] = true,
+        ["lua"] = true,
+        ["rust"] = true,
+      }
+    end,
+  },
 }, {})
 
 -- [[ Setting options ]]
@@ -447,10 +460,14 @@ cmp.setup {
       select = true,
     },
     ['<Tab>'] = cmp.mapping(function(fallback)
+      local copilot_keys = vim.fn['copilot#Accept']()
+
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
+      elseif copilot_keys ~= '' and type(copilot_keys) == 'string' then
+        vim.api.nvim_feedkeys(copilot_keys, 'i', true)
       else
         fallback()
       end
