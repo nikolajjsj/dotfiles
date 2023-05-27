@@ -185,6 +185,16 @@ require('lazy').setup({
       }
     end,
   },
+  {
+    "nvim-tree/nvim-tree.lua",
+    config = function()
+      require("nvim-tree").setup {
+        disable_netrw = true,
+        hijack_netrw = true,
+        lsp_diagnostics = false,
+      }
+    end,
+  }
 }, {})
 
 -- [[ Setting options ]]
