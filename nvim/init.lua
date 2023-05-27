@@ -191,7 +191,6 @@ require('lazy').setup({
       require("nvim-tree").setup {
         disable_netrw = true,
         hijack_netrw = true,
-        lsp_diagnostics = false,
       }
     end,
   }
