@@ -11,6 +11,7 @@ alias ll='exa -l -g --icons --git'
 alias lla='ll -a'
 alias reload='source ~/.zshrc' # reloads current sessions
 alias :q='exit' # Exit like vim
+alias lg='lazygit'
 
 # Git aliases
 alias gs='git status' # Shows the current git status
@@ -23,17 +24,18 @@ alias gac='gA && gc' # Combination of adding all recent changes and git commit
 # Recursively clean .DS_Store files
 alias cleanup='find . -type f -name "*.DS_Store" -ls -delete'
 
-# MongoDB
-alias mongod='mongod --dbpath=/Users/nikolaj/mongodb/data/db'
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=/opt/homebrew/bin:$PATH
-export PATH="$PATH:$HOME/code/flutter/bin"
-export PATH="/opt/homebrew/opt/mongodb-community@4.4/bin:$PATH"
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Init starship
 eval "$(starship init zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/nikolaj/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
