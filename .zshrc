@@ -21,21 +21,23 @@ alias gc='git commit' # Uses default editor for a commit message
 alias gcne='git commit --amend --no-edit' # Amends to previous commit
 alias gac='gA && gc' # Combination of adding all recent changes and git commit
 
+# Kill leftover server
+function killport() { lsof -i TCP:$1 | grep LISTEN | awk '{print $2}' | xargs kill -9 }
+
 # Recursively clean .DS_Store files
 alias cleanup='find . -type f -name "*.DS_Store" -ls -delete'
 
-export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/bin:$PATH:~/go/bin/
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Init starship
-eval "$(starship init zsh)"
-
-# pnpm
 export PNPM_HOME="/Users/nikolaj/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
+
+
+# Init starship
+eval "$(starship init zsh)"
+
