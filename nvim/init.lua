@@ -47,12 +47,13 @@ require("lazy").setup({
 	require("plugins.treesitter"),
 	require("plugins.which-key"),
 
+	"github/copilot.vim",
 	"folke/neodev.nvim",
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
 	"tpope/vim-sleuth",
 	"numToStr/Comment.nvim",
-	"github/copilot.vim",
+	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
 	{
 		"folke/tokyonight.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -62,5 +63,4 @@ require("lazy").setup({
 			vim.cmd.hi("Comment gui=none")
 		end,
 	},
-	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
 }, {})
