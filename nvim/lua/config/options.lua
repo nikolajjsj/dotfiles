@@ -2,6 +2,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.filetype.add({ extension = { templ = "templ" } })
+
 -- LazyVim root dir detection
 -- Each entry can be:
 -- * the name of a detector function like `lsp` or `cwd`
@@ -30,7 +32,7 @@ opt.number = true -- Print line number
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.relativenumber = true -- Relative line numbers
-opt.scrolloff = 4 -- Lines of context
+opt.scrolloff = 8 -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 opt.shiftround = true -- Round indent
 opt.shiftwidth = 2 -- Size of an indent
@@ -44,7 +46,7 @@ opt.spelllang = { "en" }
 opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
 opt.splitright = true -- Put new windows right of current
-opt.tabstop = 2 -- Number of spaces tabs count for
+opt.tabstop = 4 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
 opt.timeoutlen = 300
 opt.undofile = true
@@ -56,17 +58,17 @@ opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 opt.foldmethod = "indent"
 opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  -- fold = "⸱",
-  fold = " ",
-  foldsep = " ",
-  diff = "╱",
-  eob = " ",
+	foldopen = "",
+	foldclose = "",
+	-- fold = "⸱",
+	fold = " ",
+	foldsep = " ",
+	diff = "╱",
+	eob = " ",
 }
 
 if vim.fn.has("nvim-0.10") == 1 then
-  opt.smoothscroll = true
+	opt.smoothscroll = true
 end
 
 -- Folding
@@ -76,4 +78,4 @@ vim.opt.foldlevel = 99
 vim.o.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
 
 -- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
+vim.g.markdown4recommended_style = 0
