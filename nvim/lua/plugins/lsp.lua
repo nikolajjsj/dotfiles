@@ -102,41 +102,34 @@ return { -- LSP Configuration & Plugins
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 		local servers = {
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-			gopls = {},
 			cmake = {},
-			templ = {},
+			biome = {},
 			rust_analyzer = {},
 			tsserver = {},
-			html = {
-				filetypes = { "html", "templ" },
-			},
-			htmx = {
-				filetypes = { "html", "templ" },
-			},
-			tailwindcss = {
-				filetypes = { "templ", "astro", "javascript", "typescript", "react" },
-				init_options = { userLanguages = { templ = "html" } },
-			},
+			dockerls = {},
+			diagnosticls = {},
+			gopls = {},
+			templ = {},
+			sqlls = {},
+			eslint = {},
+			jsonls = {},
+			yamlls = {},
+			svelte = {},
+			html = {},
+			cssls = {},
+			htmx = {},
+			tailwindcss = {},
 			lua_ls = {
-				-- cmd = {...},
-				-- filetypes { ...},
-				-- capabilities = {},
 				settings = {
 					Lua = {
 						runtime = { version = "LuaJIT" },
 						workspace = {
 							checkThirdParty = false,
-							-- Tells lua_ls where to find all the Lua files that you have loaded
-							-- for your neovim configuration.
 							library = {
 								"${3rd}/luv/library",
 								unpack(vim.api.nvim_get_runtime_file("", true)),
 							},
-							-- If lua_ls is really slow on your computer, you can try this instead:
-							-- library = { vim.env.VIMRUNTIME },
 						},
-						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-						-- diagnostics = { disable = { 'missing-fields' } },
 					},
 				},
 			},
