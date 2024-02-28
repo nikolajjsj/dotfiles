@@ -53,7 +53,7 @@ require("lazy").setup({
 	"tpope/vim-rhubarb",
 	"tpope/vim-sleuth",
 	"numToStr/Comment.nvim",
-	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
+	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 	{
 		"folke/tokyonight.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
