@@ -55,12 +55,12 @@ require("lazy").setup({
 	"numToStr/Comment.nvim",
 	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 	{
-		"folke/tokyonight.nvim",
+		"rebelot/kanagawa.nvim",
+		name = "kanagawa",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
-			vim.cmd.colorscheme("tokyonight-night")
-			vim.cmd.hi("Comment gui=none")
+			vim.cmd.colorscheme("kanagawa")
 		end,
 	},
 }, {})
