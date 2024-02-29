@@ -75,7 +75,6 @@ require("lazy").setup({
 			vim.g.loaded_netrwPlugin = 1
 
 			require("nvim-tree").setup({
-				auto_close = true,
 				disable_netrw = true,
 				hijack_netrw = true,
 			})
