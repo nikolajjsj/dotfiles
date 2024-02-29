@@ -47,13 +47,43 @@ require("lazy").setup({
 	require("plugins.treesitter"),
 	require("plugins.which-key"),
 
+	-- Language specific
+	{
+		"olexsmir/gopher.nvim",
+		ft = "go",
+		requires = { -- dependencies
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		build = function()
+			vim.cmd([[silent! GoInstallDeps]])
+		end,
+	},
+
+	-- General
 	"github/copilot.vim",
 	"folke/neodev.nvim",
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
 	"tpope/vim-sleuth",
 	"numToStr/Comment.nvim",
+	{
+		"nvim-tree/nvim-tree.lua",
+		requires = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			vim.g.loaded_netrw = 1
+			vim.g.loaded_netrwPlugin = 1
+
+			require("nvim-tree").setup({
+				auto_close = true,
+				disable_netrw = true,
+				hijack_netrw = true,
+			})
+		end,
+	},
 	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+
+	-- Themes
 	{
 		"rebelot/kanagawa.nvim",
 		name = "kanagawa",
