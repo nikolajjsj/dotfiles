@@ -28,6 +28,7 @@ function killport() { lsof -i TCP:$1 | grep LISTEN | awk '{print $2}' | xargs ki
 alias cleanup='find . -type f -name "*.DS_Store" -ls -delete'
 
 # Tmux aliases
+alias t-dev='sh ./scripts/tmux-dev.sh'
 alias t='tmux'
 alias ta='tmux attach -t'
 alias tl='tmux ls'
