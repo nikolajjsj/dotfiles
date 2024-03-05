@@ -27,6 +27,12 @@ function killport() { lsof -i TCP:$1 | grep LISTEN | awk '{print $2}' | xargs ki
 # Recursively clean .DS_Store files
 alias cleanup='find . -type f -name "*.DS_Store" -ls -delete'
 
+# Tmux aliases
+alias t='tmux'
+alias ta='tmux attach -t'
+alias tl='tmux ls'
+alias tk='tmux kill-session -t'
+
 export PATH=/opt/homebrew/bin:$PATH:~/go/bin/
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
