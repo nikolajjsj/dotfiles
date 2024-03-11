@@ -40,10 +40,10 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
 map(
-  "n",
-  "<leader>ur",
-  "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
-  { desc = "Redraw / clear hlsearch / diff update" }
+	"n",
+	"<leader>ur",
+	"<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+	{ desc = "Redraw / clear hlsearch / diff update" }
 )
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
@@ -82,17 +82,17 @@ map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 
 -- formatting
-map({ "n", "v" }, "<leader>cf", function()
-  Util.format({ force = true })
-end, { desc = "Format" })
+-- map({ "n", "v" }, "<leader>cf", function()
+-- 	Util.format({ force = true })
+-- end, { desc = "Format" })
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)
-  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-  severity = severity and vim.diagnostic.severity[severity] or nil
-  return function()
-    go({ severity = severity })
-  end
+	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+	severity = severity and vim.diagnostic.severity[severity] or nil
+	return function()
+		go({ severity = severity })
+	end
 end
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
@@ -104,25 +104,9 @@ map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
 -- stylua: ignore start
 
--- toggle options
-map("n", "<leader>uf", function() Util.format.toggle() end, { desc = "Toggle auto format (global)" })
-map("n", "<leader>uF", function() Util.format.toggle(true) end, { desc = "Toggle auto format (buffer)" })
-map("n", "<leader>us", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
-map("n", "<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
-map("n", "<leader>uL", function() Util.toggle("relativenumber") end, { desc = "Toggle Relative Line Numbers" })
-map("n", "<leader>ul", function() Util.toggle.number() end, { desc = "Toggle Line Numbers" })
-map("n", "<leader>ud", function() Util.toggle.diagnostics() end, { desc = "Toggle Diagnostics" })
-local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-map("n", "<leader>uc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
-if vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint then
-  map( "n", "<leader>uh", function() Util.toggle.inlay_hints() end, { desc = "Toggle Inlay Hints" })
-end
-map("n", "<leader>uT", function() if vim.b.ts_highlight then vim.treesitter.stop() else vim.treesitter.start() end end, { desc = "Toggle Treesitter Highlight" })
-map("n", "<leader>ub", function() Util.toggle("background", false, {"light", "dark"}) end, { desc = "Toggle Background" })
-
 -- lazygit
-map("n", "<leader>gg", function() Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
-map("n", "<leader>gG", function() Util.terminal({ "lazygit" }, {esc_esc = false, ctrl_hjkl = false}) end, { desc = "Lazygit (cwd)" })
+-- map("n", "<leader>gg", function() Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
+-- map("n", "<leader>gG", function() Util.terminal({ "lazygit" }, {esc_esc = false, ctrl_hjkl = false}) end, { desc = "Lazygit (cwd)" })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
@@ -131,11 +115,11 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- floating terminal
-local lazyterm = function() Util.terminal(nil, { cwd = Util.root() }) end
-map("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<leader>fT", function() Util.terminal() end, { desc = "Terminal (cwd)" })
-map("n", "<c-/>", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
+-- local lazyterm = function() Util.terminal(nil, { cwd = Util.root() }) end
+-- map("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
+-- map("n", "<leader>fT", function() Util.terminal() end, { desc = "Terminal (cwd)" })
+-- map("n", "<c-/>", lazyterm, { desc = "Terminal (root dir)" })
+-- map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })

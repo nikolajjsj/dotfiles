@@ -2,8 +2,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.filetype.add({ extension = { templ = "templ" } })
-
 -- LazyVim root dir detection
 -- Each entry can be:
 -- * the name of a detector function like `lsp` or `cwd`
@@ -19,7 +17,6 @@ opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
-opt.expandtab = true -- Use spaces instead of tabs
 opt.formatoptions = "jcroqlnt" -- tcqj
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
@@ -31,7 +28,7 @@ opt.number = true -- Print line number
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 8 -- Maximum number of entries in a popup
 opt.relativenumber = true -- Relative line numbers
-opt.scrolloff = 8 -- Lines of context
+opt.scrolloff = 12 -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 opt.shiftround = true -- Round indent
 opt.shiftwidth = 2 -- Size of an indent
@@ -41,7 +38,7 @@ opt.sidescrolloff = 8 -- Columns of context
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 opt.smartcase = true -- Don't ignore case with capitals
 opt.smartindent = true -- Insert indents automatically
--- opt.spelllang = { "en" }
+opt.spelllang = { "en" }
 opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
 opt.splitright = true -- Put new windows right of current
@@ -71,8 +68,7 @@ if vim.fn.has("nvim-0.10") == 1 then
 end
 
 -- Folding
-vim.opt.foldlevel = 99
--- vim.opt.foldtext = "v:lua.require'lazyvim.util'.ui.foldtext()"
+opt.foldlevel = 99
 
 vim.o.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
 
