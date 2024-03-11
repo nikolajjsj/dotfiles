@@ -73,6 +73,13 @@ require("lazy").setup({
 	{
 		"nvim-tree/nvim-tree.lua",
 		requires = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			git = {
+				enable = true,
+				ignore = false,
+				timeout = 500,
+			},
+		},
 		config = function()
 			vim.g.loaded_netrw = 1
 			vim.g.loaded_netrwPlugin = 1
