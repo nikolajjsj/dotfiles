@@ -119,6 +119,7 @@ return { -- LSP Configuration & Plugins
 			cssls = {},
 			htmx = {},
 			tailwindcss = {},
+			graphql = {},
 			lua_ls = {
 				settings = {
 					Lua = {
