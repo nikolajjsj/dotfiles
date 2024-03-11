@@ -46,6 +46,8 @@ require("lazy").setup({
 	require("plugins.telescope"),
 	require("plugins.treesitter"),
 	require("plugins.which-key"),
+	-- Themes
+	require("plugins.theme"),
 
 	-- Language specific
 	{
@@ -67,6 +69,7 @@ require("lazy").setup({
 	"tpope/vim-rhubarb",
 	"tpope/vim-sleuth",
 	"numToStr/Comment.nvim",
+	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 	{
 		"nvim-tree/nvim-tree.lua",
 		requires = { "nvim-tree/nvim-web-devicons" },
@@ -78,18 +81,6 @@ require("lazy").setup({
 				disable_netrw = true,
 				hijack_netrw = true,
 			})
-		end,
-	},
-	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
-
-	-- Themes
-	{
-		"ellisonleao/gruvbox.nvim",
-		name = "gruvbox",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			vim.cmd.colorscheme("gruvbox")
 		end,
 	},
 }, {})
