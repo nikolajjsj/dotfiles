@@ -17,6 +17,8 @@
 =====================================================================
 --]]
 
+---@diagnostic disable: undefined-global
+
 -- This file is automatically loaded by plugins.core
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -79,6 +81,7 @@ vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "
 vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 vim.opt.smartindent = true -- Insert indents automatically
 vim.opt.splitkeep = "screen"
+vim.opt.shiftwidth = 2 -- Size of an indent
 vim.opt.tabstop = 2 -- Number of spaces tabs count for
 vim.opt.termguicolors = true -- True color support
 vim.opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
