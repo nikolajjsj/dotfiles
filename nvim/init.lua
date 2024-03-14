@@ -674,8 +674,8 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				go = { "goimports", "gofmt" },
-				javascript = { { "biome", "prettierd", "prettier" } },
-				typescript = { { "biome", "prettierd", "prettier" } },
+				javascript = { "biome", { "prettierd", "prettier" } },
+				typescript = { "biome", { "prettierd", "prettier" } },
 			},
 		},
 	},
