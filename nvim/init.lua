@@ -65,6 +65,12 @@ if vim.fn.has("nvim-0.10") == 1 then
 	vim.opt.smoothscroll = true
 end
 vim.opt.foldlevel = 99
+-- Indenting
+vim.o.tabstop = 2 -- A TAB character looks like 4 spaces
+vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+vim.o.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
+vim.o.shiftwidth = 2 -- Number of spaces inserted when indenting
+--
 
 vim.opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
 vim.opt.formatoptions = "jcroqlnt" -- tcqj
@@ -79,10 +85,7 @@ vim.opt.pumblend = 10 -- Popup blend
 vim.opt.pumheight = 8 -- Maximum number of entries in a popup
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
-vim.opt.smartindent = true -- Insert indents automatically
 vim.opt.splitkeep = "screen"
-vim.opt.shiftwidth = 2 -- Size of an indent
-vim.opt.tabstop = 2 -- Number of spaces tabs count for
 vim.opt.termguicolors = true -- True color support
 vim.opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
 vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
