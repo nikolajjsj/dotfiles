@@ -321,17 +321,15 @@ require("lazy").setup({
 			vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
 		end,
 	},
+	{ "tpope/vim-fugitive" },
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-			},
-		},
+		config = function()
+			require("gitsigns").setup()
+
+			vim.keymap.set("n", "<leader>gh", ":Gitsigns preview_hunk<cr>", { desc = "Preview hunk" })
+			vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<cr>", { desc = "Line blame" })
+		end,
 	},
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
