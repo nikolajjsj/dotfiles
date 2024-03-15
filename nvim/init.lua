@@ -310,16 +310,20 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
 	},
-	{ -- File browser
-		"nvim-tree/nvim-tree.lua",
-		requires = { "nvim-tree/nvim-web-devicons" },
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+		opts = {
+			disable_netrw = true,
+			hijack_netrw = true,
+		},
 		config = function()
-			vim.g.loaded_netrw = 1
-			vim.g.loaded_netrwPlugin = 1
-			require("nvim-tree").setup({
-				disable_netrw = true,
-				hijack_netrw = true,
-			})
+			vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
 		end,
 	},
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
