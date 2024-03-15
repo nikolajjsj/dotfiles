@@ -305,22 +305,7 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
 	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-		opts = {
-			disable_netrw = true,
-			hijack_netrw = true,
-		},
-		config = function()
-			vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
-		end,
-	},
+
 	{ "tpope/vim-fugitive" },
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
@@ -331,6 +316,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<cr>", { desc = "Line blame" })
 		end,
 	},
+
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
@@ -703,7 +689,6 @@ require("lazy").setup({
 		"echasnovski/mini.nvim",
 		config = function()
 			-- Better Around/Inside textobjects
-			--
 			-- Examples:
 			--  - va)  - [V]isually select [A]round [)]paren
 			--  - yinq - [Y]ank [I]nside [N]ext [']quote
@@ -717,8 +702,14 @@ require("lazy").setup({
 			-- - sr)'  - [S]urround [R]eplace [)] [']
 			require("mini.surround").setup()
 
-			-- ... and there is more!
-			--  Check out: https://github.com/echasnovski/mini.nvim
+			-- Navigate file tree
+			require("mini.files").setup({})
+			vim.keymap.set(
+				"n",
+				"<leader>ff",
+				"<cmd>lua require('mini.files').open()<cr>",
+				{ desc = "Open [F]ile [F]inder" }
+			)
 		end,
 	},
 
