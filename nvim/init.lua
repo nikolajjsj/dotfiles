@@ -826,6 +826,38 @@ require("lazy").setup({
 			--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 		end,
 	},
+
+	{
+		"goolord/alpha-nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+
+		config = function()
+			local alpha = require("alpha")
+			local dashboard = require("alpha.themes.startify")
+
+			dashboard.section.header.val = {
+				[[                                                                       ]],
+				[[                                                                       ]],
+				[[                                                                       ]],
+				[[                                                                       ]],
+				[[                                                                     ]],
+				[[       ████ ██████           █████      ██                     ]],
+				[[      ███████████             █████                             ]],
+				[[      █████████ ███████████████████ ███   ███████████   ]],
+				[[     █████████  ███    █████████████ █████ ██████████████   ]],
+				[[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+				[[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+				[[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+				[[                                                                       ]],
+				[[                                                                       ]],
+				[[                                                                       ]],
+			}
+
+			alpha.setup(dashboard.opts)
+		end,
+	},
 }, {
 	ui = {
 		-- If you have a Nerd Font, set icons to an empty table which will use the
