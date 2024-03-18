@@ -568,7 +568,6 @@ require("lazy").setup({
 
 				-- Some languages (like typescript) have entire language plugins that can be useful:
 				--    https://github.com/pmizio/typescript-tools.nvim
-
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -723,7 +722,19 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		opts = {
-			ensure_installed = { "bash", "c", "html", "lua", "markdown", "vim", "vimdoc", "go", "json", "yaml" },
+			ensure_installed = {
+				"bash",
+				"c",
+				"html",
+				"lua",
+				"markdown",
+				"vim",
+				"vimdoc",
+				"go",
+				"json",
+				"yaml",
+				"graphql",
+			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
 			highlight = { enable = true },
