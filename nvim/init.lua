@@ -700,15 +700,6 @@ require("lazy").setup({
 			-- - sd'   - [S]urround [D]elete [']quotes
 			-- - sr)'  - [S]urround [R]eplace [)] [']
 			require("mini.surround").setup()
-
-			-- Navigate file tree
-			require("mini.files").setup({})
-			vim.keymap.set(
-				"n",
-				"<leader>ff",
-				"<cmd>lua require('mini.files').open()<cr>",
-				{ desc = "Open [F]ile [F]inder" }
-			)
 		end,
 	},
 
@@ -716,6 +707,28 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
+	},
+
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("neo-tree").setup({
+				auto_close = true,
+				filesystem = {
+					filtered_items = {
+						visible = true,
+					},
+				},
+			})
+
+			vim.keymap.set("n", "<C-n>", "<Cmd>Neotree toggle<CR>", { desc = "Open NeoTree" })
+		end,
 	},
 
 	{ -- Highlight, edit, and navigate code
