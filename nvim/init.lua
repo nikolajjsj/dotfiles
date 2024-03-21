@@ -289,13 +289,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Language specific tools
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
-	},
-
 	"github/copilot.vim", -- GitHub Copilot
 	"folke/neodev.nvim", -- Neovim Development Environment
 	"tpope/vim-sleuth", -- Heuristically set buffer options
@@ -565,6 +558,7 @@ require("lazy").setup({
 				html = {},
 				cssls = {},
 				htmx = {},
+				tsserver = {},
 
 				-- Some languages (like typescript) have entire language plugins that can be useful:
 				--    https://github.com/pmizio/typescript-tools.nvim
