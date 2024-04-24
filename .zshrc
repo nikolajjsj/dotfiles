@@ -1,6 +1,7 @@
 # Editor
 export EDITOR="nvim"
 export VISUAL="nvim"
+export TERM="xterm"
 
 # Add colors to the terminal
 export CLICOLOR=1
