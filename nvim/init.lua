@@ -298,6 +298,12 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
 	},
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
 
 	{ "tpope/vim-fugitive" },
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
