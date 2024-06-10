@@ -53,6 +53,9 @@ esac
 
 # zoxide
 eval "$(zoxide init zsh)"
+# fzf
+source <(fzf --zsh)
+
 
 # Purification
 # by Matthieu Cneude
