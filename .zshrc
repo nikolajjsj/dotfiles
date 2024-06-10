@@ -37,6 +37,7 @@ alias tl='tmux ls'
 alias tk='tmux kill-session -t'
 alias t-setup-dev='sh ~/code/dotfiles/scripts/tmux-dev.sh'
 alias t-work='tmux new-session -A -s work'
+alias z-work='zellij a work'
 alias t-dev='tmux new-session -A -s personal'
 
 # Paths
