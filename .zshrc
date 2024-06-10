@@ -51,6 +51,8 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# zoxide
+eval "$(zoxide init zsh)"
 
 # Purification
 # by Matthieu Cneude
