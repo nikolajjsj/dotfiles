@@ -84,8 +84,8 @@ elif [ "$(uname)" == "Darwin" ]; then
     brew update
     brew upgrade
     # Installs
-    brew install --formula vim neovim git htop node exa fd fzf go gopls luajit ripgrep tmux starship
-    brew install --cask alfred appcleaner flutter spotify visual-studio-code amethyst kitty
+    brew install --formula vim neovim git htop fd fzf go gopls luajit ripgrep tmux lazygit
+    brew install --cask spotify kitty
     # Cleans up
     brew cleanup
   fi;
