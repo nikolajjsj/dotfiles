@@ -84,7 +84,7 @@ elif [ "$(uname)" == "Darwin" ]; then
     brew update
     brew upgrade
     # Installs
-    brew install --formula vim neovim git htop fd fzf go gopls luajit ripgrep tmux lazygit
+    brew install --formula vim neovim git htop fd fzf go gopls luajit ripgrep tmux lazygit eza
     brew install --cask spotify kitty
     # Cleans up
     brew cleanup
