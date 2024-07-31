@@ -55,6 +55,9 @@ elif [ "$(uname)" == "Darwin" ]; then
     #<----------------Changing MacOS Specific Preferences-------------------->
     ### VIM for VSCode
     defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+    ### Faster Dock
+    defaults write com.apple.dock autohide-time-modifier -int 0
+
     # Kill affected applications
     for app in "Activity Monitor" \
       "Address Book" \
