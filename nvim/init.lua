@@ -563,7 +563,6 @@ require("lazy").setup({
 				yamlls = {},
 				html = {},
 				cssls = {},
-				htmx = {},
 				tsserver = {},
 
 				-- Some languages (like typescript) have entire language plugins that can be useful:
