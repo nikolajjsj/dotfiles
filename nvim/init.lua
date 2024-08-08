@@ -548,14 +548,18 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				biome = {},
-				dockerls = {},
-				gopls = {},
-				sqlls = {},
-				jsonls = {},
-				yamlls = {},
+				tsserver = {},
 				html = {},
 				cssls = {},
-				tsserver = {},
+				jsonls = {},
+
+				dockerls = {},
+				yamlls = {},
+				sqlls = {},
+				gopls = {},
+				cmake = {},
+				templ = {},
+				htmx = {},
 
 				-- Some languages (like typescript) have entire language plugins that can be useful:
 				--    https://github.com/pmizio/typescript-tools.nvim
