@@ -41,6 +41,7 @@ alias z-work='zellij a work'
 alias t-dev='tmux new-session -A -s personal'
 
 # Paths
+. "$HOME/.cargo/env"
 export PATH=/opt/homebrew/bin:$PATH:~/go/bin/
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
