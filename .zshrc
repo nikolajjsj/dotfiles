@@ -41,19 +41,12 @@ alias z-work='zellij a work'
 alias t-dev='tmux new-session -A -s personal'
 
 # Paths
-. "$HOME/.cargo/env"
-export PATH=/opt/homebrew/bin:$PATH:~/go/bin/
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export PNPM_HOME="/Users/nikolaj/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+export PATH="/opt/homebrew/bin:/Users/darwin/go/bin:$PNPM_HOME:$PATH"
 
-# zoxide
-eval "$(zoxide init zsh)"
 # fzf
 source <(fzf --zsh)
 
