@@ -45,6 +45,7 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export PNPM_HOME="/Users/nikolaj/Library/pnpm"
 export PATH="/opt/homebrew/bin:/Users/darwin/go/bin:$PNPM_HOME:$PATH"
+. "$HOME/.cargo/env"
 
 # fzf
 source <(fzf --zsh)
