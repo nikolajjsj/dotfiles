@@ -557,6 +557,7 @@ require("lazy").setup({
 				yamlls = {},
 				sqlls = {},
 				gopls = {},
+				rust_analyzer = {},
 				cmake = {},
 				templ = {},
 				htmx = {},
