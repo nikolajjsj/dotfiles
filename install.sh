@@ -3,8 +3,8 @@ cd ~
 mkdir .config/
 # symlinking
 ln -s ~/code/dotfiles/nvim ~/.config/nvim
+ln -s ~/code/dotfiles/ghostty ~/.config/ghostty
 ln -sf ~/code/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/code/dotfiles/.bashrc ~/.bashrc
 ln -sf ~/code/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/code/dotfiles/.gitconfig ~/.gitconfig
 
