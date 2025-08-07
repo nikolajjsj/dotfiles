@@ -17,34 +17,38 @@ if [ "$(uname)" == "Darwin" ]; then
   echo 'xcode-select --install'
   echo '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
   echo ""
-  read -p "Continue? (y/n) " -n 1;
-  echo "";
+  read -p "Continue? (y/n) " -n 1
+  echo ""
 
   if [[ $REPLY =~ ^[Nn]$ ]]; then
     echo 'Exiting...'
     exit 1
-  fi;
+  fi
 
   # Prompt user if they want to set MacOS preferences
-  read -p "Set MacOS settings? (y/n) " -n 1;
-  echo "";
+  read -p "Set MacOS settings? (y/n) " -n 1
+  echo ""
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     # Close any open System Preferences panes, to prevent them from overriding settings we’re about to change
     osascript -e 'tell application "System Preferences" to quit'
     # Ask for the administrator password upfront
     sudo -v
     # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-    while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+    while true; do
+      sudo -n true
+      sleep 60
+      kill -0 "$$" || exit
+    done 2>/dev/null &
 
     ### Faster Dock
     defaults write com.apple.dock autohide-time-modifier -int 0
 
     echo "Done. Note that some of these changes require a logout/restart to take effect."
-  fi;
+  fi
 
   # Prompt user if they want to install HomeBrew packages
-  read -p "Install HomeBrew packages? (y/n) " -n 1;
-  echo "";
+  read -p "Install HomeBrew packages? (y/n) " -n 1
+  echo ""
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     cd ~ #Moving to home directory at the beginning of the process
     brew update
@@ -54,6 +58,5 @@ if [ "$(uname)" == "Darwin" ]; then
     brew install --cask spotify ghostty google-chrome dbngin slack tableplus tailscale-app
     # Cleans up
     brew cleanup
-  fi;
-fi;
-
+  fi
+fi
