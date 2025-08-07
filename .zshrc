@@ -47,6 +47,8 @@ export PNPM_HOME="/Users/nikolaj/Library/pnpm"
 export PATH="/opt/homebrew/bin:/Users/darwin/go/bin:$PNPM_HOME:$PATH"
 . "$HOME/.cargo/env"
 
+eval "$(fnm env --use-on-cd --corepack-enabled)"
+
 # fzf
 source <(fzf --zsh)
 

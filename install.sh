@@ -1,32 +1,15 @@
 #!/usr/bin/env bash
 cd ~
 mkdir .config/
-mkdir .config/kitty/
 # symlinking
 ln -s ~/code/dotfiles/nvim ~/.config/nvim
 ln -sf ~/code/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/code/dotfiles/.bashrc ~/.bashrc
 ln -sf ~/code/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/code/dotfiles/.gitconfig ~/.gitconfig
-ln -sf ~/code/dotfiles/kitty.conf ~/.config/kitty/kitty.conf
-
-# Check if machine is Linux
-if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  # Prompt user if they want to install packages
-  read -p "Install packages? (y/n) " -n 1;
-  echo "";
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
-    echo 'Installing software'
-    sudo apt update
-    sudo apt upgrade
-    # Installs
-    sudo apt install git htop ripgrep exa tmux
-    # Cleanup
-    sudo apt autoremove
-  fi;
 
 # Check if machine is MacOS
-elif [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" == "Darwin" ]; then
   echo 'Are the Xcode command line tools installed?'
   echo 'And have you installed HomeBrew?'
   echo ""
@@ -52,30 +35,10 @@ elif [ "$(uname)" == "Darwin" ]; then
     sudo -v
     # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
     while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-    #<----------------Changing MacOS Specific Preferences-------------------->
-    ### VIM for VSCode
-    defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
     ### Faster Dock
     defaults write com.apple.dock autohide-time-modifier -int 0
 
-    # Kill affected applications
-    for app in "Activity Monitor" \
-      "Address Book" \
-      "Calendar" \
-      "cfprefsd" \
-      "Contacts" \
-      "Dock" \
-      "Finder" \
-      "Google Chrome" \
-      "Mail" \
-      "Photos" \
-      "Safari" \
-      "SystemUIServer" \
-      "Terminal" \
-      "TextEdit" \
-      "Transmission"; do
-      killall "${app}" &> /dev/null
-    done
     echo "Done. Note that some of these changes require a logout/restart to take effect."
   fi;
 
@@ -87,8 +50,8 @@ elif [ "$(uname)" == "Darwin" ]; then
     brew update
     brew upgrade
     # Installs
-    brew install --formula vim neovim git htop fd fzf go gopls luajit ripgrep tmux lazygit eza
-    brew install --cask spotify kitty
+    brew install --formula neovim git htop fd fzf go gopls luajit ripgrep tmux lazygit eza fnm
+    brew install --cask spotify ghostty google-chrome dbngin slack tableplus tailscale-app
     # Cleans up
     brew cleanup
   fi;
