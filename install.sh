@@ -42,6 +42,11 @@ if [ "$(uname)" == "Darwin" ]; then
 
     ### Faster Dock
     defaults write com.apple.dock autohide-time-modifier -int 0
+    ### Faster key repeat
+    # Effects the speed of the cursor when using the arrow keys.
+    # source: https://apple.stackexchange.com/a/83923
+    defaults write -g InitialKeyRepeat -int 13
+    defaults write -g KeyRepeat -int 1
 
     echo "Done. Note that some of these changes require a logout/restart to take effect."
   fi
