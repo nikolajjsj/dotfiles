@@ -8,6 +8,10 @@ ln -sf ~/code/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/code/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/code/dotfiles/.gitconfig ~/.gitconfig
 
+# Install lazyvim
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+
 # Check if machine is MacOS
 if [ "$(uname)" == "Darwin" ]; then
   echo 'Are the Xcode command line tools installed?'
