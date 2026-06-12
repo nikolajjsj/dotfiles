@@ -6,7 +6,7 @@
 
 # ghostty +list-fonts
 
-font-size = 14
+font-size = 12
 
 # Tokyonight theme
 palette = 0=#15161e
